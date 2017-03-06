@@ -9,9 +9,13 @@
 #ifndef GLUniform_hpp
 #define GLUniform_hpp
 
+#if defined(WIN32)
+#include <glew.h>
+#else
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <OpenGL/glext.h>
+#endif
 
 class GLUniform{
     

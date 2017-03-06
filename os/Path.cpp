@@ -7,7 +7,13 @@
 //
 //#import <Foundation/Foundation.h>
 #include <stdlib.h>
+#if !defined(WIN32)
 #include <mach-o/dyld.h>
+#else
+#include <windows.h>
+#include <psapi.h>   
+#pragma comment(lib,"psapi.lib")  
+#endif
 #include <string.h>
 #include "Path.h"
 
@@ -15,6 +21,7 @@ string Path::s_runDir;
 string Path::s_resourceDir;
 
 string Path::runDir(){
+#if !defined(WIN32)
     if(Path::s_runDir.empty()){
         char buf[0];
         uint32_t size = 0;
@@ -30,18 +37,23 @@ string Path::runDir(){
         free(path);  
        
     }
-        
+#else
+	s_runDir = ".";
+#endif        
     return Path::s_runDir;
 }
 
 string Path::resouceDir(){
+#if !defined(WIN32)
     if(Path::s_resourceDir.empty()){
         string runDir = Path::runDir();
         size_t index = runDir.find_last_of("/");
         Path::s_resourceDir = runDir.substr(0, index);
         Path::s_resourceDir.append("/Resources");
     }
-    
+#else
+	s_resourceDir = ".";
+#endif       
     return Path::s_resourceDir;
 }
 
