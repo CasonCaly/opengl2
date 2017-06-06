@@ -8,7 +8,7 @@
 
 #ifndef GLUniform_hpp
 #define GLUniform_hpp
-
+#include "GLCore.h"
 #if defined(WIN32)
 #include <glew.h>
 #else
@@ -17,7 +17,7 @@
 #include <OpenGL/glext.h>
 #endif
 
-class GLUniform{
+class GLCORE GLUniform{
     
 public:
     

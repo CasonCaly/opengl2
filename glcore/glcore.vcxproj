@@ -11,41 +11,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\glclass\GLApp.cpp" />
-    <ClCompile Include="..\glclass\GLAttribute.cpp" />
-    <ClCompile Include="..\glclass\GLProgram.cpp" />
-    <ClCompile Include="..\glclass\GLShader.cpp" />
-    <ClCompile Include="..\glclass\GLUniform.cpp" />
-    <ClCompile Include="..\os\Path.cpp" />
-    <ClCompile Include="Classes\TouchCone.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="glclass\GLApp.cpp" />
+    <ClCompile Include="glclass\GLAttribute.cpp" />
+    <ClCompile Include="glclass\GLProgram.cpp" />
+    <ClCompile Include="glclass\GLShader.cpp" />
+    <ClCompile Include="glclass\GLUniform.cpp" />
+    <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\glclass\GLApp.h" />
-    <ClInclude Include="..\glclass\GLAttribute.h" />
-    <ClInclude Include="..\glclass\GLProgram.h" />
-    <ClInclude Include="..\glclass\GLShader.h" />
-    <ClInclude Include="..\glclass\GLUniform.h" />
-    <ClInclude Include="..\math\Matrix.hpp" />
-    <ClInclude Include="..\math\Quaternion.hpp" />
-    <ClInclude Include="..\math\Vector.hpp" />
-    <ClInclude Include="..\os\Path.h" />
-    <ClInclude Include="Classes\TouchCone.h" />
+    <ClInclude Include="glclass\GLApp.h" />
+    <ClInclude Include="glclass\GLAttribute.h" />
+    <ClInclude Include="glclass\GLProgram.h" />
+    <ClInclude Include="glclass\GLShader.h" />
+    <ClInclude Include="glclass\GLUniform.h" />
+    <ClInclude Include="GLCore.h" />
+    <ClInclude Include="glew\include\glew.h" />
+    <ClInclude Include="glew\include\glxew.h" />
+    <ClInclude Include="glew\include\wglew.h" />
+    <ClInclude Include="glfw3\include\win32\glfw3.h" />
+    <ClInclude Include="glfw3\include\win32\glfw3native.h" />
+    <ClInclude Include="math\Matrix.hpp" />
+    <ClInclude Include="math\Quaternion.hpp" />
+    <ClInclude Include="math\Vector.hpp" />
+    <ClInclude Include="os\Path.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ACE5311E-0963-4285-B9B7-8D44EC2B8679}</ProjectGuid>
+    <ProjectGuid>{BC28E7F6-E6FD-4CE8-B3E6-752DB9F93916}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TouchCone</RootNamespace>
+    <RootNamespace>glcore</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -72,41 +75,33 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLCORE_EXPORTS;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./Classes;../glclass;../math;../os;../glfw3/include/win32;../glew/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>./;./glew/include;./glfw3/include/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4819;4996;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>./glew/prebuilt;./glfw3/prebuilt/win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../glcore/glfw3/prebuilt/win32;../glcore/glew/prebuilt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PreLinkEvent>
-      <Command>xcopy /Y /Q "$(ProjectDir)..\glew\prebuilt\*.*" "$(OutDir)"</Command>
-    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GLCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./Classes;../glclass;../math;../os;../glfw3/include/win32;../glew/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>../glfw3/prebuilt/win32;../glew/prebuilt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -8,6 +8,7 @@
 
 #ifndef GLShader_hpp
 #define GLShader_hpp
+#include "GLCore.h"
 #include <string>
 using namespace std;
 
@@ -19,7 +20,7 @@ using namespace std;
 #include <OpenGL/glext.h>
 #endif
 
-class GLShader{
+class GLCORE GLShader{
     
 public:
     

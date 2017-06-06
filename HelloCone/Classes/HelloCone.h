@@ -2,8 +2,7 @@
 #define HELLO_CONE_H
 #include <vector>
 using namespace std;
-#include "GLProgram.h"
-#include "Quaternion.hpp"
+#include "glclass/GLApp.h"
 
 struct Vertex {
     vec3 Position;
@@ -18,7 +17,7 @@ struct Animation {
     float Duration;
 };
 
-class HelloCone {
+class HelloCone : public GLApp{
     
 public:
     
@@ -39,6 +38,5 @@ private:
     vector<Vertex> m_cone;
     vector<Vertex> m_disk;
     Animation m_animation;
-    GLProgram m_glProgram;
 };
 #endif

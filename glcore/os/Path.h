@@ -8,12 +8,12 @@
 
 #ifndef Path_hpp
 #define Path_hpp
-
+#include "GLCore.h"
 #include <stdio.h>
 #include <string>
 using namespace std;
 
-class Path{
+class GLCORE Path{
 
 public:
     

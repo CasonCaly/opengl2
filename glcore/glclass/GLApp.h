@@ -8,16 +8,29 @@
 
 #ifndef GLApp_hpp
 #define GLApp_hpp
-
+#include "GLCore.h"
 #include <string>
 #include <vector>
 #include <iostream>
 using namespace std;
 #include "GLProgram.h"
-#include "Quaternion.hpp"
+#include "math/Quaternion.hpp"
+#include "math/Vector.hpp"
 
-class GLApp{
+class GLCORE GLApp{
   
+public:
+
+	GLApp();
+
+	void initGLApp(const std::string& appName);
+
+	void run();
+
+public:
+
+	virtual void render();
+
 public:
     
     virtual void onTouchBegan(float x, float y);

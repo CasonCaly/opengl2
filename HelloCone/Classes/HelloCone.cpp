@@ -1,16 +1,6 @@
 #include <cmath>
 #include "HelloCone.h"
 
-#define STRINGIFY(A)  #A
-#include "../Shaders/Simple.vert"
-#include "../Shaders/Simple.frag"
-#include "GLShader.h"
-#include "GLProgram.h"
-
-
-// Define the positions and colors of two triangles.
-
-
 HelloCone::HelloCone(){
 
 }
@@ -72,22 +62,8 @@ void HelloCone::init(){
             vertex++;
         }
     }
-    
-    GLShader vertexShader;
-    vertexShader.createVertex();
-    vertexShader.compile(SimpleVertexShader);
-    
-    GLShader fragmentShader;
-    fragmentShader.createFragment();
-    fragmentShader.compile(SimpleFragmentShader);
-    
-    m_glProgram.create();
-    m_glProgram.attachShader(vertexShader);
-    m_glProgram.attachShader(fragmentShader);
-    m_glProgram.link();
-    m_glProgram.use();
-    
-    mat4 projectionMatrix = mat4::Frustum(-1.6f, 1.6, -2.4, 2.4, 5, 10);
+
+    mat4 projectionMatrix = mat4::Frustum(-1.6f, 1.6f, -2.4f, 2.4f, 5, 10);
     GLUniform* projectionUniform = m_glProgram.getUniform("Projection");
     projectionUniform->matrix4fv( 1, 0, projectionMatrix.Pointer());
 }

@@ -8,7 +8,7 @@
 
 #ifndef GLProgram_hpp
 #define GLProgram_hpp
-
+#include "GLCore.h"
 #include <string>
 #include <map>
 using namespace std;
@@ -23,7 +23,7 @@ using namespace std;
 #include "GLUniform.h"
 #include "GLAttribute.h"
 
-class GLProgram{
+class GLCORE GLProgram{
     
 public:
     

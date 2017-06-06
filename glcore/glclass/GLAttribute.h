@@ -8,7 +8,7 @@
 
 #ifndef GLAttribute_hpp
 #define GLAttribute_hpp
-
+#include "GLCore.h"
 #if defined(WIN32)
 #include <glew.h>
 #else
@@ -17,7 +17,7 @@
 #include <OpenGL/glext.h>
 #endif
 
-class GLAttribute{
+class GLCORE GLAttribute{
     
 public:
     
