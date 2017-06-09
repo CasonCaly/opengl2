@@ -1,6 +1,6 @@
 #ifndef TOUCH_CONE_H
 #define TOUCH_CONE_H
-#include "GLApp.h"
+#include "glclass/GLApp.h"
 
 struct Vertex {
     vec3 Position;
@@ -38,7 +38,7 @@ private:
     void applyRotation(float degrees);
 
 private:
-    
+	float m_lastRotationAngle;
     GLfloat m_rotationAngle;
     GLfloat m_scale;
     GLuint m_vertexBuffer;

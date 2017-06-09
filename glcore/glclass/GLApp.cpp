@@ -143,7 +143,7 @@ static void GLAppMouseCallBack(GLFWwindow* window, int button, int action, int m
 
 GLApp::GLApp()
 {
-
+	g_app = this;
 }
 
 void GLApp::initGLApp(const std::string& appName)

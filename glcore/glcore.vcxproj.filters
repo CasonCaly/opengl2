@@ -49,6 +49,9 @@
     <ClCompile Include="os\Path.cpp">
       <Filter>os</Filter>
     </ClCompile>
+    <ClCompile Include="glclass\GLBuffer.cpp">
+      <Filter>glclass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h">
@@ -94,5 +97,11 @@
       <Filter>os</Filter>
     </ClInclude>
     <ClInclude Include="GLCore.h" />
+    <ClInclude Include="glclass\GLBuffer.h">
+      <Filter>glclass</Filter>
+    </ClInclude>
+    <ClInclude Include="glclass\GLGL.h">
+      <Filter>glclass</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -60,7 +60,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./Classes;../glcore;../glcore/glfw3/include/win32;../glcore/glew/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4996;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -3,6 +3,7 @@
 
 TouchCone::TouchCone(){
     m_rotationAngle = 0.0f;
+	m_lastRotationAngle = 0.0f;
     m_scale = 1.0f;
     m_previousX = 0.0f;
     m_previousY = 0.0f;
@@ -95,12 +96,12 @@ void TouchCone::render(){
     GLAttribute* positionSlot = m_glProgram.getAttribute("Position");
     GLAttribute* colorSlot = m_glProgram.getAttribute("SourceColor");
     
-    mat4 rotation = mat4::Rotate(m_rotationAngle);
-    mat4 scale = mat4::Scale(m_scale);
+    mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(1, 0, 0));
+   // mat4 scale = mat4::Scale(m_scale);
     mat4 translation = mat4::Translate(0, 0, -7);
     
     GLUniform* modelviewUniform = m_glProgram.getUniform("Modelview");
-    mat4 modelviewMatrix = scale * rotation * translation;
+    mat4 modelviewMatrix = rotation * translation;
     
     GLsizei stride = sizeof(Vertex);
     const GLvoid* colorOffset = (GLvoid*) sizeof(vec3);
@@ -111,45 +112,37 @@ void TouchCone::render(){
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+
     positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
     colorSlot->vertexAttribPointer(4, GL_FLOAT, GL_FALSE, stride, colorOffset);
-    positionSlot->enableVertexAttribArray();
     
+	positionSlot->enableVertexAttribArray();
+	colorSlot->enableVertexAttribArray();
+
     const GLvoid* bodyOffset = 0;
     const GLvoid* diskOffset = (GLvoid*) m_bodyIndexCount;
     
-    colorSlot->enableVertexAttribArray();
-    glDrawElements(GL_LINES, m_bodyIndexCount, GL_UNSIGNED_BYTE, bodyOffset);
-    colorSlot->disableVertexAttribArray();
-    colorSlot->vertexAttrib4f(1, 1, 1, 1);
-    glDrawElements(GL_LINES, m_diskIndexCount, GL_UNSIGNED_BYTE, diskOffset);
+	glDrawElements(GL_TRIANGLES, m_bodyIndexCount, GL_UNSIGNED_BYTE, bodyOffset);
+    //colorSlot->disableVertexAttribArray();
+    //colorSlot->vertexAttrib4f(1, 1, 1, 1);
+	glDrawElements(GL_TRIANGLES, m_diskIndexCount, GL_UNSIGNED_BYTE, diskOffset);
     
     positionSlot->disableVertexAttribArray();
 }
 
 void TouchCone::onTouchBegan(float x, float y){
-    m_scale = 1.5f;
-    m_previousX = x;
-    m_previousY = y;
+	m_previousX = x;
+	m_previousY = y;
+	m_rotationAngle = m_lastRotationAngle;
 }
 
 void TouchCone::onTouchMove(float x, float y){
-     m_scale = 1.5f;
-    
-    vec2 direction = vec2(x - m_previousX, y - m_previousY).Normalized();
-    
-    // Flip the Y axis because pixel coords increase towards the bottom.
-    direction.y = -direction.y;
-    
-    m_rotationAngle = std::acos(direction.y) * 180.0f / 3.14159f;
-    if (direction.x > 0)
-        m_rotationAngle = -m_rotationAngle;
-    
-    m_previousX = x;
-    m_previousY = y;
+	float detha = x - m_previousX;
+	float anglePerPix = 30 / 15; //30¶ÈÃ»15ÏñËØ
+	m_rotationAngle = m_lastRotationAngle - (detha * anglePerPix);
 }
 
 void TouchCone::onTouchEnd(float x, float y){
-     m_scale = 1.0f;
+	m_lastRotationAngle = m_rotationAngle;
 }
 

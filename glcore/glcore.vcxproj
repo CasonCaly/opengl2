@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="glclass\GLApp.cpp" />
     <ClCompile Include="glclass\GLAttribute.cpp" />
+    <ClCompile Include="glclass\GLBuffer.cpp" />
     <ClCompile Include="glclass\GLProgram.cpp" />
     <ClCompile Include="glclass\GLShader.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
@@ -21,6 +22,8 @@
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h" />
     <ClInclude Include="glclass\GLAttribute.h" />
+    <ClInclude Include="glclass\GLBuffer.h" />
+    <ClInclude Include="glclass\GLGL.h" />
     <ClInclude Include="glclass\GLProgram.h" />
     <ClInclude Include="glclass\GLShader.h" />
     <ClInclude Include="glclass\GLUniform.h" />

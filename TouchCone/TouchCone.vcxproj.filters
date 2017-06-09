@@ -4,70 +4,16 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{d1ce00f1-8714-4f2c-84ab-b68bb2424108}</UniqueIdentifier>
     </Filter>
-    <Filter Include="glclass">
-      <UniqueIdentifier>{9b5a9a6c-d688-40e5-8555-c6b17d80becb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="math">
-      <UniqueIdentifier>{ceddae27-e834-48de-93ff-1cb45cef5cb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="os">
-      <UniqueIdentifier>{3830223e-0c15-456a-97bb-01266abdf1d3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Classes\TouchCone.cpp">
       <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\glclass\GLApp.cpp">
-      <Filter>glclass</Filter>
-    </ClCompile>
-    <ClCompile Include="..\glclass\GLAttribute.cpp">
-      <Filter>glclass</Filter>
-    </ClCompile>
-    <ClCompile Include="..\glclass\GLProgram.cpp">
-      <Filter>glclass</Filter>
-    </ClCompile>
-    <ClCompile Include="..\glclass\GLShader.cpp">
-      <Filter>glclass</Filter>
-    </ClCompile>
-    <ClCompile Include="..\glclass\GLUniform.cpp">
-      <Filter>glclass</Filter>
-    </ClCompile>
-    <ClCompile Include="..\os\Path.cpp">
-      <Filter>os</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\TouchCone.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\glclass\GLApp.h">
-      <Filter>glclass</Filter>
-    </ClInclude>
-    <ClInclude Include="..\glclass\GLAttribute.h">
-      <Filter>glclass</Filter>
-    </ClInclude>
-    <ClInclude Include="..\glclass\GLProgram.h">
-      <Filter>glclass</Filter>
-    </ClInclude>
-    <ClInclude Include="..\glclass\GLShader.h">
-      <Filter>glclass</Filter>
-    </ClInclude>
-    <ClInclude Include="..\glclass\GLUniform.h">
-      <Filter>glclass</Filter>
-    </ClInclude>
-    <ClInclude Include="..\math\Matrix.hpp">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\math\Quaternion.hpp">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\math\Vector.hpp">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\os\Path.h">
-      <Filter>os</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include <vector>
 using namespace std;
 #include "glclass/GLApp.h"
+#include "glclass/GLBuffer.h"
 
 struct Vertex {
     vec3 Position;
@@ -25,7 +26,13 @@ public:
     
     void init();
     
-    void render();
+    void render() override;
+
+	void onTouchBegan(float x, float y) override;
+
+	void onTouchMove(float x, float y) override;
+
+	void onTouchEnd(float x, float y) override;
 
 private:
     
@@ -38,5 +45,14 @@ private:
     vector<Vertex> m_cone;
     vector<Vertex> m_disk;
     Animation m_animation;
+	float m_rotationAngle;
+	float m_lastRotationAngle;
+	float m_previousX;
+	float m_previousY;
+
+	int m_bodyIndexCount;
+	int m_diskIndexCount;
+	GLBuffer m_vertexBuffer;
+	GLBuffer m_indexBuffer;
 };
 #endif
