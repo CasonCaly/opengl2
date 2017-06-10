@@ -14,20 +14,12 @@
 		5599EFFD1E6B054700B26057 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFC1E6B054700B26057 /* Foundation.framework */; };
 		5599EFFF1E6B055C00B26057 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFE1E6B055C00B26057 /* AppKit.framework */; };
 		5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599F0001E6B056D00B26057 /* QuartzCore.framework */; };
-		5599F0031E6B057E00B26057 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599F0021E6B057E00B26057 /* libglfw3.a */; };
 		5599F0051E6B05E300B26057 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5599F0041E6B05E300B26057 /* Shaders */; };
-		5599F00E1E6B15AB00B26057 /* GLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599F00C1E6B15AB00B26057 /* GLShader.cpp */; };
-		5599F0111E6B19E300B26057 /* GLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599F00F1E6B19E300B26057 /* GLProgram.cpp */; };
-		5599F0141E6B223A00B26057 /* GLUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599F0121E6B223A00B26057 /* GLUniform.cpp */; };
-		5599F0171E6B27C200B26057 /* GLAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599F0151E6B27C200B26057 /* GLAttribute.cpp */; };
-		55D7BEB01E6BD3F600784357 /* GLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D7BEAE1E6BD3F600784357 /* GLApp.cpp */; };
-		55D7BEB41E6BD7DB00784357 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D7BEB21E6BD7DB00784357 /* Path.cpp */; };
+		55EDBEA71EEBF54100850B69 /* glcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EDBEA61EEBF54100850B69 /* glcore.dylib */; };
+		55EDBEAB1EEBF5B700850B69 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 55EDBEAA1EEBF5B700850B69 /* Icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		557851981E6BBCCC00092A14 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
-		557851991E6BBCCC00092A14 /* Quaternion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Quaternion.hpp; sourceTree = "<group>"; };
-		5578519A1E6BBCCC00092A14 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
 		5599EFDD1E6B03C200B26057 /* TouchCone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchCone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5599EFF21E6B047200B26057 /* TouchCone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchCone.cpp; sourceTree = "<group>"; };
 		5599EFF31E6B047200B26057 /* TouchCone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchCone.h; sourceTree = "<group>"; };
@@ -37,20 +29,9 @@
 		5599EFFC1E6B054700B26057 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5599EFFE1E6B055C00B26057 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5599F0001E6B056D00B26057 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5599F0021E6B057E00B26057 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../glfw3/prebuilt/mac/libglfw3.a; sourceTree = "<group>"; };
 		5599F0041E6B05E300B26057 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
-		5599F00C1E6B15AB00B26057 /* GLShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLShader.cpp; sourceTree = "<group>"; };
-		5599F00D1E6B15AB00B26057 /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
-		5599F00F1E6B19E300B26057 /* GLProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLProgram.cpp; sourceTree = "<group>"; };
-		5599F0101E6B19E300B26057 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
-		5599F0121E6B223A00B26057 /* GLUniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLUniform.cpp; sourceTree = "<group>"; };
-		5599F0131E6B223A00B26057 /* GLUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUniform.h; sourceTree = "<group>"; };
-		5599F0151E6B27C200B26057 /* GLAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLAttribute.cpp; sourceTree = "<group>"; };
-		5599F0161E6B27C200B26057 /* GLAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAttribute.h; sourceTree = "<group>"; };
-		55D7BEAE1E6BD3F600784357 /* GLApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLApp.cpp; sourceTree = "<group>"; };
-		55D7BEAF1E6BD3F600784357 /* GLApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLApp.h; sourceTree = "<group>"; };
-		55D7BEB21E6BD7DB00784357 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
-		55D7BEB31E6BD7DB00784357 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		55EDBEA61EEBF54100850B69 /* glcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = glcore.dylib; path = ../glcore/Debug/glcore.dylib; sourceTree = "<group>"; };
+		55EDBEAA1EEBF5B700850B69 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5599F0031E6B057E00B26057 /* libglfw3.a in Frameworks */,
+				55EDBEA71EEBF54100850B69 /* glcore.dylib in Frameworks */,
 				5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */,
 				5599EFFF1E6B055C00B26057 /* AppKit.framework in Frameworks */,
 				5599EFFD1E6B054700B26057 /* Foundation.framework in Frameworks */,
@@ -70,23 +51,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		557851971E6BBCCC00092A14 /* math */ = {
-			isa = PBXGroup;
-			children = (
-				557851981E6BBCCC00092A14 /* Matrix.hpp */,
-				557851991E6BBCCC00092A14 /* Quaternion.hpp */,
-				5578519A1E6BBCCC00092A14 /* Vector.hpp */,
-			);
-			name = math;
-			path = ../math;
-			sourceTree = "<group>";
-		};
 		5599EFD41E6B03C200B26057 = {
 			isa = PBXGroup;
 			children = (
-				55D7BEB11E6BD7C700784357 /* os */,
-				557851971E6BBCCC00092A14 /* math */,
-				5599F00B1E6B158800B26057 /* glclass */,
+				55EDBEAA1EEBF5B700850B69 /* Icon.icns */,
 				5599F0041E6B05E300B26057 /* Shaders */,
 				5599EFF11E6B047200B26057 /* Classes */,
 				5599EFF51E6B049E00B26057 /* main.cpp */,
@@ -115,7 +83,7 @@
 		5599EFF71E6B052C00B26057 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5599F0021E6B057E00B26057 /* libglfw3.a */,
+				55EDBEA61EEBF54100850B69 /* glcore.dylib */,
 				5599F0001E6B056D00B26057 /* QuartzCore.framework */,
 				5599EFFE1E6B055C00B26057 /* AppKit.framework */,
 				5599EFFC1E6B054700B26057 /* Foundation.framework */,
@@ -123,34 +91,6 @@
 				5599EFF81E6B052C00B26057 /* OpenGL.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5599F00B1E6B158800B26057 /* glclass */ = {
-			isa = PBXGroup;
-			children = (
-				5599F00C1E6B15AB00B26057 /* GLShader.cpp */,
-				5599F00D1E6B15AB00B26057 /* GLShader.h */,
-				5599F00F1E6B19E300B26057 /* GLProgram.cpp */,
-				5599F0101E6B19E300B26057 /* GLProgram.h */,
-				5599F0121E6B223A00B26057 /* GLUniform.cpp */,
-				5599F0131E6B223A00B26057 /* GLUniform.h */,
-				5599F0151E6B27C200B26057 /* GLAttribute.cpp */,
-				5599F0161E6B27C200B26057 /* GLAttribute.h */,
-				55D7BEAE1E6BD3F600784357 /* GLApp.cpp */,
-				55D7BEAF1E6BD3F600784357 /* GLApp.h */,
-			);
-			name = glclass;
-			path = ../glclass;
-			sourceTree = "<group>";
-		};
-		55D7BEB11E6BD7C700784357 /* os */ = {
-			isa = PBXGroup;
-			children = (
-				55D7BEB21E6BD7DB00784357 /* Path.cpp */,
-				55D7BEB31E6BD7DB00784357 /* Path.h */,
-			);
-			name = os;
-			path = ../os;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +103,7 @@
 				5599EFD91E6B03C200B26057 /* Sources */,
 				5599EFDA1E6B03C200B26057 /* Frameworks */,
 				5599EFDB1E6B03C200B26057 /* Resources */,
+				55EDBEA51EEBF4D300850B69 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -212,10 +153,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				5599F0051E6B05E300B26057 /* Shaders in Resources */,
+				55EDBEAB1EEBF5B700850B69 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55EDBEA51EEBF4D300850B69 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp ${PROJECT_DIR}/../glcore/Debug/glcore.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/MacOS";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5599EFD91E6B03C200B26057 /* Sources */ = {
@@ -223,13 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
-				5599F0141E6B223A00B26057 /* GLUniform.cpp in Sources */,
-				5599F0111E6B19E300B26057 /* GLProgram.cpp in Sources */,
-				5599F0171E6B27C200B26057 /* GLAttribute.cpp in Sources */,
-				5599F00E1E6B15AB00B26057 /* GLShader.cpp in Sources */,
 				5599EFF41E6B047200B26057 /* TouchCone.cpp in Sources */,
-				55D7BEB41E6BD7DB00784357 /* Path.cpp in Sources */,
-				55D7BEB01E6BD3F600784357 /* GLApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,10 +279,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = ../glfw3/include/mac;
+				CONFIGURATION_BUILD_DIR = "$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../glcore",
+					"$(PROJECT_DIR)/../glcore/glfw3/include/mac",
+				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = ../glfw3/prebuilt/mac;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../glcore/Debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boyi.aft2.yd.appstore.HelloArrow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -340,10 +296,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = ../glfw3/include/mac;
+				CONFIGURATION_BUILD_DIR = "$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../glcore",
+					"$(PROJECT_DIR)/../glcore/glfw3/include/mac",
+				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = ../glfw3/prebuilt/mac;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../glcore/Release";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boyi.aft2.yd.appstore.HelloArrow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

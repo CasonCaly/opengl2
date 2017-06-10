@@ -154,3 +154,11 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+glcore/glcore.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+glcore/glcore.xcodeproj/project.xcworkspace/xcuserdata/Nervecell.xcuserdatad/UserInterfaceState.xcuserstate
+glcore/glcore.xcodeproj/xcuserdata/Nervecell.xcuserdatad/xcschemes/glcore.xcscheme
+glcore/glcore.xcodeproj/xcuserdata/Nervecell.xcuserdatad/xcschemes/xcschememanagement.plist
+HelloArrow/HelloArrow.xcodeproj/project.xcworkspace/xcuserdata/Nervecell.xcuserdatad/UserInterfaceState.xcuserstate
+HelloArrow/HelloArrow.xcodeproj/project.xcworkspace/xcuserdata/Nervecell.xcuserdatad/UserInterfaceState.xcuserstate
+iPhone3D/ModelViewer.SimpleWireframe/SimpleWireframe.xcodeproj/project.xcworkspace/xcuserdata/Nervecell.xcuserdatad/UserInterfaceState.xcuserstate
+HelloArrow/HelloArrow.xcodeproj/project.xcworkspace/xcuserdata/Nervecell.xcuserdatad/UserInterfaceState.xcuserstate
