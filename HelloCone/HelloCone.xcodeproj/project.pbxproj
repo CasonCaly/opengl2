@@ -16,7 +16,6 @@
 		5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599F0001E6B056D00B26057 /* QuartzCore.framework */; };
 		5599F0051E6B05E300B26057 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5599F0041E6B05E300B26057 /* Shaders */; };
 		55EDBEA01EEBDC6900850B69 /* glcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EDBE9F1EEBDC6900850B69 /* glcore.dylib */; };
-		55EDBEA91EEBF59F00850B69 /* HelloCone.app in Resources */ = {isa = PBXBuildFile; fileRef = 5599EFDD1E6B03C200B26057 /* HelloCone.app */; };
 		55EDBEAD1EEBF5C000850B69 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 55EDBEAC1EEBF5C000850B69 /* Icon.icns */; };
 /* End PBXBuildFile section */
 
@@ -154,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55EDBEAD1EEBF5C000850B69 /* Icon.icns in Resources */,
-				55EDBEA91EEBF59F00850B69 /* HelloCone.app in Resources */,
 				5599F0051E6B05E300B26057 /* Shaders in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
