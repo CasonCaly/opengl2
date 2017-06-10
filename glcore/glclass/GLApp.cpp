@@ -6,8 +6,10 @@
 //  Copyright © 2017年 zhuang yusong. All rights reserved.
 //
 #include <stdlib.h>
+#if defined(WIN32)
 #include <glew.h>
 #include <wglew.h>
+#endif
 #include <glfw3.h>
 #include "GLApp.h"
 #include "os/Path.h"
