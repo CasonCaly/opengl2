@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SimpleWireframe/SimpleWireframe.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:glcore/glcore.xcodeproj">
    </FileRef>
    <FileRef
