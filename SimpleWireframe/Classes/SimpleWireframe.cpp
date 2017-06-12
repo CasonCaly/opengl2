@@ -68,7 +68,7 @@ void SimpleWireframe::render()
     
     // Set the model-view transform.
 //    Quaternion Orientation;
-    mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(1.0f, 0.0f, 0.0f));
+    mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(0.0f, 1.0f, 0.0f));
     //mat4 rotation = Orientation.ToMatrix();
     mat4 modelview = rotation * m_translation;
     m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());

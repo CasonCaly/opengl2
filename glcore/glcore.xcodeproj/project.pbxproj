@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55354AFD1EEEDF82002EF79E /* GLSurface.cpp */; };
 		559C249F1EED83D9005B7599 /* GLSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 559C249E1EED83D9005B7599 /* GLSurface.h */; };
 		559C24A21EED840D005B7599 /* GLCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559C24A01EED840D005B7599 /* GLCone.cpp */; };
 		559C24A31EED840D005B7599 /* GLCone.h in Headers */ = {isa = PBXBuildFile; fileRef = 559C24A11EED840D005B7599 /* GLCone.h */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55354AFD1EEEDF82002EF79E /* GLSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSurface.cpp; sourceTree = "<group>"; };
 		559C249E1EED83D9005B7599 /* GLSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSurface.h; sourceTree = "<group>"; };
 		559C24A01EED840D005B7599 /* GLCone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLCone.cpp; sourceTree = "<group>"; };
 		559C24A11EED840D005B7599 /* GLCone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCone.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		559C249D1EED83D9005B7599 /* glsurface */ = {
 			isa = PBXGroup;
 			children = (
+				55354AFD1EEEDF82002EF79E /* GLSurface.cpp */,
 				559C249E1EED83D9005B7599 /* GLSurface.h */,
 				559C24A01EED840D005B7599 /* GLCone.cpp */,
 				559C24A11EED840D005B7599 /* GLCone.h */,
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */,
 				55EDBE711EEBD5D100850B69 /* GLApp.cpp in Sources */,
 				55EDBE781EEBD5D100850B69 /* GLProgram.cpp in Sources */,
 				55EDBE7A1EEBD5D100850B69 /* GLShader.cpp in Sources */,

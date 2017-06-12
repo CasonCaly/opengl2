@@ -6,7 +6,7 @@ class Cone : public ParametricSurface {
 public:
     Cone(float height, float radius) : m_height(height), m_radius(radius)
     {
-        ParametricInterval interval = { ivec2(20, 20), vec2(TwoPi, 1), vec2(30, 20) };
+        ParametricInterval interval = { ivec2(5, 5), vec2(TwoPi, 1), vec2(30, 20) };
         SetInterval(interval);
     }
     vec3 Evaluate(const vec2& domain) const
