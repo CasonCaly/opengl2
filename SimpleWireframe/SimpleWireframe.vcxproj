@@ -11,14 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Classes\HelloCone.cpp" />
+    <ClCompile Include="Classes\ParametricSurface.cpp" />
+    <ClCompile Include="Classes\SimpleWireframe.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes\HelloCone.h" />
+    <ClInclude Include="Classes\Interfaces.hpp" />
+    <ClInclude Include="Classes\ParametricEquations.hpp" />
+    <ClInclude Include="Classes\ParametricSurface.hpp" />
+    <ClInclude Include="Classes\SimpleWireframe.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9C9ECC0F-4D54-417D-8B60-24E913E8C363}</ProjectGuid>
+    <ProjectGuid>{9CD5BDEF-E5FA-49BC-944B-64F5216382A6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TouchCone</RootNamespace>
   </PropertyGroup>

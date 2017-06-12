@@ -29,6 +29,9 @@
     <Filter Include="os">
       <UniqueIdentifier>{5e783809-b195-4ecc-9d9d-5bcef0eb4045}</UniqueIdentifier>
     </Filter>
+    <Filter Include="glsurface">
+      <UniqueIdentifier>{7efc4c6a-1197-4093-8858-d523f3a52554}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glclass\GLApp.cpp">
@@ -51,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="glclass\GLBuffer.cpp">
       <Filter>glclass</Filter>
+    </ClCompile>
+    <ClCompile Include="glsurface\GLCone.cpp">
+      <Filter>glsurface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="glclass\GLGL.h">
       <Filter>glclass</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLCone.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLSurface.h">
+      <Filter>glsurface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

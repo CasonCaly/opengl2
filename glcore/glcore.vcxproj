@@ -17,6 +17,7 @@
     <ClCompile Include="glclass\GLProgram.cpp" />
     <ClCompile Include="glclass\GLShader.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
+    <ClCompile Include="glsurface\GLCone.cpp" />
     <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +34,8 @@
     <ClInclude Include="glew\include\wglew.h" />
     <ClInclude Include="glfw3\include\win32\glfw3.h" />
     <ClInclude Include="glfw3\include\win32\glfw3native.h" />
+    <ClInclude Include="glsurface\GLCone.h" />
+    <ClInclude Include="glsurface\GLSurface.h" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
     <ClInclude Include="math\Vector.hpp" />
