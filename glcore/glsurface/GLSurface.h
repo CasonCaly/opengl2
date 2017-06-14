@@ -24,25 +24,27 @@ class GLCORE GLSurface{
     
 public:
     
-    virtual int getVertexCount() {return 0;}
+	virtual int getVertexCount();
+
+	virtual int getLineIndexCount();
+
+	virtual int getTriangleIndexCount();
     
-    virtual int getLineIndexCount() {return 0;}
+    virtual void generateVertices(vector<float>& vertices);
     
-    virtual int getTriangleIndexCount() {return 0;}
+    virtual void generateLineIndices(vector<unsigned short>& indices);
     
-    virtual void generateVertices(vector<float>& vertices) {};
+    virtual void generateTriangleIndices(vector<unsigned short>& indices);
     
-    virtual void generateLineIndices(vector<unsigned short>& indices) {};
-    
-    virtual void generateTriangleIndices(vector<unsigned short>& indices) {};
-    
-    virtual ~GLSurface() {}
+	virtual ~GLSurface();
   
 protected:
     
+	vec2 computeDomain(float x, float y);
+
     void setInterval(const GLInterval& interval);
     
-    virtual vec3 evaluate(const vec2& domain) const = 0;
+    virtual vec3 evaluate(const vec2& domain);
     
     virtual bool invertNormal(const vec2& domain) const { return false; }
     

@@ -58,6 +58,9 @@
     <ClCompile Include="glsurface\GLCone.cpp">
       <Filter>glsurface</Filter>
     </ClCompile>
+    <ClCompile Include="glsurface\GLSurface.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h">

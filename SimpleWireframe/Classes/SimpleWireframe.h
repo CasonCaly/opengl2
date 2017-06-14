@@ -6,7 +6,7 @@ using namespace std;
 #include "glclass/GLBuffer.h"
 #include "Interfaces.hpp"
 #include "ParametricEquations.hpp"
-
+#include "glsurface/GLCone.h"
 
 struct Vertex {
     vec3 Position;
@@ -45,7 +45,7 @@ private:
 
 private:
     
-    Cone* m_cone;
+    GLCone* m_cone;
     GLUniform* m_projectionUniform;
     GLUniform* m_modelviewUniform;
     GLAttribute* m_positionSlot;

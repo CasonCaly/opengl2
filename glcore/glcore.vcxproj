@@ -18,6 +18,7 @@
     <ClCompile Include="glclass\GLShader.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
     <ClCompile Include="glsurface\GLCone.cpp" />
+    <ClCompile Include="glsurface\GLSurface.cpp" />
     <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
