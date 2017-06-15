@@ -11,14 +11,7 @@
 
 #include <vector>
 using namespace std;
-#include "GLCore.h"
-#include "math/Vector.hpp"
-
-struct GLCORE GLInterval {
-    ivec2 Divisions;
-    vec2 UpperBound;
-    vec2 TextureCount;
-};
+#include "GLInterval.h"
 
 class GLCORE GLSurface{
     

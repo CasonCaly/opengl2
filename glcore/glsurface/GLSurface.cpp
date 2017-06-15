@@ -33,11 +33,10 @@ void GLSurface::generateVertices(vector<float>& vertices)
 	vertices.resize(this->getVertexCount() * floatsPerVertex);
 	float* attribute = &vertices[0];
 
-	for (int j = 0; j < m_divisions.y; j++) 
+	for (int j = 0; j < m_divisions.y; j++)
 	{
 		for (int i = 0; i < m_divisions.x; i++)
 		{
-			// Compute Position
 			vec2 domain = this->computeDomain((float)i, (float)j);
 			vec3 range = this->evaluate(domain);
 			attribute = range.Write(attribute);
@@ -72,9 +71,9 @@ vec2 GLSurface::computeDomain(float x, float y)
 
 void GLSurface::setInterval(const GLInterval& interval)
 {
-    m_divisions = interval.Divisions;
-    m_upperBound = interval.UpperBound;
-    m_textureCount = interval.TextureCount;
+    m_divisions = interval.divisions;
+    m_upperBound = interval.upperBound;
+    m_textureCount = interval.textureCount;
     m_slices = m_divisions - ivec2(1, 1);
 }
 

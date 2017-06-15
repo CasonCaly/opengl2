@@ -20,7 +20,7 @@ SimpleWireframe::SimpleWireframe()
 void SimpleWireframe::init()
 {
     vector<ISurface*> surfaces(1);
-    m_cone = new GLCone(3, 1);
+    m_cone = new GLCone(3, 1, ivec2(4, 4));
     
     vector<float> vertices;
     m_cone->generateVertices(vertices);

@@ -118,5 +118,8 @@
     <ClInclude Include="glsurface\GLSurface.h">
       <Filter>glsurface</Filter>
     </ClInclude>
+    <ClInclude Include="GLInterval.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

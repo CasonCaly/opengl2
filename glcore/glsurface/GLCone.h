@@ -15,7 +15,7 @@ class GLCORE GLCone : public GLSurface
 {
 public:
     
-    GLCone(float height, float radius);
+	GLCone(float height, float radius, ivec2 division);
     
     vec3 evaluate(const vec2& domain);
     

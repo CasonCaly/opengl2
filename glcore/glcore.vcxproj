@@ -35,6 +35,7 @@
     <ClInclude Include="glew\include\wglew.h" />
     <ClInclude Include="glfw3\include\win32\glfw3.h" />
     <ClInclude Include="glfw3\include\win32\glfw3native.h" />
+    <ClInclude Include="GLInterval.h" />
     <ClInclude Include="glsurface\GLCone.h" />
     <ClInclude Include="glsurface\GLSurface.h" />
     <ClInclude Include="math\Matrix.hpp" />
