@@ -20,11 +20,16 @@ SimpleWireframe::SimpleWireframe()
 void SimpleWireframe::init()
 {
     vector<ISurface*> surfaces(1);
-    m_cone = new GLCone(3, 1, ivec2(4, 4));
+    //m_cone = new GLCone(3, 1, ivec2(4, 4));
     
     vector<float> vertices;
-    m_cone->generateVertices(vertices);
+    //m_cone->generateVertices(vertices);
 
+    m_sphere = new GLSphere(2, ivec2(20, 20));
+    m_sphere->generateVertices(vertices);
+    
+    m_glSurface = m_sphere;
+    
     m_vertexBuffer.gen();
     m_vertexBuffer.bind(GL_ARRAY_BUFFER);
     m_vertexBuffer.setData(GL_ARRAY_BUFFER,
@@ -33,9 +38,9 @@ void SimpleWireframe::init()
                  GL_STATIC_DRAW);
     
     // Create a new VBO for the indices if needed.
-    int indexCount = m_cone->getLineIndexCount();
+    int indexCount = m_glSurface->getLineIndexCount();
     vector<GLushort> indices(indexCount);
-    m_cone->generateLineIndices(indices);
+    m_glSurface->generateLineIndices(indices);
     
     m_indexBuffer.gen();
     m_indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
@@ -88,7 +93,7 @@ void SimpleWireframe::render()
     m_vertexBuffer.bind(GL_ARRAY_BUFFER);
     m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
     m_indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-    glDrawElements(GL_LINES, m_cone->getLineIndexCount(), GL_UNSIGNED_SHORT, 0);
+    glDrawElements(GL_LINES, m_glSurface->getLineIndexCount(), GL_UNSIGNED_SHORT, 0);
 }
 
 void SimpleWireframe::onTouchBegan(float x, float y)

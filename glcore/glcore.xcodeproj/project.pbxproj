@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55354AFD1EEEDF82002EF79E /* GLSurface.cpp */; };
+		5589968D1EF556F200D39E9C /* GLInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968C1EF556F200D39E9C /* GLInterval.h */; };
+		558996901EF559CA00D39E9C /* GLSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5589968E1EF559CA00D39E9C /* GLSphere.cpp */; };
+		558996911EF559CA00D39E9C /* GLSphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968F1EF559CA00D39E9C /* GLSphere.h */; };
 		559C249F1EED83D9005B7599 /* GLSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 559C249E1EED83D9005B7599 /* GLSurface.h */; };
 		559C24A21EED840D005B7599 /* GLCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559C24A01EED840D005B7599 /* GLCone.cpp */; };
 		559C24A31EED840D005B7599 /* GLCone.h in Headers */ = {isa = PBXBuildFile; fileRef = 559C24A11EED840D005B7599 /* GLCone.h */; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		55354AFD1EEEDF82002EF79E /* GLSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSurface.cpp; sourceTree = "<group>"; };
+		5589968C1EF556F200D39E9C /* GLInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLInterval.h; sourceTree = SOURCE_ROOT; };
+		5589968E1EF559CA00D39E9C /* GLSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSphere.cpp; sourceTree = "<group>"; };
+		5589968F1EF559CA00D39E9C /* GLSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSphere.h; sourceTree = "<group>"; };
 		559C249E1EED83D9005B7599 /* GLSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSurface.h; sourceTree = "<group>"; };
 		559C24A01EED840D005B7599 /* GLCone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLCone.cpp; sourceTree = "<group>"; };
 		559C24A11EED840D005B7599 /* GLCone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCone.h; sourceTree = "<group>"; };
@@ -96,10 +102,13 @@
 		559C249D1EED83D9005B7599 /* glsurface */ = {
 			isa = PBXGroup;
 			children = (
+				5589968C1EF556F200D39E9C /* GLInterval.h */,
 				55354AFD1EEEDF82002EF79E /* GLSurface.cpp */,
 				559C249E1EED83D9005B7599 /* GLSurface.h */,
 				559C24A01EED840D005B7599 /* GLCone.cpp */,
 				559C24A11EED840D005B7599 /* GLCone.h */,
+				5589968E1EF559CA00D39E9C /* GLSphere.cpp */,
+				5589968F1EF559CA00D39E9C /* GLSphere.h */,
 			);
 			path = glsurface;
 			sourceTree = "<group>";
@@ -215,6 +224,7 @@
 				55EDBE7D1EEBD5D100850B69 /* GLUniform.h in Headers */,
 				55EDBE8F1EEBD61B00850B69 /* GLCore.h in Headers */,
 				55EDBE831EEBD5D100850B69 /* glfw3native.h in Headers */,
+				558996911EF559CA00D39E9C /* GLSphere.h in Headers */,
 				55EDBE761EEBD5D100850B69 /* GLBuffer.h in Headers */,
 				55EDBE891EEBD5D100850B69 /* Matrix.hpp in Headers */,
 				55EDBE741EEBD5D100850B69 /* GLAttribute.h in Headers */,
@@ -222,6 +232,7 @@
 				559C24A31EED840D005B7599 /* GLCone.h in Headers */,
 				55EDBE8D1EEBD5D100850B69 /* Path.h in Headers */,
 				55EDBE8A1EEBD5D100850B69 /* Quaternion.hpp in Headers */,
+				5589968D1EF556F200D39E9C /* GLInterval.h in Headers */,
 				55EDBE791EEBD5D100850B69 /* GLProgram.h in Headers */,
 				559C249F1EED83D9005B7599 /* GLSurface.h in Headers */,
 				55EDBE821EEBD5D100850B69 /* glfw3.h in Headers */,
@@ -294,6 +305,7 @@
 				559C24A21EED840D005B7599 /* GLCone.cpp in Sources */,
 				55EDBE8C1EEBD5D100850B69 /* Path.cpp in Sources */,
 				55EDBE7C1EEBD5D100850B69 /* GLUniform.cpp in Sources */,
+				558996901EF559CA00D39E9C /* GLSphere.cpp in Sources */,
 				55EDBE751EEBD5D100850B69 /* GLBuffer.cpp in Sources */,
 				55EDBE731EEBD5D100850B69 /* GLAttribute.cpp in Sources */,
 			);
