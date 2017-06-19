@@ -35,18 +35,18 @@ public:
     virtual ~ISurface() {}
 };
 
-struct Visual {
-    vec3 Color;
-    ivec2 LowerLeft;
-    ivec2 ViewportSize;
-    Quaternion Orientation;
-};
+//struct Visual {
+//    vec3 Color;
+//    ivec2 LowerLeft;
+//    ivec2 ViewportSize;
+//    Quaternion Orientation;
+//};
 
-struct IRenderingEngine {
-    virtual void Initialize(const vector<ISurface*>& surfaces) = 0;
-    virtual void Render(const vector<Visual>& visuals) const = 0;
-    virtual ~IRenderingEngine() {}
-};
+//struct IRenderingEngine {
+//    virtual void Initialize(const vector<ISurface*>& surfaces) = 0;
+//    virtual void Render(const vector<Visual>& visuals) const = 0;
+//    virtual ~IRenderingEngine() {}
+//};
 
 struct IResourceManager {
     virtual string GetResourcePath() const = 0;

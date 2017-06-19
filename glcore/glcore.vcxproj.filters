@@ -61,6 +61,9 @@
     <ClCompile Include="glsurface\GLSurface.cpp">
       <Filter>glsurface</Filter>
     </ClCompile>
+    <ClCompile Include="glsurface\GLSphere.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h">
@@ -119,6 +122,9 @@
       <Filter>glsurface</Filter>
     </ClInclude>
     <ClInclude Include="GLInterval.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLSphere.h">
       <Filter>glsurface</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,14 +4,21 @@
 using namespace std;
 #include "glclass/GLApp.h"
 #include "glclass/GLBuffer.h"
-#include "Interfaces.hpp"
-#include "ParametricEquations.hpp"
+//#include "Interfaces.hpp"
+//#include "ParametricEquations.hpp"
 #include "glsurface/GLCone.h"
 #include "glsurface/GLSphere.h"
 
 struct Vertex {
     vec3 Position;
     vec4 Color;
+};
+
+struct Drawable
+{
+	GLBuffer vertex;
+	GLBuffer index;
+	int indexCount;
 };
 
 struct Animation {
@@ -21,6 +28,14 @@ struct Animation {
     float Elapsed;
     float Duration;
 };
+
+struct Visual {
+	vec3 Color;
+	ivec2 LowerLeft;
+	ivec2 ViewportSize;
+	Quaternion Orientation;
+};
+
 
 class SimpleWireframe : public GLApp{
     
@@ -46,22 +61,26 @@ private:
 
 private:
     
+	vector<GLSurface*> m_surfaces;
+	vector<Drawable> m_drawables;
+	vector<Visual> m_visuals;
+
     GLCone* m_cone;
     GLSphere* m_sphere;
-    GLSurface* m_glSurface;
     
     GLUniform* m_projectionUniform;
     GLUniform* m_modelviewUniform;
     GLAttribute* m_positionSlot;
     GLAttribute* m_colorSlot;
-    
-    GLBuffer m_vertexBuffer;
-    GLBuffer m_indexBuffer;
+ 
     mat4 m_translation;
     
     float m_previousX;
     float m_previousY;
     float m_lastRotationAngle;
     float m_rotationAngle;
+
+	ivec2 m_buttonSize;
+	ivec2 m_screenSize;
 };
 #endif
