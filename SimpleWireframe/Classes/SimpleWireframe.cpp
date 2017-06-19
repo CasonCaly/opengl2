@@ -8,11 +8,11 @@ SimpleWireframe::SimpleWireframe()
 
 void SimpleWireframe::init()
 {
-	m_screenSize.x = 320;
-	m_screenSize.y = 480;
-
 	m_buttonSize.y = 480 / 10;
 	m_buttonSize.x = 4 * m_buttonSize.y / 3;
+
+	m_screenSize.x = 320;
+	m_screenSize.y = 480 - m_buttonSize.y;
 
 	m_sphere = new GLSphere(2, ivec2(20, 20));
 	m_cone = new GLCone(3, 1, ivec2(4, 4));
@@ -51,12 +51,12 @@ void SimpleWireframe::init()
 
 		if (begin == m_surfaces.begin())
 		{
-			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, m_buttonSize.y), ivec2(m_screenSize.x, m_screenSize.y) };
+			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, 0), m_buttonSize };
 			m_visuals.push_back(visual);
 		}
 		else
 		{
-			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, 0), m_buttonSize };
+			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, m_buttonSize.y), ivec2(m_screenSize.x, m_screenSize.y) };
 			m_visuals.push_back(visual);
 		}
 	}
@@ -73,7 +73,7 @@ void SimpleWireframe::init()
 
 void SimpleWireframe::render()
 {
-    glClearColor(0.5f, 0.5f, 0.5f, 1);
+    glClearColor(0.0f, 0.0f, 0.0f, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     
     int visualIndex = 0;
