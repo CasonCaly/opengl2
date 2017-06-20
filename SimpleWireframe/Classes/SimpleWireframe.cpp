@@ -1,9 +1,9 @@
 #include <cmath>
-//#include "Interfaces.hpp"
 #include "SimpleWireframe.h"
 
 SimpleWireframe::SimpleWireframe()
 {
+	m_currentSurface = 2;
 }
 
 void SimpleWireframe::init()
@@ -14,53 +14,32 @@ void SimpleWireframe::init()
 	m_screenSize.x = 320;
 	m_screenSize.y = 480 - m_buttonSize.y;
 
-	m_sphere = new GLSphere(2, ivec2(20, 20));
-	m_cone = new GLCone(3, 1, ivec2(4, 4));
-
-	m_surfaces.push_back(m_cone);
-	m_surfaces.push_back(m_sphere);
+	m_surfaces.push_back(new GLCone(3, 1, ivec2(20, 20)));
+	m_surfaces.push_back(new GLSphere(2, ivec2(20, 20)));
+	m_surfaces.push_back(new GLMobiusStrip(1, ivec2(40, 40)));
+	m_surfaces.push_back(new GLTorus(1.4f, 0.3f, ivec2(20, 20)));
+	m_surfaces.push_back(new GLTrefoilKnot(1.8f, ivec2(60, 15)));
+	m_surfaces.push_back(new GLKleinBottle(0.2f, ivec2(20, 20)));
+	
+	size_t buttonCount = m_surfaces.size() - 1;
+	size_t buttonIndex = 0;
+	for (int i = 0; i < m_surfaces.size(); i++){
+		GLSurface* surface = m_surfaces[i];
+		surface->generateVertices();
+		surface->generateLineIndices();
     
-	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++)
-	{
-		GLSurface* surface = *begin;
-		vector<float> vertices;
-		surface->generateVertices(vertices);
-
-		GLBuffer vertexBuffer;
-		vertexBuffer.gen();
-		vertexBuffer.bind(GL_ARRAY_BUFFER);
-		vertexBuffer.setData(GL_ARRAY_BUFFER,
-					 vertices.size() * sizeof(vertices[0]),
-					 &vertices[0],
-					 GL_STATIC_DRAW);
-    
-		// Create a new VBO for the indices if needed.
-		int indexCount = surface->getLineIndexCount();
-		vector<GLushort> indices(indexCount);
-		surface->generateLineIndices(indices);
-    
-		GLBuffer indexBuffer;
-		indexBuffer.gen();
-		indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		indexBuffer.setData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLushort),
-							&indices[0],
-							GL_STATIC_DRAW);
-
-		Drawable drawble = { vertexBuffer, indexBuffer, indexCount };
-		m_drawables.push_back(drawble);
-
-		if (begin == m_surfaces.begin())
-		{
-			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, 0), m_buttonSize };
-			m_visuals.push_back(visual);
+		surface->setColor(vec3(1.0f, 1.0f, 1.0f));
+		if (i == m_currentSurface){
+			surface->setLowerLeft(ivec2(0, m_buttonSize.y));
+			surface->setViewportSize(m_screenSize);
 		}
-		else
-		{
-			Visual visual = { vec3(0.5f, 0.5f, 0.5f), ivec2(0, m_buttonSize.y), ivec2(m_screenSize.x, m_screenSize.y) };
-			m_visuals.push_back(visual);
+		else{
+			surface->setLowerLeft(ivec2(buttonIndex * m_buttonSize.x, 0));
+			surface->setViewportSize(m_buttonSize);
+			buttonIndex++;
 		}
 	}
-    
+
     m_positionSlot = m_glProgram.getAttribute("Position");
     m_colorSlot = m_glProgram.getAttribute("SourceColor");
     
@@ -76,12 +55,10 @@ void SimpleWireframe::render()
     glClearColor(0.0f, 0.0f, 0.0f, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    int visualIndex = 0;
-	auto  visual = m_visuals.begin();
-	for (; visual != m_visuals.end(); visual++, visualIndex++)
-	{
-		ivec2 size = visual->ViewportSize;
-		ivec2 lowerLeft = visual->LowerLeft;
+	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++){
+		GLSurface* surface = *begin;
+		ivec2 size = surface->getViewportSize();
+		ivec2 lowerLeft = surface->getLowerLeft();
 		glViewport(lowerLeft.x, lowerLeft.y, size.x, size.y);
 		
 		mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(0.0f, 1.0f, 0.0f));
@@ -90,21 +67,24 @@ void SimpleWireframe::render()
 		m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
 
 		// Set the projection transform.
-		float h = 4.0f * 480 / 320;
+		float h = 4.0f * size.y / size.x;
 		mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
 		m_projectionUniform->matrix4fv(1, 0, projectionMatrix.Pointer());
 
 		// Set the color.
-		vec3 color = visual->Color;
+		vec3 color = surface->getColor();
 		m_colorSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
 
 		// Draw the wireframe.
 		int stride = sizeof(vec3);
-		Drawable& drawable = m_drawables[visualIndex];
-		drawable.vertex.bind(GL_ARRAY_BUFFER);
+		GLBuffer& vertexBuffer = surface->getVertexBuffer();
+		GLBuffer& indexBuffer = surface->getIndexBuffer();
+		int indexCount = surface->getLineIndexCount();
+
+		vertexBuffer.bind(GL_ARRAY_BUFFER);
 		m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-		drawable.index.bind(GL_ELEMENT_ARRAY_BUFFER);
-		glDrawElements(GL_LINES, drawable.indexCount, GL_UNSIGNED_SHORT, 0);
+		indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+		glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 	}
 }
 

@@ -20,7 +20,7 @@ vec3 GLCone::evaluate(const vec2& domain)
 	float v = domain.y;
 	//根据相似三角形原理，可以得出半径可以进行比例均分
     float x = m_radius * (1 - v) * cos(u);
-    float y = m_height * (v);
+    float y = m_height * (v - 0.5f);
     float z = m_radius * (1 - v) * -sin(u); //理论上应该是正的
     return vec3(x, y, z);
 }

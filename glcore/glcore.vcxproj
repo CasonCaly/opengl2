@@ -18,8 +18,12 @@
     <ClCompile Include="glclass\GLShader.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
     <ClCompile Include="glsurface\GLCone.cpp" />
+    <ClCompile Include="glsurface\GLKleinBottle.cpp" />
+    <ClCompile Include="glsurface\GLMobiusStrip.cpp" />
     <ClCompile Include="glsurface\GLSphere.cpp" />
     <ClCompile Include="glsurface\GLSurface.cpp" />
+    <ClCompile Include="glsurface\GLTorus.cpp" />
+    <ClCompile Include="glsurface\GLTrefoilKnot.cpp" />
     <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +42,12 @@
     <ClInclude Include="glfw3\include\win32\glfw3native.h" />
     <ClInclude Include="GLInterval.h" />
     <ClInclude Include="glsurface\GLCone.h" />
+    <ClInclude Include="glsurface\GLKleinBottle.h" />
+    <ClInclude Include="glsurface\GLMobiusStrip.h" />
     <ClInclude Include="glsurface\GLSphere.h" />
     <ClInclude Include="glsurface\GLSurface.h" />
+    <ClInclude Include="glsurface\GLTorus.h" />
+    <ClInclude Include="glsurface\GLTrefoilKnot.h" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
     <ClInclude Include="math\Vector.hpp" />

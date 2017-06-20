@@ -12,6 +12,7 @@
 #include <vector>
 using namespace std;
 #include "GLInterval.h"
+#include "glclass/GLBuffer.h"
 
 class GLCORE GLSurface{
     
@@ -23,14 +24,32 @@ public:
 
 	virtual int getTriangleIndexCount();
     
-    virtual void generateVertices(vector<float>& vertices);
+    virtual void generateVertices();
     
-    virtual void generateLineIndices(vector<unsigned short>& indices);
+    virtual void generateLineIndices();
     
     virtual void generateTriangleIndices(vector<unsigned short>& indices);
     
 	virtual ~GLSurface();
   
+public:
+
+	GLBuffer& getVertexBuffer();
+
+	GLBuffer& getIndexBuffer();
+
+	ivec2 getLowerLeft();
+
+	ivec2 getViewportSize();
+
+	void setLowerLeft(const ivec2& lowerLeft);
+
+	void setViewportSize(const ivec2& viewportSize);
+
+	void setColor(const vec3& color);
+
+	vec3 getColor();
+
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -39,13 +58,21 @@ protected:
     
     virtual vec3 evaluate(const vec2& domain);
     
-    virtual bool invertNormal(const vec2& domain) const { return false; }
+	virtual bool invertNormal(const vec2& domain);
     
 protected:
     ivec2 m_slices;
     ivec2 m_divisions;
     vec2 m_upperBound;
     vec2 m_textureCount;
+
+	ivec2 m_lowerLeft;
+	ivec2 m_viewportSize;
+	vec3 m_color;
+
+	GLBuffer m_vertexBuffer;
+	GLBuffer m_indexBuffer;
+	int m_indexCount;
 };
 
 #endif /* GLSurface_hpp */

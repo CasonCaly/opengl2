@@ -4,21 +4,16 @@
 using namespace std;
 #include "glclass/GLApp.h"
 #include "glclass/GLBuffer.h"
-//#include "Interfaces.hpp"
-//#include "ParametricEquations.hpp"
 #include "glsurface/GLCone.h"
 #include "glsurface/GLSphere.h"
+#include "glsurface/GLMobiusStrip.h"
+#include "glsurface/GLTorus.h"
+#include "glsurface/GLKleinBottle.h"
+#include "glsurface/GLTrefoilKnot.h"
 
 struct Vertex {
     vec3 Position;
     vec4 Color;
-};
-
-struct Drawable
-{
-	GLBuffer vertex;
-	GLBuffer index;
-	int indexCount;
 };
 
 struct Animation {
@@ -62,11 +57,6 @@ private:
 private:
     
 	vector<GLSurface*> m_surfaces;
-	vector<Drawable> m_drawables;
-	vector<Visual> m_visuals;
-
-    GLCone* m_cone;
-    GLSphere* m_sphere;
     
     GLUniform* m_projectionUniform;
     GLUniform* m_modelviewUniform;
@@ -82,5 +72,6 @@ private:
 
 	ivec2 m_buttonSize;
 	ivec2 m_screenSize;
+	int m_currentSurface;
 };
 #endif

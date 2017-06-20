@@ -64,6 +64,18 @@
     <ClCompile Include="glsurface\GLSphere.cpp">
       <Filter>glsurface</Filter>
     </ClCompile>
+    <ClCompile Include="glsurface\GLMobiusStrip.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
+    <ClCompile Include="glsurface\GLKleinBottle.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
+    <ClCompile Include="glsurface\GLTorus.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
+    <ClCompile Include="glsurface\GLTrefoilKnot.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h">
@@ -125,6 +137,18 @@
       <Filter>glsurface</Filter>
     </ClInclude>
     <ClInclude Include="glsurface\GLSphere.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLMobiusStrip.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLKleinBottle.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLTorus.h">
+      <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLTrefoilKnot.h">
       <Filter>glsurface</Filter>
     </ClInclude>
   </ItemGroup>
