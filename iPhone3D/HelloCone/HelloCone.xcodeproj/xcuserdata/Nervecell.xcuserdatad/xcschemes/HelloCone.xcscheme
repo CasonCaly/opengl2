@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-               BuildableName = "TouchCone.app"
-               BlueprintName = "TouchCone"
-               ReferencedContainer = "container:TouchCone.xcodeproj">
+               BuildableName = "HelloCone.app"
+               BlueprintName = "HelloCone"
+               ReferencedContainer = "container:HelloCone.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "TouchCone.app"
-            BlueprintName = "TouchCone"
-            ReferencedContainer = "container:TouchCone.xcodeproj">
+            BuildableName = "HelloCone.app"
+            BlueprintName = "HelloCone"
+            ReferencedContainer = "container:HelloCone.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "TouchCone.app"
-            BlueprintName = "TouchCone"
-            ReferencedContainer = "container:TouchCone.xcodeproj">
+            BuildableName = "HelloCone.app"
+            BlueprintName = "HelloCone"
+            ReferencedContainer = "container:HelloCone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "TouchCone.app"
-            BlueprintName = "TouchCone"
-            ReferencedContainer = "container:TouchCone.xcodeproj">
+            BuildableName = "HelloCone.app"
+            BlueprintName = "HelloCone"
+            ReferencedContainer = "container:HelloCone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -61,7 +61,7 @@ ApplicationEngine::ApplicationEngine(IRenderingEngine* renderingEngine) :
     m_buttonSurfaces[2] = 4;
     m_buttonSurfaces[3] = 3;
     m_buttonSurfaces[4] = 2;
-    m_currentSurface = 0;
+    m_currentSurface = 5;
 }
 
 ApplicationEngine::~ApplicationEngine()
@@ -77,32 +77,32 @@ void ApplicationEngine::Initialize(int width, int height)
     m_screenSize = ivec2(width, height - m_buttonSize.y);
     m_centerPoint = m_screenSize / 2;
 
-    vector<ISurface*> surfaces(1);
+    vector<ISurface*> surfaces(SurfaceCount);
     surfaces[0] = new Cone(3, 1);
-//    surfaces[1] = new Sphere(1.4f);
-//    surfaces[2] = new Torus(1.4f, 0.3f);
-//    surfaces[3] = new TrefoilKnot(1.8f);
-//    surfaces[4] = new KleinBottle(0.2f);
-//    surfaces[5] = new MobiusStrip(1);
+    surfaces[1] = new Sphere(1.4f);
+    surfaces[2] = new Torus(1.4f, 0.3f);
+    surfaces[3] = new TrefoilKnot(1.8f);
+    surfaces[4] = new KleinBottle(0.2f);
+    surfaces[5] = new MobiusStrip(1);
     m_renderingEngine->Initialize(surfaces);
-   // for (int i = 0; i < SurfaceCount; i++)
-   //     delete surfaces[i];
+    for (int i = 0; i < SurfaceCount; i++)
+        delete surfaces[i];
 }
 
 void ApplicationEngine::PopulateVisuals(Visual* visuals) const
 {
-//    for (int buttonIndex = 0; buttonIndex < ButtonCount; buttonIndex++) {
-//        
-//        int visualIndex = m_buttonSurfaces[buttonIndex];
-//        visuals[visualIndex].Color = vec3(0.25f, 0.25f, 0.25f);
-//        if (m_pressedButton == buttonIndex)
-//            visuals[visualIndex].Color = vec3(0.5f, 0.5f, 0.5f);
-//        
-//        visuals[visualIndex].ViewportSize = m_buttonSize;
-//        visuals[visualIndex].LowerLeft.x = buttonIndex * m_buttonSize.x;
-//        visuals[visualIndex].LowerLeft.y = 0;
-//        visuals[visualIndex].Orientation = Quaternion();
-//    }
+    for (int buttonIndex = 0; buttonIndex < ButtonCount; buttonIndex++) {
+        
+        int visualIndex = m_buttonSurfaces[buttonIndex];
+        visuals[visualIndex].Color = vec3(0.25f, 0.25f, 0.25f);
+        if (m_pressedButton == buttonIndex)
+            visuals[visualIndex].Color = vec3(0.5f, 0.5f, 0.5f);
+        
+        visuals[visualIndex].ViewportSize = m_buttonSize;
+        visuals[visualIndex].LowerLeft.x = buttonIndex * m_buttonSize.x;
+        visuals[visualIndex].LowerLeft.y = 0;
+        visuals[visualIndex].Orientation = Quaternion();
+    }
     
     visuals[m_currentSurface].Color = m_spinning ? vec3(1, 1, 0.75f) : vec3(1, 1, 0.5f);
     visuals[m_currentSurface].LowerLeft = ivec2(0, m_buttonSize.y);
@@ -112,7 +112,7 @@ void ApplicationEngine::PopulateVisuals(Visual* visuals) const
 
 void ApplicationEngine::Render() const
 {
-    vector<Visual> visuals(1);
+    vector<Visual> visuals(SurfaceCount);
     
     if (!m_animation.Active) {
         PopulateVisuals(&visuals[0]);

@@ -107,8 +107,7 @@ void RenderingEngine::Render(const vector<Visual>& visuals) const
     glClear(GL_COLOR_BUFFER_BIT);
         
     vector<Visual>::const_iterator visual = visuals.begin();
-    int visualIndex = 0;
-    //for (int visualIndex = 0; visual != visuals.end(); ++visual, ++visualIndex) {
+    for (int visualIndex = 0; visual != visuals.end(); ++visual, ++visualIndex) {
 
         // Set the viewport transform.
         ivec2 size = visual->ViewportSize;
@@ -136,7 +135,7 @@ void RenderingEngine::Render(const vector<Visual>& visuals) const
         glVertexAttribPointer(m_positionSlot, 3, GL_FLOAT, GL_FALSE, stride, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
         glDrawElements(GL_LINES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
-    //}
+    }
 }
 
 GLuint RenderingEngine::BuildShader(const char* source, GLenum shaderType) const

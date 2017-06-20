@@ -1,5 +1,3 @@
-#include <iostream>
-using namespace std;
 #include "ParametricSurface.hpp"
 
 class Cone : public ParametricSurface {
@@ -15,8 +13,6 @@ public:
         float x = m_radius * (1 - v) * cos(u);
         float y = m_height * (v - 0.5f);
         float z = m_radius * (1 - v) * -sin(u);
-        
-        cout<<x<<" "<<y<<" "<<z<<endl;
         return vec3(x, y, z);
     }
 private:

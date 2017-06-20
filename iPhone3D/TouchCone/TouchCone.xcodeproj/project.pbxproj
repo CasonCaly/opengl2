@@ -3,292 +3,334 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* TouchConeAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TouchConeAppDelegate.mm */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		4A3205B01002E4AF00DC8880 /* VboRenderingEngine1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A3205AF1002E4AF00DC8880 /* VboRenderingEngine1.cpp */; };
-		4A3205B21002E4EB00DC8880 /* VboRenderingEngine2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A3205B11002E4EB00DC8880 /* VboRenderingEngine2.cpp */; };
-		4ADC4D101001602E0011591F /* RenderingEngine2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ADC4D0F1001602E0011591F /* RenderingEngine2.cpp */; };
-		4D27E4840F9AD71900447247 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D27E4830F9AD71900447247 /* OpenGLES.framework */; };
-		4D27E4B50F9AD7D600447247 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D27E4B40F9AD7D600447247 /* QuartzCore.framework */; };
-		4D3135ED0F9A6649001FFC34 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D3135EC0F9A6649001FFC34 /* GLView.mm */; };
-		4D3305431000421F00B0F202 /* RenderingEngine1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3305421000421F00B0F202 /* RenderingEngine1.cpp */; };
-		4D8FB2C30F9EB4740055EDDB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FB2C20F9EB4740055EDDB /* Icon.png */; };
-		4D8FB3730F9EC1010055EDDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FB3720F9EC1010055EDDB /* main.m */; };
-		4DE97F9210793D020018CD66 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE97F9110793D020018CD66 /* Default.png */; };
+		5599EFF41E6B047200B26057 /* TouchCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599EFF21E6B047200B26057 /* TouchCone.cpp */; };
+		5599EFF61E6B049E00B26057 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599EFF51E6B049E00B26057 /* main.cpp */; };
+		5599EFF91E6B052C00B26057 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFF81E6B052C00B26057 /* OpenGL.framework */; };
+		5599EFFB1E6B053700B26057 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFA1E6B053700B26057 /* IOKit.framework */; };
+		5599EFFD1E6B054700B26057 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFC1E6B054700B26057 /* Foundation.framework */; };
+		5599EFFF1E6B055C00B26057 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFE1E6B055C00B26057 /* AppKit.framework */; };
+		5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599F0001E6B056D00B26057 /* QuartzCore.framework */; };
+		5599F0051E6B05E300B26057 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5599F0041E6B05E300B26057 /* Shaders */; };
+		55EDBEA71EEBF54100850B69 /* glcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EDBEA61EEBF54100850B69 /* glcore.dylib */; };
+		55EDBEAB1EEBF5B700850B69 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 55EDBEAA1EEBF5B700850B69 /* Icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* TouchConeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchConeAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* TouchConeAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchConeAppDelegate.mm; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* TouchCone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchCone.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		32CA4F630368D1EE00C91783 /* TouchCone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchCone_Prefix.pch; sourceTree = "<group>"; };
-		4A3205AF1002E4AF00DC8880 /* VboRenderingEngine1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VboRenderingEngine1.cpp; sourceTree = "<group>"; };
-		4A3205B11002E4EB00DC8880 /* VboRenderingEngine2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VboRenderingEngine2.cpp; sourceTree = "<group>"; };
-		4ADC4D0F1001602E0011591F /* RenderingEngine2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingEngine2.cpp; sourceTree = "<group>"; };
-		4D27E3B10F9ACD8200447247 /* IRenderingEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IRenderingEngine.hpp; sourceTree = "<group>"; };
-		4D27E4830F9AD71900447247 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		4D27E4B40F9AD7D600447247 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4D3135EB0F9A6649001FFC34 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
-		4D3135EC0F9A6649001FFC34 /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLView.mm; sourceTree = "<group>"; };
-		4D3305421000421F00B0F202 /* RenderingEngine1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingEngine1.cpp; sourceTree = "<group>"; };
-		4D508DCD1026041F0065571B /* Simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Simple.frag; path = Shaders/Simple.frag; sourceTree = "<group>"; };
-		4D508DCE1026041F0065571B /* Simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Simple.vert; path = Shaders/Simple.vert; sourceTree = "<group>"; };
-		4D8AB5CD0FBF6EBD00A21C2E /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
-		4D8AB64D0FBFB4F600A21C2E /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
-		4D8AB64E0FBFB50200A21C2E /* Quaternion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Quaternion.hpp; sourceTree = "<group>"; };
-		4D8FB2C20F9EB4740055EDDB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		4D8FB3720F9EC1010055EDDB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4DE97F9110793D020018CD66 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5599EFDD1E6B03C200B26057 /* TouchCone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchCone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5599EFF21E6B047200B26057 /* TouchCone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchCone.cpp; sourceTree = "<group>"; };
+		5599EFF31E6B047200B26057 /* TouchCone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchCone.h; sourceTree = "<group>"; };
+		5599EFF51E6B049E00B26057 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5599EFF81E6B052C00B26057 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5599EFFA1E6B053700B26057 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		5599EFFC1E6B054700B26057 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5599EFFE1E6B055C00B26057 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5599F0001E6B056D00B26057 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5599F0041E6B05E300B26057 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
+		55EDBEA61EEBF54100850B69 /* glcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = glcore.dylib; path = ../glcore/Debug/glcore.dylib; sourceTree = "<group>"; };
+		55EDBEAA1EEBF5B700850B69 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+		5599EFDA1E6B03C200B26057 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				4D27E4840F9AD71900447247 /* OpenGLES.framework in Frameworks */,
-				4D27E4B50F9AD7D600447247 /* QuartzCore.framework in Frameworks */,
+				55EDBEA71EEBF54100850B69 /* glcore.dylib in Frameworks */,
+				5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */,
+				5599EFFF1E6B055C00B26057 /* AppKit.framework in Frameworks */,
+				5599EFFD1E6B054700B26057 /* Foundation.framework in Frameworks */,
+				5599EFFB1E6B053700B26057 /* IOKit.framework in Frameworks */,
+				5599EFF91E6B052C00B26057 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		5599EFD41E6B03C200B26057 = {
 			isa = PBXGroup;
 			children = (
-				4A3205B11002E4EB00DC8880 /* VboRenderingEngine2.cpp */,
-				4A3205AF1002E4AF00DC8880 /* VboRenderingEngine1.cpp */,
-				4ADC4D0F1001602E0011591F /* RenderingEngine2.cpp */,
-				4D3305421000421F00B0F202 /* RenderingEngine1.cpp */,
-				4D8AB64E0FBFB50200A21C2E /* Quaternion.hpp */,
-				4D8AB64D0FBFB4F600A21C2E /* Matrix.hpp */,
-				4D8AB5CD0FBF6EBD00A21C2E /* Vector.hpp */,
-				4D27E3B10F9ACD8200447247 /* IRenderingEngine.hpp */,
-				1D3623240D0F684500981E51 /* TouchConeAppDelegate.h */,
-				1D3623250D0F684500981E51 /* TouchConeAppDelegate.mm */,
-				4D3135EB0F9A6649001FFC34 /* GLView.h */,
-				4D3135EC0F9A6649001FFC34 /* GLView.mm */,
+				55EDBEAA1EEBF5B700850B69 /* Icon.icns */,
+				5599F0041E6B05E300B26057 /* Shaders */,
+				5599EFF11E6B047200B26057 /* Classes */,
+				5599EFF51E6B049E00B26057 /* main.cpp */,
+				5599EFDE1E6B03C200B26057 /* Products */,
+				5599EFF71E6B052C00B26057 /* Frameworks */,
 			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
+		5599EFDE1E6B03C200B26057 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* TouchCone.app */,
+				5599EFDD1E6B03C200B26057 /* TouchCone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		5599EFF11E6B047200B26057 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4A3205CA1002E63100DC8880 /* Shaders */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
+				5599EFF21E6B047200B26057 /* TouchCone.cpp */,
+				5599EFF31E6B047200B26057 /* TouchCone.h */,
 			);
-			name = CustomTemplate;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+		5599EFF71E6B052C00B26057 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D8FB3720F9EC1010055EDDB /* main.m */,
-				32CA4F630368D1EE00C91783 /* TouchCone_Prefix.pch */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4D8FB2C20F9EB4740055EDDB /* Icon.png */,
-				8D1107310486CEB800E47090 /* Info.plist */,
-				4DE97F9110793D020018CD66 /* Default.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4D27E4B40F9AD7D600447247 /* QuartzCore.framework */,
-				4D27E4830F9AD71900447247 /* OpenGLES.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				55EDBEA61EEBF54100850B69 /* glcore.dylib */,
+				5599F0001E6B056D00B26057 /* QuartzCore.framework */,
+				5599EFFE1E6B055C00B26057 /* AppKit.framework */,
+				5599EFFC1E6B054700B26057 /* Foundation.framework */,
+				5599EFFA1E6B053700B26057 /* IOKit.framework */,
+				5599EFF81E6B052C00B26057 /* OpenGL.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4A3205CA1002E63100DC8880 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				4D508DCD1026041F0065571B /* Simple.frag */,
-				4D508DCE1026041F0065571B /* Simple.vert */,
-			);
-			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* TouchCone */ = {
+		5599EFDC1E6B03C200B26057 /* TouchCone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "TouchCone" */;
+			buildConfigurationList = 5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "TouchCone" */;
 			buildPhases = (
-				1D60588D0D05DD3D006BFB54 /* Resources */,
-				1D60588E0D05DD3D006BFB54 /* Sources */,
-				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				5599EFD91E6B03C200B26057 /* Sources */,
+				5599EFDA1E6B03C200B26057 /* Frameworks */,
+				5599EFDB1E6B03C200B26057 /* Resources */,
+				55EDBEA51EEBF4D300850B69 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TouchCone;
-			productName = TouchCone;
-			productReference = 1D6058910D05DD3D006BFB54 /* TouchCone.app */;
+			productName = HelloArrow;
+			productReference = 5599EFDD1E6B03C200B26057 /* TouchCone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		29B97313FDCFA39411CA2CEA /* Project object */ = {
+		5599EFD51E6B03C200B26057 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TouchCone" */;
-			compatibilityVersion = "Xcode 3.1";
-			hasScannedForEncodings = 1;
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "zhuang yusong";
+				TargetAttributes = {
+					5599EFDC1E6B03C200B26057 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "TouchCone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5599EFD41E6B03C200B26057;
+			productRefGroup = 5599EFDE1E6B03C200B26057 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* TouchCone */,
+				5599EFDC1E6B03C200B26057 /* TouchCone */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+		5599EFDB1E6B03C200B26057 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8FB2C30F9EB4740055EDDB /* Icon.png in Resources */,
-				4DE97F9210793D020018CD66 /* Default.png in Resources */,
+				5599F0051E6B05E300B26057 /* Shaders in Resources */,
+				55EDBEAB1EEBF5B700850B69 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55EDBEA51EEBF4D300850B69 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp ${PROJECT_DIR}/../glcore/Debug/glcore.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/MacOS";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+		5599EFD91E6B03C200B26057 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D3623260D0F684500981E51 /* TouchConeAppDelegate.mm in Sources */,
-				4D3135ED0F9A6649001FFC34 /* GLView.mm in Sources */,
-				4D8FB3730F9EC1010055EDDB /* main.m in Sources */,
-				4D3305431000421F00B0F202 /* RenderingEngine1.cpp in Sources */,
-				4ADC4D101001602E0011591F /* RenderingEngine2.cpp in Sources */,
-				4A3205B01002E4AF00DC8880 /* VboRenderingEngine1.cpp in Sources */,
-				4A3205B21002E4EB00DC8880 /* VboRenderingEngine2.cpp in Sources */,
+				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
+				5599EFF41E6B047200B26057 /* TouchCone.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1D6058940D05DD3E006BFB54 /* Debug */ = {
+		5599EFEC1E6B03C200B26057 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TouchCone_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = TouchCone;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		1D6058950D05DD3E006BFB54 /* Release */ = {
+		5599EFED1E6B03C200B26057 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TouchCone_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = TouchCone;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		C01FCF4F08A954540054247B /* Debug */ = {
+		5599EFEF1E6B03C200B26057 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../glcore",
+					"$(PROJECT_DIR)/../glcore/glfw3/include/mac",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../glcore/Debug";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boyi.aft2.yd.appstore.HelloArrow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		C01FCF5008A954540054247B /* Release */ = {
+		5599EFF01E6B03C200B26057 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../glcore",
+					"$(PROJECT_DIR)/../glcore/glfw3/include/mac",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../glcore/Release";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boyi.aft2.yd.appstore.HelloArrow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "TouchCone" */ = {
+		5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "TouchCone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D6058940D05DD3E006BFB54 /* Debug */,
-				1D6058950D05DD3E006BFB54 /* Release */,
+				5599EFEC1E6B03C200B26057 /* Debug */,
+				5599EFED1E6B03C200B26057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TouchCone" */ = {
+		5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "TouchCone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C01FCF4F08A954540054247B /* Debug */,
-				C01FCF5008A954540054247B /* Release */,
+				5599EFEF1E6B03C200B26057 /* Debug */,
+				5599EFF01E6B03C200B26057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+	rootObject = 5599EFD51E6B03C200B26057 /* Project object */;
 }
