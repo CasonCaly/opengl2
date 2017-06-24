@@ -28,7 +28,7 @@ public:
     
     virtual void generateLineIndices();
     
-    virtual void generateTriangleIndices(vector<unsigned short>& indices);
+    virtual void generateTriangleIndices();
     
 	virtual ~GLSurface();
   
@@ -37,6 +37,8 @@ public:
 	GLBuffer& getVertexBuffer();
 
 	GLBuffer& getIndexBuffer();
+
+	GLBuffer& getTriangleIndexBuffer();
 
 	ivec2 getLowerLeft();
 
@@ -72,6 +74,7 @@ protected:
 
 	GLBuffer m_vertexBuffer;
 	GLBuffer m_indexBuffer;
+	GLBuffer m_triangleIndexBuffer;
 	int m_indexCount;
 };
 

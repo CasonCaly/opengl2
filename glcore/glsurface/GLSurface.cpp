@@ -24,7 +24,7 @@ int GLSurface::getLineIndexCount()
 
 int GLSurface::getTriangleIndexCount() 
 {
-	return 6 * m_slices.x * m_slices.y;
+	return 6 * (m_slices.x * m_slices.y);
 }
 
 void GLSurface::generateVertices() 
@@ -69,16 +69,42 @@ void GLSurface::generateLineIndices()
 		vertex += m_divisions.x;
 	}
 
-	m_indexBuffer;
 	m_indexBuffer.gen();
 	m_indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	m_indexBuffer.setData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLushort),
+	m_indexBuffer.setData(
+		GL_ELEMENT_ARRAY_BUFFER, 
+		indexCount * sizeof(GLushort),
 		&indices[0],
 		GL_STATIC_DRAW);
 }
 
-void GLSurface::generateTriangleIndices(vector<unsigned short>& indices) 
+void GLSurface::generateTriangleIndices() 
 {
+	int indexCount = this->getTriangleIndexCount();
+	vector<GLushort> indices;
+	indices.resize(indexCount);
+	vector<GLushort>::iterator index = indices.begin();
+	
+	for (int j = 0, vertex = 0; j < m_slices.y; j++){
+		for (int i = 0; i < m_slices.x; i++){
+			int next = (i + 1) % m_divisions.x;
+			*index++ = vertex + i;
+			*index++ = vertex + next;
+			*index++ = vertex + i + m_divisions.x;
+
+			*index++ = vertex + next;
+			*index++ = vertex + next + m_divisions.x;
+			*index++ = vertex + i + m_divisions.x;
+		}
+		vertex += m_divisions.x;
+	}
+	m_triangleIndexBuffer.gen();
+	m_triangleIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	m_triangleIndexBuffer.setData(
+		GL_ELEMENT_ARRAY_BUFFER, 
+		indexCount * sizeof(GLushort),
+		&indices[0],
+		GL_STATIC_DRAW);
 }
 
 vec2 GLSurface::computeDomain(float x, float y)
@@ -112,6 +138,11 @@ GLBuffer& GLSurface::getVertexBuffer()
 GLBuffer& GLSurface::getIndexBuffer()
 {
 	return m_indexBuffer;
+}
+
+GLBuffer& GLSurface::getTriangleIndexBuffer()
+{
+	return m_triangleIndexBuffer;
 }
 
 ivec2 GLSurface::getLowerLeft()

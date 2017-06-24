@@ -3,7 +3,7 @@
 
 SimpleWireframe::SimpleWireframe()
 {
-	m_currentSurface = 2;
+	m_currentSurface = 4;
 }
 
 void SimpleWireframe::init()
@@ -23,11 +23,12 @@ void SimpleWireframe::init()
 	
 	size_t buttonCount = m_surfaces.size() - 1;
 	size_t buttonIndex = 0;
-	for (int i = 0; i < m_surfaces.size(); i++){
+	for (size_t i = 0; i < m_surfaces.size(); i++){
 		GLSurface* surface = m_surfaces[i];
 		surface->generateVertices();
 		surface->generateLineIndices();
-    
+		surface->generateTriangleIndices();
+
 		surface->setColor(vec3(1.0f, 1.0f, 1.0f));
 		if (i == m_currentSurface){
 			surface->setLowerLeft(ivec2(0, m_buttonSize.y));
@@ -53,7 +54,7 @@ void SimpleWireframe::init()
 void SimpleWireframe::render()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++){
 		GLSurface* surface = *begin;
@@ -78,13 +79,14 @@ void SimpleWireframe::render()
 		// Draw the wireframe.
 		int stride = sizeof(vec3);
 		GLBuffer& vertexBuffer = surface->getVertexBuffer();
-		GLBuffer& indexBuffer = surface->getIndexBuffer();
-		int indexCount = surface->getLineIndexCount();
-
+		GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
+		//GLBuffer& indexBuffer = surface->getIndexBuffer();
+		//int indexCount = surface->getLineIndexCount();
+		int triangelIndexCount = surface->getTriangleIndexCount();
 		vertexBuffer.bind(GL_ARRAY_BUFFER);
 		m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-		indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
+		trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+		glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
 	}
 }
 
