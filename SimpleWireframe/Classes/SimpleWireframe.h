@@ -10,6 +10,7 @@ using namespace std;
 #include "glsurface/GLTorus.h"
 #include "glsurface/GLKleinBottle.h"
 #include "glsurface/GLTrefoilKnot.h"
+#include "math/Quaternion.hpp"
 
 struct Vertex {
     vec3 Position;

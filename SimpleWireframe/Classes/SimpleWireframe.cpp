@@ -4,6 +4,8 @@
 SimpleWireframe::SimpleWireframe()
 {
 	m_currentSurface = 4;
+    m_rotationAngle = 0.0f;
+    m_lastRotationAngle = 0.0f;
 }
 
 void SimpleWireframe::init()
@@ -21,7 +23,6 @@ void SimpleWireframe::init()
 	m_surfaces.push_back(new GLTrefoilKnot(1.8f, ivec2(60, 15)));
 	m_surfaces.push_back(new GLKleinBottle(0.2f, ivec2(20, 20)));
 	
-	size_t buttonCount = m_surfaces.size() - 1;
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
 		GLSurface* surface = m_surfaces[i];
