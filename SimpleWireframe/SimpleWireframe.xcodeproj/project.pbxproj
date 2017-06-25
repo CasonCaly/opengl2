@@ -15,7 +15,6 @@
 		5599EFFF1E6B055C00B26057 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFE1E6B055C00B26057 /* AppKit.framework */; };
 		5599F0011E6B056D00B26057 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599F0001E6B056D00B26057 /* QuartzCore.framework */; };
 		5599F0051E6B05E300B26057 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 5599F0041E6B05E300B26057 /* Shaders */; };
-		55C397971EEC1E5B003F8C3B /* ParametricSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C397951EEC1E5B003F8C3B /* ParametricSurface.cpp */; };
 		55EDBEA01EEBDC6900850B69 /* glcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EDBE9F1EEBDC6900850B69 /* glcore.dylib */; };
 		55EDBEAD1EEBF5C000850B69 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 55EDBEAC1EEBF5C000850B69 /* Icon.icns */; };
 /* End PBXBuildFile section */
@@ -31,10 +30,6 @@
 		5599EFFE1E6B055C00B26057 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5599F0001E6B056D00B26057 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5599F0041E6B05E300B26057 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
-		55C397931EEC1E5B003F8C3B /* Interfaces.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Interfaces.hpp; sourceTree = "<group>"; };
-		55C397941EEC1E5B003F8C3B /* ParametricEquations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParametricEquations.hpp; sourceTree = "<group>"; };
-		55C397951EEC1E5B003F8C3B /* ParametricSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParametricSurface.cpp; sourceTree = "<group>"; };
-		55C397961EEC1E5B003F8C3B /* ParametricSurface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParametricSurface.hpp; sourceTree = "<group>"; };
 		55EDBE9F1EEBDC6900850B69 /* glcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = glcore.dylib; path = ../glcore/Debug/glcore.dylib; sourceTree = "<group>"; };
 		55EDBEAC1EEBF5C000850B69 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,10 +74,6 @@
 		5599EFF11E6B047200B26057 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				55C397931EEC1E5B003F8C3B /* Interfaces.hpp */,
-				55C397941EEC1E5B003F8C3B /* ParametricEquations.hpp */,
-				55C397951EEC1E5B003F8C3B /* ParametricSurface.cpp */,
-				55C397961EEC1E5B003F8C3B /* ParametricSurface.hpp */,
 				5599EFF21E6B047200B26057 /* SimpleWireframe.cpp */,
 				5599EFF31E6B047200B26057 /* SimpleWireframe.h */,
 			);
@@ -190,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
-				55C397971EEC1E5B003F8C3B /* ParametricSurface.cpp in Sources */,
 				5599EFF41E6B047200B26057 /* SimpleWireframe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
