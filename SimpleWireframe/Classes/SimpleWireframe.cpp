@@ -101,7 +101,7 @@ void SimpleWireframe::onTouchBegan(float x, float y)
 void SimpleWireframe::onTouchMove(float x, float y)
 {
 	float detha = x - m_previousX;
-	float anglePerPix = 30/15; //30¶ÈÃ»15ÏñËØ
+	float anglePerPix = 30/15; //30åº¦æ²¡15åƒç´ 
 	m_rotationAngle = m_lastRotationAngle - (detha * anglePerPix);
 }
 
