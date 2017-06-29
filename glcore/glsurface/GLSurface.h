@@ -13,6 +13,7 @@
 using namespace std;
 #include "GLInterval.h"
 #include "glclass/GLBuffer.h"
+#include "math/Quaternion.hpp"
 
 class GLCORE GLSurface{
     
@@ -52,6 +53,10 @@ public:
 
 	vec3 getColor();
 
+	Quaternion& getOrientation();
+
+	void setOrientation(const Quaternion& orientation);
+
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -71,6 +76,7 @@ protected:
 	ivec2 m_lowerLeft;
 	ivec2 m_viewportSize;
 	vec3 m_color;
+	Quaternion m_orientation;
 
 	GLBuffer m_vertexBuffer;
 	GLBuffer m_indexBuffer;

@@ -64,7 +64,7 @@
 - (void) drawView: (CADisplayLink*) displayLink
 {
     if (displayLink != nil) {
-        float elapsedSeconds = displayLink.timestamp - m_timestamp;
+        float 0Seconds = displayLink.timestamp - m_timestamp;
         m_timestamp = displayLink.timestamp;
         m_applicationEngine->UpdateAnimation(elapsedSeconds);
     }

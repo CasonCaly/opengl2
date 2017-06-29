@@ -174,3 +174,12 @@ vec3 GLSurface::getColor()
 {
 	return m_color;
 }
+
+Quaternion& GLSurface::getOrientation(){
+	return m_orientation;
+}
+
+void GLSurface::setOrientation(const Quaternion& orientation)
+{
+	m_orientation = orientation;
+}

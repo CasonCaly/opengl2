@@ -18,11 +18,9 @@ struct Vertex {
 };
 
 struct Animation {
-    Quaternion Start;
-    Quaternion End;
-    Quaternion Current;
-    float Elapsed;
-    float Duration;
+	bool Active;
+	float Elapsed;
+	float Duration;
 };
 
 struct Visual {
@@ -55,6 +53,14 @@ private:
     
     void applyRotation(float degrees);
 
+	vec3 mapToSphere(ivec2 touchPoint);
+
+	int mapToButton(ivec2 touchpoint);
+
+	void updateSurface();
+
+	void renderSurface();
+
 private:
     
 	vector<GLSurface*> m_surfaces;
@@ -71,8 +77,19 @@ private:
     float m_lastRotationAngle;
     float m_rotationAngle;
 
+
 	ivec2 m_buttonSize;
 	ivec2 m_screenSize;
 	int m_currentSurface;
+
+	ivec2 m_centerPoint;
+	float m_trackballRadius;
+	bool m_spinning;
+	ivec2 m_fingerStart;
+	Quaternion m_previousOrientation;
+	Quaternion m_orientation;
+	int m_pressedButton;
+	Animation m_animation;
+
 };
 #endif
