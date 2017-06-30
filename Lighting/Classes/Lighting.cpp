@@ -1,21 +1,18 @@
 #include <cmath>
-#include "SimpleWireframe.h"
+#include "Lighting.h"
 #define SurfaceCount (6)
 #define ButtonCount (5)
 
-SimpleWireframe::SimpleWireframe()
+Lighting::Lighting()
 {
 	m_pressedButton = -1;
 	m_animation.Active = false;
 	m_spinning = false;
 	m_currentSurface = 2;
-    m_rotationAngle = 0.0f;
-    m_lastRotationAngle = 0.0f;
-
 	m_animation.Duration = 0.25f;
 }
 
-void SimpleWireframe::init()
+void Lighting::init()
 {
 	m_trackballRadius = 320 / 3;
 
@@ -62,7 +59,7 @@ void SimpleWireframe::init()
     m_modelviewUniform = m_glProgram.getUniform("Modelview");
 }
 
-void SimpleWireframe::updateSurface()
+void Lighting::updateSurface()
 {
 	if (m_animation.Active){
 
@@ -72,7 +69,7 @@ void SimpleWireframe::updateSurface()
 	}
 }
 
-void SimpleWireframe::renderSurface()
+void Lighting::renderSurface()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -116,13 +113,13 @@ void SimpleWireframe::renderSurface()
 	}
 }
 
-void SimpleWireframe::render()
+void Lighting::render()
 {
 	this->updateSurface();
 	this->renderSurface();
 }
 
-void SimpleWireframe::onTouchBegan(float x, float y)
+void Lighting::onTouchBegan(float x, float y)
 {
 	vec2 location(x, y);
 	m_fingerStart = location;
@@ -133,7 +130,7 @@ void SimpleWireframe::onTouchBegan(float x, float y)
 
 }
 
-void SimpleWireframe::onTouchMove(float x, float y)
+void Lighting::onTouchMove(float x, float y)
 {
 	vec2 location(x, y);
 	if (m_spinning) {
@@ -145,7 +142,7 @@ void SimpleWireframe::onTouchMove(float x, float y)
 	}
 }
 
-void SimpleWireframe::onTouchEnd(float x, float y)
+void Lighting::onTouchEnd(float x, float y)
 {
 	if (!m_spinning && m_pressedButton != -1) {
 		GLSurface* button = m_surfaces[m_pressedButton];
@@ -175,7 +172,7 @@ void SimpleWireframe::onTouchEnd(float x, float y)
 //该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，
 //球体的半径为可以自己定义，这边取为屏幕的3分之一，同时球体的中心在屏幕中心。
 //通过球体参数方程 x*x + y*y + z*z = r*r这个公式来逆推出z的坐标
-vec3 SimpleWireframe::mapToSphere(vec2 touchpoint)
+vec3 Lighting::mapToSphere(vec2 touchpoint)
 {
 	vec2 p = touchpoint - m_centerPoint;
 	// Flip the Y axis because pixel coords increase towards the bottom.
@@ -195,7 +192,7 @@ vec3 SimpleWireframe::mapToSphere(vec2 touchpoint)
 	return mapped / radius;//这个结果和归一化结果类似，因为 x*x/r*r + y*y/r*r + z*z/r*r = r*r/r*r 也就是结果为1
 }
  
-int SimpleWireframe::mapToButton(vec2 touchpoint)
+int Lighting::mapToButton(vec2 touchpoint)
 {
 	if (touchpoint.y < m_screenSize.y - m_buttonSize.y)
 		return -1;
