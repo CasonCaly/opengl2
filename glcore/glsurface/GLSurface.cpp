@@ -145,22 +145,22 @@ GLBuffer& GLSurface::getTriangleIndexBuffer()
 	return m_triangleIndexBuffer;
 }
 
-ivec2 GLSurface::getLowerLeft()
+vec2 GLSurface::getLowerLeft()
 {
 	return m_lowerLeft;
 }
 
-ivec2 GLSurface::getViewportSize()
+vec2 GLSurface::getViewportSize()
 {
 	return m_viewportSize;
 }
 
-void GLSurface::setLowerLeft(const ivec2& lowerLeft)
+void GLSurface::setLowerLeft(const vec2& lowerLeft)
 {
 	m_lowerLeft = lowerLeft;
 }
 
-void GLSurface::setViewportSize(const ivec2& viewportSize)
+void GLSurface::setViewportSize(const vec2& viewportSize)
 {
 	m_viewportSize = viewportSize;
 }

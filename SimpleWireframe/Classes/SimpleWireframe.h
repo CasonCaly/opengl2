@@ -53,9 +53,9 @@ private:
     
     void applyRotation(float degrees);
 
-	vec3 mapToSphere(ivec2 touchPoint);
+	vec3 mapToSphere(vec2 touchPoint);
 
-	int mapToButton(ivec2 touchpoint);
+	int mapToButton(vec2 touchpoint);
 
 	void updateSurface();
 
@@ -78,14 +78,14 @@ private:
     float m_rotationAngle;
 
 
-	ivec2 m_buttonSize;
-	ivec2 m_screenSize;
+	vec2 m_buttonSize;
+	vec2 m_screenSize;
 	int m_currentSurface;
 
-	ivec2 m_centerPoint;
+	vec2 m_centerPoint;
 	float m_trackballRadius;
 	bool m_spinning;
-	ivec2 m_fingerStart;
+	vec2 m_fingerStart;
 	Quaternion m_previousOrientation;
 	Quaternion m_orientation;
 	int m_pressedButton;

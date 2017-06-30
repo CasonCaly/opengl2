@@ -43,11 +43,11 @@ void SimpleWireframe::init()
 
 		surface->setColor(vec3(1.0f, 1.0f, 0.5f));
 		if (i == m_currentSurface){
-			surface->setLowerLeft(ivec2(0, m_buttonSize.y));
+			surface->setLowerLeft(vec2(0.0f, m_buttonSize.y));
 			surface->setViewportSize(m_screenSize);
 		}
 		else{
-			surface->setLowerLeft(ivec2(buttonIndex * m_buttonSize.x, 0));
+			surface->setLowerLeft(vec2(buttonIndex * m_buttonSize.x, 0.0f));
 			surface->setViewportSize(m_buttonSize);
 			buttonIndex++;
 		}
@@ -79,9 +79,9 @@ void SimpleWireframe::renderSurface()
 
 	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++){
 		GLSurface* surface = *begin;
-		ivec2 size = surface->getViewportSize();
-		ivec2 lowerLeft = surface->getLowerLeft();
-		glViewport(lowerLeft.x, lowerLeft.y, size.x, size.y);
+		vec2 size = surface->getViewportSize();
+		vec2 lowerLeft = surface->getLowerLeft();
+		glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
 
 		Quaternion& orientation = surface->getOrientation();
 		//mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(0.0f, 1.0f, 0.0f));
@@ -124,7 +124,7 @@ void SimpleWireframe::render()
 
 void SimpleWireframe::onTouchBegan(float x, float y)
 {
-	ivec2 location((int)x, (int)y);
+	vec2 location(x, y);
 	m_fingerStart = location;
 	m_previousOrientation = m_orientation;
 	m_pressedButton = this->mapToButton(location);
@@ -135,7 +135,7 @@ void SimpleWireframe::onTouchBegan(float x, float y)
 
 void SimpleWireframe::onTouchMove(float x, float y)
 {
-	ivec2 location((int)x, (int)y);
+	vec2 location(x, y);
 	if (m_spinning) {
 		vec3 start = this->mapToSphere(m_fingerStart);
 		vec3 end = this->mapToSphere(location);
@@ -152,12 +152,12 @@ void SimpleWireframe::onTouchEnd(float x, float y)
 		GLSurface* sphere = m_surfaces[m_currentSurface];
 
 		Quaternion sphereOrien = sphere->getOrientation();
-		ivec2 sphereLowerLeft =	sphere->getLowerLeft();
-		ivec2 sphereViewSize = sphere->getViewportSize();
+		vec2 sphereLowerLeft =	sphere->getLowerLeft();
+		vec2 sphereViewSize = sphere->getViewportSize();
 
 		Quaternion buttonOrien = button->getOrientation();
-		ivec2 buttonLowerLeft = button->getLowerLeft();
-		ivec2 buttonViewSize = button->getViewportSize();
+		vec2 buttonLowerLeft = button->getLowerLeft();
+		vec2 buttonViewSize = button->getViewportSize();
 
 		button->setLowerLeft(sphereLowerLeft);
 		button->setViewportSize(sphereViewSize);
@@ -172,10 +172,12 @@ void SimpleWireframe::onTouchEnd(float x, float y)
 	m_spinning = false;
 }
 
-vec3 SimpleWireframe::mapToSphere(ivec2 touchpoint)
+//该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，
+//球体的半径为可以自己定义，这边取为屏幕的3分之一，同时球体的中心在屏幕中心。
+//通过球体参数方程 x*x + y*y + z*z = r*r这个公式来逆推出z的坐标
+vec3 SimpleWireframe::mapToSphere(vec2 touchpoint)
 {
-	ivec2 p = touchpoint - m_centerPoint;
-
+	vec2 p = touchpoint - m_centerPoint;
 	// Flip the Y axis because pixel coords increase towards the bottom.
 	p.y = -p.y;
 
@@ -183,22 +185,22 @@ vec3 SimpleWireframe::mapToSphere(ivec2 touchpoint)
 	const float safeRadius = radius - 1;
 
 	if (p.Length() > safeRadius) {
-		float theta = atan2(p.y, p.x);
-		p.x = safeRadius * cos(theta);
-		p.y = safeRadius * sin(theta);
+		float theta = atan2f((float)p.y, (float)p.x);
+		p.x = (safeRadius * cos(theta));
+		p.y = (safeRadius * sin(theta));
 	}
 
-	float z = sqrt(radius * radius - p.LengthSquared());
-	vec3 mapped = vec3(p.x, p.y, z);
-	return mapped / radius;
+	float z = sqrt(radius * radius - p.LengthSquared());//这个写法相当于  r*r - (x*x + y*y)这种写法，开平方之后得出就是z
+	vec3 mapped = vec3((float)p.x, (float)p.y, z);
+	return mapped / radius;//这个结果和归一化结果类似，因为 x*x/r*r + y*y/r*r + z*z/r*r = r*r/r*r 也就是结果为1
 }
 
-int SimpleWireframe::mapToButton(ivec2 touchpoint)
+int SimpleWireframe::mapToButton(vec2 touchpoint)
 {
 	if (touchpoint.y < m_screenSize.y - m_buttonSize.y)
 		return -1;
 
-	int buttonIndex = touchpoint.x / m_buttonSize.x;
+	int buttonIndex = (int)touchpoint.x / (int)m_buttonSize.x;
 	if (buttonIndex >= ButtonCount)
 		return -1;
 

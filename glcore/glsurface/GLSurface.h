@@ -41,13 +41,13 @@ public:
 
 	GLBuffer& getTriangleIndexBuffer();
 
-	ivec2 getLowerLeft();
+	vec2 getLowerLeft();
 
-	ivec2 getViewportSize();
+	vec2 getViewportSize();
 
-	void setLowerLeft(const ivec2& lowerLeft);
+	void setLowerLeft(const vec2& lowerLeft);
 
-	void setViewportSize(const ivec2& viewportSize);
+	void setViewportSize(const vec2& viewportSize);
 
 	void setColor(const vec3& color);
 
@@ -73,8 +73,8 @@ protected:
     vec2 m_upperBound;
     vec2 m_textureCount;
 
-	ivec2 m_lowerLeft;
-	ivec2 m_viewportSize;
+	vec2 m_lowerLeft;
+	vec2 m_viewportSize;
 	vec3 m_color;
 	Quaternion m_orientation;
 
