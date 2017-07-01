@@ -98,18 +98,18 @@ void Lighting::renderSurface()
 		// Draw the wireframe.
 		int stride = sizeof(vec3);
 		GLBuffer& vertexBuffer = surface->getVertexBuffer();
-		//GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
-		//int triangelIndexCount = surface->getTriangleIndexCount();
+		GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
+		int triangelIndexCount = surface->getTriangleIndexCount();
 
 		GLBuffer& indexBuffer = surface->getIndexBuffer();
 		int indexCount = surface->getLineIndexCount();
 		
 		vertexBuffer.bind(GL_ARRAY_BUFFER);
 		m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-		//trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		//glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-		glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
+		trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+		//indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+		glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
+		//glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 	}
 }
 

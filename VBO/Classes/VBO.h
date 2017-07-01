@@ -31,11 +31,11 @@ struct Visual {
 };
 
 
-class SimpleWireframe : public GLApp{
+class VBO : public GLApp{
     
 public:
     
-    SimpleWireframe();
+	VBO();
     
     void init();
     

@@ -7,12 +7,12 @@
 //
 
 #include <iostream>
-#include "SimpleWireframe.h"
+#include "VBO.h"
 
 int main(void)
 {
-	SimpleWireframe app;
-	app.initGLApp("Simple Wireframe");
+	VBO app;
+	app.initGLApp("VBO");
 	app.init();
 	app.run();
 	return 0;
