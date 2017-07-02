@@ -1,14 +1,14 @@
 attribute vec4 Position;
-attribute vec4 Normal;//·¨ÏßÏòÁ¿
-attribute vec4 DiffuseMaterial;//Âş·´Éä²ÄÖÊ
+attribute vec4 Normal;//æ³•çº¿å‘é‡ï¼Œ
+attribute vec4 DiffuseMaterial;//æ¼«åå°„æè´¨
 
 uniform mat4 Projection;
 uniform mat4 Modelview;
 uniform mat4 NormalMatrix;
 
-unifrom vec3 LightPosition;
-uniform vec3 AmbientMaterial;//»·¾³¹â²ÄÖÊ
-uniform vec3 SpecularMaterial;//¾µÃæ¹â²ÄÖÊ
+uniform vec3 LightPosition;
+uniform vec3 AmbientMaterial;//ç¯å¢ƒå…‰æè´¨
+uniform vec3 SpecularMaterial;//é•œé¢å…‰æè´¨
 uniform float Shininess;//
 
 attribute vec4 SourceColor;
