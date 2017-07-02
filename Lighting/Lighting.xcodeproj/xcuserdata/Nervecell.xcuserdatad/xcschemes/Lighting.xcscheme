@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-               BuildableName = "SimpleWireframe.app"
-               BlueprintName = "SimpleWireframe"
-               ReferencedContainer = "container:SimpleWireframe.xcodeproj">
+               BuildableName = "Lighting.app"
+               BlueprintName = "Lighting"
+               ReferencedContainer = "container:Lighting.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "SimpleWireframe.app"
-            BlueprintName = "SimpleWireframe"
-            ReferencedContainer = "container:SimpleWireframe.xcodeproj">
+            BuildableName = "Lighting.app"
+            BlueprintName = "Lighting"
+            ReferencedContainer = "container:Lighting.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "SimpleWireframe.app"
-            BlueprintName = "SimpleWireframe"
-            ReferencedContainer = "container:SimpleWireframe.xcodeproj">
+            BuildableName = "Lighting.app"
+            BlueprintName = "Lighting"
+            ReferencedContainer = "container:Lighting.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "SimpleWireframe.app"
-            BlueprintName = "SimpleWireframe"
-            ReferencedContainer = "container:SimpleWireframe.xcodeproj">
+            BuildableName = "Lighting.app"
+            BlueprintName = "Lighting"
+            ReferencedContainer = "container:Lighting.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

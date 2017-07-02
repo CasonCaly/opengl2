@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5599EFF41E6B047200B26057 /* SimpleWireframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599EFF21E6B047200B26057 /* SimpleWireframe.cpp */; };
+		5595C57E1F088A0400D40D8C /* VBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5595C57C1F088A0400D40D8C /* VBO.cpp */; };
 		5599EFF61E6B049E00B26057 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599EFF51E6B049E00B26057 /* main.cpp */; };
 		5599EFF91E6B052C00B26057 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFF81E6B052C00B26057 /* OpenGL.framework */; };
 		5599EFFB1E6B053700B26057 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFA1E6B053700B26057 /* IOKit.framework */; };
@@ -20,9 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5599EFDD1E6B03C200B26057 /* SimpleWireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleWireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5599EFF21E6B047200B26057 /* SimpleWireframe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleWireframe.cpp; sourceTree = "<group>"; };
-		5599EFF31E6B047200B26057 /* SimpleWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleWireframe.h; sourceTree = "<group>"; };
+		5595C57C1F088A0400D40D8C /* VBO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VBO.cpp; sourceTree = "<group>"; };
+		5595C57D1F088A0400D40D8C /* VBO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBO.h; sourceTree = "<group>"; };
+		5599EFDD1E6B03C200B26057 /* VBO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5599EFF51E6B049E00B26057 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5599EFF81E6B052C00B26057 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5599EFFA1E6B053700B26057 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -66,7 +66,7 @@
 		5599EFDE1E6B03C200B26057 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5599EFDD1E6B03C200B26057 /* SimpleWireframe.app */,
+				5599EFDD1E6B03C200B26057 /* VBO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,8 +74,8 @@
 		5599EFF11E6B047200B26057 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5599EFF21E6B047200B26057 /* SimpleWireframe.cpp */,
-				5599EFF31E6B047200B26057 /* SimpleWireframe.h */,
+				5595C57C1F088A0400D40D8C /* VBO.cpp */,
+				5595C57D1F088A0400D40D8C /* VBO.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5599EFDC1E6B03C200B26057 /* SimpleWireframe */ = {
+		5599EFDC1E6B03C200B26057 /* VBO */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "SimpleWireframe" */;
+			buildConfigurationList = 5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "VBO" */;
 			buildPhases = (
 				5599EFD91E6B03C200B26057 /* Sources */,
 				5599EFDA1E6B03C200B26057 /* Frameworks */,
@@ -109,9 +109,9 @@
 			);
 			dependencies = (
 			);
-			name = SimpleWireframe;
+			name = VBO;
 			productName = HelloArrow;
-			productReference = 5599EFDD1E6B03C200B26057 /* SimpleWireframe.app */;
+			productReference = 5599EFDD1E6B03C200B26057 /* VBO.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "SimpleWireframe" */;
+			buildConfigurationList = 5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "VBO" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5599EFDC1E6B03C200B26057 /* SimpleWireframe */,
+				5599EFDC1E6B03C200B26057 /* VBO */,
 			);
 		};
 /* End PBXProject section */
@@ -181,7 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
-				5599EFF41E6B047200B26057 /* SimpleWireframe.cpp in Sources */,
+				5595C57E1F088A0400D40D8C /* VBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +312,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "SimpleWireframe" */ = {
+		5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "VBO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5599EFEC1E6B03C200B26057 /* Debug */,
@@ -321,7 +321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "SimpleWireframe" */ = {
+		5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "VBO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5599EFEF1E6B03C200B26057 /* Debug */,

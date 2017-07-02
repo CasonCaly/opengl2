@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/Nervecell/workspace/opengl2/SimpleWireframe/SimpleWireframe.xcodeproj">
+      location = "self:/Users/Nervecell/workspace/opengl2/VBO/VBO.xcodeproj">
    </FileRef>
 </Workspace>

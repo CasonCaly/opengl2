@@ -65,7 +65,7 @@ void Lighting::updateSurface()
 
 	}
 	else{
-		float t = m_animation.Elapsed / m_animation.Duration;
+		//float t = m_animation.Elapsed / m_animation.Duration;
 	}
 }
 
