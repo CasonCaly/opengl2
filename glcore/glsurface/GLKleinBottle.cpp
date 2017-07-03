@@ -35,3 +35,8 @@ vec3 GLKleinBottle::evaluate(const vec2& domain)
 	range.z = (-2 * (1 - cos(u) / 2)) * sin(v);
 	return range * m_scale;
 }
+
+bool GLKleinBottle::invertNormal(const vec2& domain)
+{
+	return domain.y > 3 * Pi / 2;
+}

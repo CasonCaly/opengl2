@@ -2,15 +2,13 @@
 #define LIGHTING_H
 #include <vector>
 using namespace std;
-#include "glclass/GLApp.h"
-#include "glclass/GLBuffer.h"
-#include "glsurface/GLCone.h"
-#include "glsurface/GLSphere.h"
-#include "glsurface/GLMobiusStrip.h"
-#include "glsurface/GLTorus.h"
-#include "glsurface/GLKleinBottle.h"
-#include "glsurface/GLTrefoilKnot.h"
+
 #include "math/Quaternion.hpp"
+#include "glclass/GLApp.h"
+
+class GLSurface;
+class GLUniform;
+class GLAttribute;
 
 struct Animation {
 	bool Active;
@@ -52,11 +50,19 @@ private:
     
 	vector<GLSurface*> m_surfaces;
     
-    GLUniform* m_projectionUniform;
-    GLUniform* m_modelviewUniform;
-    GLAttribute* m_positionSlot;
+    GLUniform* m_projectionUniform;//投影矩阵
+    GLUniform* m_modelviewUniform;//模型视图矩阵
+	GLUniform* m_normalMatrixUniform;//法线矩阵
+	GLUniform* m_lightPositionUniform;//光源位置
+	GLUniform* m_ambientMaterialUniform;//环境光颜色值
+	GLUniform* m_specularMaterialUniform;//镜面光材质
+	GLUniform* m_shininessUniform;//发光?
+
+    GLAttribute* m_positionSlot;//顶点属性
     GLAttribute* m_colorSlot;
- 
+	GLAttribute* m_normalSlot;//法线属性
+	GLAttribute* m_diffuseMaterialSlot;//漫反射属性
+
     mat4 m_translation;
     
 	vec2 m_buttonSize;

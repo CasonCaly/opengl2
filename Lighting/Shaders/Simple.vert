@@ -1,21 +1,18 @@
 attribute vec4 Position;
 attribute vec3 Normal;//法线向量，
 attribute vec3 DiffuseMaterial;//漫反射材质
-
-uniform mat3 NormalMatrix;//法线矩阵
+attribute vec4 SourceColor;
 
 uniform mat4 Projection;//投影矩阵
 uniform mat4 Modelview;//模型矩阵
-
+uniform mat3 NormalMatrix;//法线矩阵
 
 uniform vec3 LightPosition;//光源位置
 uniform vec3 AmbientMaterial;//环境光材质
 uniform vec3 SpecularMaterial;//镜面光材质
 uniform float Shininess;//镜面指数
 
-attribute vec4 SourceColor;
 varying vec4 DestinationColor;
-
 
 void main(void)
 {

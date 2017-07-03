@@ -8,6 +8,11 @@
 
 #include "GLSurface.h"
 
+GLSurface::GLSurface()
+{
+	m_enableVertexNormal = false;
+}
+
 GLSurface::~GLSurface()
 {
 }
@@ -31,6 +36,8 @@ void GLSurface::generateVertices()
 {
 	vector<float> vertices;
 	int floatsPerVertex = 3;
+	if (m_enableVertexNormal)
+		floatsPerVertex += 3;
 	vertices.resize(this->getVertexCount() * floatsPerVertex);
 	float* attribute = &vertices[0];
 
@@ -41,6 +48,25 @@ void GLSurface::generateVertices()
 			vec2 domain = this->computeDomain((float)i, (float)j);
 			vec3 range = this->evaluate(domain);
 			attribute = range.Write(attribute);
+
+			if (m_enableVertexNormal){
+				float s = (float)i, t = (float)j;
+
+				// Nudge the point if the normal is indeterminate.
+				if (i == 0) s += 0.01f;
+				if (i == m_divisions.x - 1) s -= 0.01f;
+				if (j == 0) t += 0.01f;
+				if (j == m_divisions.y - 1) t -= 0.01f;
+
+				// Compute the tangents and their cross product.
+				vec3 p = this->evaluate(this->computeDomain(s, t));
+				vec3 u = this->evaluate(this->computeDomain(s + 0.01f, t)) - p;
+				vec3 v = this->evaluate(this->computeDomain(s, t + 0.01f)) - p;
+				vec3 normal = u.Cross(v).Normalized();
+				if (this->invertNormal(domain))
+					normal = -normal;
+				attribute = normal.Write(attribute);
+			}
 		}
 	}
 
@@ -182,4 +208,9 @@ Quaternion& GLSurface::getOrientation(){
 void GLSurface::setOrientation(const Quaternion& orientation)
 {
 	m_orientation = orientation;
+}
+
+void GLSurface::setEnableVertexNormal(bool enableVertexNormal)
+{
+	m_enableVertexNormal = enableVertexNormal;
 }

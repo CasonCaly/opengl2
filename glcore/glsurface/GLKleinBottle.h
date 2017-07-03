@@ -19,6 +19,8 @@ public:
     
     vec3 evaluate(const vec2& domain);
     
+	bool invertNormal(const vec2& domain);
+
 private:
     
 	float m_scale;

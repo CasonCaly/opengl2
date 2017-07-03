@@ -25,6 +25,16 @@ public:
     
     void matrix4fv(GLsizei count, GLboolean transpose, const GLfloat *value);
     
+	void matrix3fv(GLsizei count, GLboolean transpose, const GLfloat *value);
+
+	void value3f(float v0, float v1, float v2);
+
+	void value2f(float v0, float v1);
+
+	void value1f(float v0);
+
+	void vector3fv(GLsizei count, const GLfloat *value);
+
 protected:
     
     GLuint m_unifrom;

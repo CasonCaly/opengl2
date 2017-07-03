@@ -1,5 +1,14 @@
 #include <cmath>
 #include "Lighting.h"
+
+#include "glclass/GLBuffer.h"
+#include "glsurface/GLCone.h"
+#include "glsurface/GLSphere.h"
+#include "glsurface/GLMobiusStrip.h"
+#include "glsurface/GLTorus.h"
+#include "glsurface/GLKleinBottle.h"
+#include "glsurface/GLTrefoilKnot.h"
+
 #define SurfaceCount (6)
 #define ButtonCount (5)
 
@@ -34,6 +43,7 @@ void Lighting::init()
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
 		GLSurface* surface = m_surfaces[i];
+		surface->setEnableVertexNormal(true);
 		surface->generateVertices();
 		surface->generateLineIndices();
 		surface->generateTriangleIndices();
@@ -52,11 +62,28 @@ void Lighting::init()
 
     m_positionSlot = m_glProgram.getAttribute("Position");
     m_colorSlot = m_glProgram.getAttribute("SourceColor");
-    
-    m_positionSlot->enableVertexAttribArray();
-    m_translation = mat4::Translate(0, 0, -7);
+	m_normalSlot = m_glProgram.getAttribute("Normal");
+	m_diffuseMaterialSlot = m_glProgram.getAttribute("DiffuseMaterial");
+
+	//投影有关的uniform变量
     m_projectionUniform = m_glProgram.getUniform("Projection");
     m_modelviewUniform = m_glProgram.getUniform("Modelview");
+	//光照有关的uniform变量
+	m_normalMatrixUniform = m_glProgram.getUniform("NormalMatrix");
+	m_lightPositionUniform = m_glProgram.getUniform("LightPosition");
+	m_ambientMaterialUniform = m_glProgram.getUniform("AmbientMaterial");
+	m_specularMaterialUniform = m_glProgram.getUniform("SpecularMaterial");
+	m_shininessUniform = m_glProgram.getUniform("Shininess");
+
+	m_ambientMaterialUniform->value3f(0.04f, 0.04f, 0.04f);
+	m_specularMaterialUniform->value3f(0.5f, 0.5f, 0.5f);
+	m_shininessUniform->value1f(50.0f);
+
+	m_positionSlot->enableVertexAttribArray();
+	m_normalSlot->enableVertexAttribArray();
+	glEnable(GL_DEPTH_TEST);
+
+	m_translation = mat4::Translate(0, 0, -7);
 }
 
 void Lighting::updateSurface()
@@ -80,24 +107,38 @@ void Lighting::renderSurface()
 		vec2 lowerLeft = surface->getLowerLeft();
 		glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
 
+		vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
+		m_lightPositionUniform->vector3fv(1, lightPosition.Pointer());
+
 		Quaternion& orientation = surface->getOrientation();
-		//mat4 rotation = mat4::Rotate(m_rotationAngle, vec3(0.0f, 1.0f, 0.0f));
 		mat4 rotation = orientation.ToMatrix();
 		mat4 modelview = rotation * m_translation;
+		
 		m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
 
-		// Set the projection transform.
+		//设置法线矩阵
+		mat3 normalMatrix = modelview.ToMat3();
+		m_normalMatrixUniform->matrix3fv(1, 0, normalMatrix.Pointer());
+
+		// 设置投影矩阵
 		float h = 4.0f * size.y / size.x;
 		mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
 		m_projectionUniform->matrix4fv(1, 0, projectionMatrix.Pointer());
 
 		// Set the color.
+		//vec3 color = surface->getColor();
+		//m_colorSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
+
 		vec3 color = surface->getColor();
-		m_colorSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
+		color = color * 0.75f;
+		m_diffuseMaterialSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
 
 		// Draw the wireframe.
-		int stride = sizeof(vec3);
+		int stride = 2 * sizeof(vec3);
+		const GLvoid* offset = (const GLvoid*)sizeof(vec3);
+
 		GLBuffer& vertexBuffer = surface->getVertexBuffer();
+		
 		GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 		int triangelIndexCount = surface->getTriangleIndexCount();
 
@@ -106,10 +147,10 @@ void Lighting::renderSurface()
 		
 		vertexBuffer.bind(GL_ARRAY_BUFFER);
 		m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
+		m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
+
 		trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		//indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
 		glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-		//glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 	}
 }
 

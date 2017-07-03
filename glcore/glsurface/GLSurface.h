@@ -19,6 +19,8 @@ class GLCORE GLSurface{
     
 public:
     
+	GLSurface();
+
 	virtual int getVertexCount();
 
 	virtual int getLineIndexCount();
@@ -57,6 +59,8 @@ public:
 
 	void setOrientation(const Quaternion& orientation);
 
+	void setEnableVertexNormal(bool enableVertexNormal);
+
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -82,6 +86,10 @@ protected:
 	GLBuffer m_indexBuffer;
 	GLBuffer m_triangleIndexBuffer;
 	int m_indexCount;
+
+protected:
+
+	bool m_enableVertexNormal;
 };
 
 #endif /* GLSurface_hpp */
