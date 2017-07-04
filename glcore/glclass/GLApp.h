@@ -45,6 +45,8 @@ protected:
     
     char* readShader(const string& path);
     
+	void createPrograme(const string& frag, const string& vert, GLProgram& program);
+
 protected:
     
     GLProgram m_glProgram;

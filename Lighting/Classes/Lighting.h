@@ -32,6 +32,8 @@ public:
 
 	void onTouchEnd(float x, float y) override;
 
+	void initProgram() override;
+
 private:
     
     void applyOrtho(float maxX, float maxY);
@@ -44,12 +46,22 @@ private:
 
 	void updateSurface();
 
+	void initVertexAttributeAndUniform();
+
+	void initPixelAttributeAndUniform();
+
 	void renderSurface();
+
+	void renderUseVertex(GLSurface* surface);
+
+	void renderUsePixel(GLSurface* surface);
 
 private:
     
 	vector<GLSurface*> m_surfaces;
     
+protected:
+
     GLUniform* m_projectionUniform;//投影矩阵
     GLUniform* m_modelviewUniform;//模型视图矩阵
 	GLUniform* m_normalMatrixUniform;//法线矩阵
@@ -63,12 +75,12 @@ private:
 	GLAttribute* m_normalSlot;//法线属性
 	GLAttribute* m_diffuseMaterialSlot;//漫反射属性
 
+protected:
+
     mat4 m_translation;
-    
 	vec2 m_buttonSize;
 	vec2 m_screenSize;
 	int m_currentSurface;
-
 	vec2 m_centerPoint;
 	float m_trackballRadius;
 	bool m_spinning;
@@ -78,5 +90,21 @@ private:
 	int m_pressedButton;
 	Animation m_animation;
 
+protected:
+
+	GLProgram m_pixelLightProgram;
+
+	GLAttribute* m_pixelPosition;
+	GLAttribute* m_pixelNormal;
+	GLAttribute* m_pixelDiffuseMaterial;
+
+	GLUniform* m_pixelProjection;
+	GLUniform* m_pixelModelview;
+	GLUniform* m_pixelNormalMatrix;
+
+	GLUniform* m_pixelLightPosition;
+	GLUniform* m_pixelAmbientMaterial;
+	GLUniform* m_pixelSpecularMaterial;
+	GLUniform* m_pixelShininess;
 };
 #endif

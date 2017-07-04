@@ -61,6 +61,10 @@ public:
 
 	void setEnableVertexNormal(bool enableVertexNormal);
 
+	void setName(const std::string& name);
+
+	std::string& getName();
+
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -86,9 +90,9 @@ protected:
 	GLBuffer m_indexBuffer;
 	GLBuffer m_triangleIndexBuffer;
 	int m_indexCount;
-
+	
 protected:
-
+	std::string m_name;
 	bool m_enableVertexNormal;
 };
 

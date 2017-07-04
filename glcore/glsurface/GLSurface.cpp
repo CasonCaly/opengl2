@@ -214,3 +214,13 @@ void GLSurface::setEnableVertexNormal(bool enableVertexNormal)
 {
 	m_enableVertexNormal = enableVertexNormal;
 }
+
+void GLSurface::setName(const std::string& name)
+{
+	m_name = name;
+}
+
+std::string& GLSurface::getName()
+{
+	return m_name;
+}

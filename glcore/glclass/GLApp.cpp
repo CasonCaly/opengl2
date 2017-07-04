@@ -212,24 +212,31 @@ void GLApp::render()
 
 }
 
-void GLApp::initProgram(){
-    GLShader vertexShader;
-    vertexShader.createVertex();
-    char* szVertexShader = this->readShader(Path::joinResource("Shaders/Simple.vert"));
-    vertexShader.compile(szVertexShader);
-    free(szVertexShader);
-    
-    GLShader fragmentShader;
-    fragmentShader.createFragment();
-    char* szFragmentShader = this->readShader(Path::joinResource("Shaders/Simple.frag"));
-    fragmentShader.compile(szFragmentShader);
-    free(szFragmentShader);
-    
-    m_glProgram.create();
-    m_glProgram.attachShader(vertexShader);
-    m_glProgram.attachShader(fragmentShader);
-    m_glProgram.link();
-    m_glProgram.use();
+void GLApp::initProgram()
+{
+	this->createPrograme("Shaders/Simple.vert", "Shaders/Simple.frag", m_glProgram);
+	//m_glProgram.use();
+}
+
+
+void GLApp::createPrograme(const string& frag, const string& vert, GLProgram& program)
+{
+	GLShader vertexShader;
+	vertexShader.createVertex();
+	char* szVertexShader = this->readShader(Path::joinResource(frag.c_str()));
+	vertexShader.compile(szVertexShader);
+	free(szVertexShader);
+
+	GLShader fragmentShader;
+	fragmentShader.createFragment();
+	char* szFragmentShader = this->readShader(Path::joinResource(vert.c_str()));
+	fragmentShader.compile(szFragmentShader);
+	free(szFragmentShader);
+
+	program.create();
+	program.attachShader(vertexShader);
+	program.attachShader(fragmentShader);
+	program.link();
 }
 
 char* GLApp::readShader(const string& path){

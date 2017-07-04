@@ -1,6 +1,6 @@
 #include <cmath>
 #include "Lighting.h"
-
+#include "os/Path.h"
 #include "glclass/GLBuffer.h"
 #include "glsurface/GLCone.h"
 #include "glsurface/GLSphere.h"
@@ -17,24 +17,23 @@ Lighting::Lighting()
 	m_pressedButton = -1;
 	m_animation.Active = false;
 	m_spinning = false;
-	m_currentSurface = 2;
+	m_currentSurface = 3;
 	m_animation.Duration = 0.25f;
 }
 
 void Lighting::init()
 {
 	m_trackballRadius = 320 / 3;
-
 	m_buttonSize.y = 480 / 10;
 	m_buttonSize.x = 4 * m_buttonSize.y / 3;
-
 	m_screenSize.x = 320;
 	m_screenSize.y = 480 - m_buttonSize.y;
-
 	m_centerPoint = m_screenSize / 2;
 
 	m_surfaces.push_back(new GLCone(3, 1, ivec2(20, 20)));
-	m_surfaces.push_back(new GLSphere(2, ivec2(20, 20)));
+	GLSurface* sphere = new GLTrefoilKnot(1.8f, ivec2(60, 15));
+	sphere->setName("sphere");
+	m_surfaces.push_back(sphere);
 	m_surfaces.push_back(new GLTorus(1.4f, 0.3f, ivec2(20, 20)));
 	m_surfaces.push_back(new GLTrefoilKnot(1.8f, ivec2(60, 15)));
 	m_surfaces.push_back(new GLKleinBottle(0.2f, ivec2(20, 20)));
@@ -60,14 +59,28 @@ void Lighting::init()
 		}
 	}
 
-    m_positionSlot = m_glProgram.getAttribute("Position");
-    m_colorSlot = m_glProgram.getAttribute("SourceColor");
+	this->initVertexAttributeAndUniform();
+	this->initPixelAttributeAndUniform();
+	glEnable(GL_DEPTH_TEST);
+
+	m_translation = mat4::Translate(0, 0, -7);
+}
+
+void Lighting::updateSurface()
+{
+}
+
+void Lighting::initVertexAttributeAndUniform()
+{
+	m_glProgram.use();
+	m_positionSlot = m_glProgram.getAttribute("Position");
+	m_colorSlot = m_glProgram.getAttribute("SourceColor");
 	m_normalSlot = m_glProgram.getAttribute("Normal");
 	m_diffuseMaterialSlot = m_glProgram.getAttribute("DiffuseMaterial");
 
 	//投影有关的uniform变量
-    m_projectionUniform = m_glProgram.getUniform("Projection");
-    m_modelviewUniform = m_glProgram.getUniform("Modelview");
+	m_projectionUniform = m_glProgram.getUniform("Projection");
+	m_modelviewUniform = m_glProgram.getUniform("Modelview");
 	//光照有关的uniform变量
 	m_normalMatrixUniform = m_glProgram.getUniform("NormalMatrix");
 	m_lightPositionUniform = m_glProgram.getUniform("LightPosition");
@@ -81,19 +94,27 @@ void Lighting::init()
 
 	m_positionSlot->enableVertexAttribArray();
 	m_normalSlot->enableVertexAttribArray();
-	glEnable(GL_DEPTH_TEST);
-
-	m_translation = mat4::Translate(0, 0, -7);
 }
 
-void Lighting::updateSurface()
+void Lighting::initPixelAttributeAndUniform()
 {
-	if (m_animation.Active){
+	m_pixelLightProgram.use();
+	m_pixelPosition = m_pixelLightProgram.getAttribute("Position");
+	m_pixelNormal = m_pixelLightProgram.getAttribute("Normal");
+	m_pixelDiffuseMaterial = m_pixelLightProgram.getAttribute("DiffuseMaterial");
 
-	}
-	else{
-		//float t = m_animation.Elapsed / m_animation.Duration;
-	}
+	m_pixelProjection = m_glProgram.getUniform("Projection");
+	m_pixelModelview = m_glProgram.getUniform("Modelview");
+	m_pixelNormalMatrix = m_glProgram.getUniform("NormalMatrix");
+
+	m_pixelLightPosition = m_glProgram.getUniform("LightPosition");
+	m_pixelAmbientMaterial = m_glProgram.getUniform("AmbientMaterial");
+	m_pixelSpecularMaterial = m_glProgram.getUniform("SpecularMaterial");
+	m_pixelShininess = m_glProgram.getUniform("Shininess");
+
+	m_pixelAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
+	m_pixelSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
+	m_pixelShininess->value1f(50.0f);
 }
 
 void Lighting::renderSurface()
@@ -103,55 +124,112 @@ void Lighting::renderSurface()
 
 	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++){
 		GLSurface* surface = *begin;
-		vec2 size = surface->getViewportSize();
-		vec2 lowerLeft = surface->getLowerLeft();
-		glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
-
-		vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
-		m_lightPositionUniform->vector3fv(1, lightPosition.Pointer());
-
-		Quaternion& orientation = surface->getOrientation();
-		mat4 rotation = orientation.ToMatrix();
-		mat4 modelview = rotation * m_translation;
-		
-		m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
-
-		//设置法线矩阵
-		mat3 normalMatrix = modelview.ToMat3();
-		m_normalMatrixUniform->matrix3fv(1, 0, normalMatrix.Pointer());
-
-		// 设置投影矩阵
-		float h = 4.0f * size.y / size.x;
-		mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
-		m_projectionUniform->matrix4fv(1, 0, projectionMatrix.Pointer());
-
-		// Set the color.
-		//vec3 color = surface->getColor();
-		//m_colorSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
-
-		vec3 color = surface->getColor();
-		color = color * 0.75f;
-		m_diffuseMaterialSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
-
-		// Draw the wireframe.
-		int stride = 2 * sizeof(vec3);
-		const GLvoid* offset = (const GLvoid*)sizeof(vec3);
-
-		GLBuffer& vertexBuffer = surface->getVertexBuffer();
-		
-		GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
-		int triangelIndexCount = surface->getTriangleIndexCount();
-
-		GLBuffer& indexBuffer = surface->getIndexBuffer();
-		int indexCount = surface->getLineIndexCount();
-		
-		vertexBuffer.bind(GL_ARRAY_BUFFER);
-		m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-		m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
-
-		trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-		glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
+		std::string& name = surface->getName();
+		if (name == "sphere"){
+			this->renderUsePixel(surface);
+		}
+		else{
+			this->renderUseVertex(surface);
+		}
 	}
+}
+
+void Lighting::renderUseVertex(GLSurface* surface)
+{
+	m_glProgram.use();
+	vec2 size = surface->getViewportSize();
+	vec2 lowerLeft = surface->getLowerLeft();
+	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
+
+	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
+	m_lightPositionUniform->vector3fv(1, lightPosition.Pointer());
+
+	Quaternion& orientation = surface->getOrientation();
+	mat4 rotation = orientation.ToMatrix();
+	mat4 modelview = rotation * m_translation;
+
+	m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
+
+	//设置法线矩阵
+	mat3 normalMatrix = modelview.ToMat3();
+	m_normalMatrixUniform->matrix3fv(1, 0, normalMatrix.Pointer());
+
+	// 设置投影矩阵
+	float h = 4.0f * size.y / size.x;
+	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
+	m_projectionUniform->matrix4fv(1, 0, projectionMatrix.Pointer());
+
+	vec3 color = surface->getColor();
+	color = color * 0.75f;
+	m_diffuseMaterialSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
+
+	// Draw the wireframe.
+	int stride = 2 * sizeof(vec3);
+	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
+
+	GLBuffer& vertexBuffer = surface->getVertexBuffer();
+
+	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
+	int triangelIndexCount = surface->getTriangleIndexCount();
+
+	GLBuffer& indexBuffer = surface->getIndexBuffer();
+	int indexCount = surface->getLineIndexCount();
+
+	vertexBuffer.bind(GL_ARRAY_BUFFER);
+	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
+	m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
+
+	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
+}
+
+void Lighting::renderUsePixel(GLSurface* surface)
+{
+	m_pixelLightProgram.use();
+	vec2 size = surface->getViewportSize();
+	vec2 lowerLeft = surface->getLowerLeft();
+	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
+
+	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
+	m_pixelLightPosition->vector3fv(1, lightPosition.Pointer());
+
+	Quaternion& orientation = surface->getOrientation();
+	mat4 rotation = orientation.ToMatrix();
+	mat4 modelview = rotation * m_translation;
+
+	m_pixelModelview->matrix4fv(1, 0, modelview.Pointer());
+
+	//设置法线矩阵
+	mat3 normalMatrix = modelview.ToMat3();
+	m_pixelNormalMatrix->matrix3fv(1, 0, normalMatrix.Pointer());
+
+	// 设置投影矩阵
+	float h = 4.0f * size.y / size.x;
+	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
+	m_pixelProjection->matrix4fv(1, 0, projectionMatrix.Pointer());
+
+	vec3 color = surface->getColor();
+	color = color * 0.75f;
+	m_pixelDiffuseMaterial->vertexAttrib4f(color.x, color.y, color.z, 1);
+
+	// Draw the wireframe.
+	int stride = 2 * sizeof(vec3);
+	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
+
+	GLBuffer& vertexBuffer = surface->getVertexBuffer();
+
+	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
+	int triangelIndexCount = surface->getTriangleIndexCount();
+
+	GLBuffer& indexBuffer = surface->getIndexBuffer();
+	int indexCount = surface->getLineIndexCount();
+
+	vertexBuffer.bind(GL_ARRAY_BUFFER);
+	m_pixelPosition->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
+	m_pixelNormal->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
+
+	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
 }
 
 void Lighting::render()
@@ -208,6 +286,12 @@ void Lighting::onTouchEnd(float x, float y)
 	}
 	m_pressedButton = -1;
 	m_spinning = false;
+}
+
+void Lighting::initProgram()
+{
+	GLApp::initProgram();
+	this->createPrograme("Shaders/PixelLighting.es2.vert", "Shaders/PixelLighting.es2.frag", m_pixelLightProgram);
 }
 
 //该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，
