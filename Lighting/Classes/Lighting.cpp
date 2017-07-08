@@ -14,6 +14,7 @@
 
 Lighting::Lighting()
 {
+    m_showedSurface = nullptr;
 	m_pressedButton = -1;
 	m_animation.Active = false;
 	m_spinning = false;
@@ -31,14 +32,16 @@ void Lighting::init()
 	m_centerPoint = m_screenSize / 2;
 
 	m_surfaces.push_back(new GLCone(3, 1, ivec2(20, 20)));
-	GLSurface* sphere = new GLTrefoilKnot(1.8f, ivec2(60, 15));
-	sphere->setName("sphere");
-	m_surfaces.push_back(sphere);
 	m_surfaces.push_back(new GLTorus(1.4f, 0.3f, ivec2(20, 20)));
 	m_surfaces.push_back(new GLTrefoilKnot(1.8f, ivec2(60, 15)));
 	m_surfaces.push_back(new GLKleinBottle(0.2f, ivec2(20, 20)));
 	m_surfaces.push_back(new GLMobiusStrip(1, ivec2(40, 40)));
 	
+    
+    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
+    m_showedSurface->setName("sphere");
+    m_surfaces.push_back(m_showedSurface);
+    
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
 		GLSurface* surface = m_surfaces[i];
@@ -48,7 +51,7 @@ void Lighting::init()
 		surface->generateTriangleIndices();
 
 		surface->setColor(vec3(1.0f, 1.0f, 0.5f));
-		if (i == m_currentSurface){
+		if ((i + 1)== m_surfaces.size()){
 			surface->setLowerLeft(vec2(0.0f, m_buttonSize.y));
 			surface->setViewportSize(m_screenSize);
 		}
@@ -103,18 +106,23 @@ void Lighting::initPixelAttributeAndUniform()
 	m_pixelNormal = m_pixelLightProgram.getAttribute("Normal");
 	m_pixelDiffuseMaterial = m_pixelLightProgram.getAttribute("DiffuseMaterial");
 
-	m_pixelProjection = m_glProgram.getUniform("Projection");
-	m_pixelModelview = m_glProgram.getUniform("Modelview");
-	m_pixelNormalMatrix = m_glProgram.getUniform("NormalMatrix");
+	m_pixelProjection = m_pixelLightProgram.getUniform("Projection");
+	m_pixelModelview = m_pixelLightProgram.getUniform("Modelview");
+	m_pixelNormalMatrix = m_pixelLightProgram.getUniform("NormalMatrix");
 
-	m_pixelLightPosition = m_glProgram.getUniform("LightPosition");
-	m_pixelAmbientMaterial = m_glProgram.getUniform("AmbientMaterial");
-	m_pixelSpecularMaterial = m_glProgram.getUniform("SpecularMaterial");
-	m_pixelShininess = m_glProgram.getUniform("Shininess");
+	m_pixelLightPosition = m_pixelLightProgram.getUniform("LightPosition");
+	m_pixelAmbientMaterial = m_pixelLightProgram.getUniform("AmbientMaterial");
+	m_pixelSpecularMaterial = m_pixelLightProgram.getUniform("SpecularMaterial");
+	m_pixelShininess = m_pixelLightProgram.getUniform("Shininess");
 
+    m_pixelPosition->enableVertexAttribArray();
+    m_pixelNormal->enableVertexAttribArray();
+    
 	m_pixelAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
 	m_pixelSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
 	m_pixelShininess->value1f(50.0f);
+    
+
 }
 
 void Lighting::renderSurface()
@@ -172,8 +180,6 @@ void Lighting::renderUseVertex(GLSurface* surface)
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
-	GLBuffer& indexBuffer = surface->getIndexBuffer();
-	int indexCount = surface->getLineIndexCount();
 
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
@@ -221,9 +227,6 @@ void Lighting::renderUsePixel(GLSurface* surface)
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
-	GLBuffer& indexBuffer = surface->getIndexBuffer();
-	int indexCount = surface->getLineIndexCount();
-
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_pixelPosition->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
 	m_pixelNormal->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
@@ -257,7 +260,7 @@ void Lighting::onTouchMove(float x, float y)
 		vec3 end = this->mapToSphere(location);
 		Quaternion delta = Quaternion::CreateFromVectors(start, end);
 		m_orientation = delta.Rotated(m_previousOrientation);
-		m_surfaces[m_currentSurface]->setOrientation(m_orientation);
+		m_surfaces[m_surfaces.size() - 1]->setOrientation(m_orientation);
 	}
 }
 
@@ -265,7 +268,7 @@ void Lighting::onTouchEnd(float x, float y)
 {
 	if (!m_spinning && m_pressedButton != -1) {
 		GLSurface* button = m_surfaces[m_pressedButton];
-		GLSurface* sphere = m_surfaces[m_currentSurface];
+		GLSurface* sphere = m_surfaces[m_surfaces.size() - 1];
 
 		Quaternion sphereOrien = sphere->getOrientation();
 		vec2 sphereLowerLeft =	sphere->getLowerLeft();
@@ -282,7 +285,11 @@ void Lighting::onTouchEnd(float x, float y)
 		sphere->setLowerLeft(buttonLowerLeft);
 		sphere->setViewportSize(buttonViewSize);
 		sphere->setOrientation(buttonOrien);
-		m_currentSurface = m_pressedButton;
+        
+        
+        m_surfaces[m_surfaces.size() - 1] = button;
+        m_surfaces[m_pressedButton] = sphere;
+ 		m_currentSurface = m_pressedButton;
 	}
 	m_pressedButton = -1;
 	m_spinning = false;

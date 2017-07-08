@@ -58,6 +58,8 @@ private:
 
 private:
     
+    GLSurface* m_showedSurface;
+    
 	vector<GLSurface*> m_surfaces;
     
 protected:

@@ -10,6 +10,7 @@
 #define GLSurface_hpp
 
 #include <vector>
+#include <string>
 using namespace std;
 #include "GLInterval.h"
 #include "glclass/GLBuffer.h"
