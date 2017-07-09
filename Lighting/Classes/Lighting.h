@@ -50,11 +50,15 @@ private:
 
 	void initPixelAttributeAndUniform();
 
+	void initToonAttributeAndUnifrom();
+
 	void renderSurface();
 
 	void renderUseVertex(GLSurface* surface);
 
 	void renderUsePixel(GLSurface* surface);
+
+	void renderUseToon(GLSurface* sufrface);
 
 private:
     
@@ -108,5 +112,22 @@ protected:
 	GLUniform* m_pixelAmbientMaterial;
 	GLUniform* m_pixelSpecularMaterial;
 	GLUniform* m_pixelShininess;
+
+protected:
+
+	GLProgram m_toonLightProgram;
+
+	GLAttribute* m_toonPosition;
+	GLAttribute* m_toonNormal;
+	GLAttribute* m_toonDiffuseMaterial;
+
+	GLUniform* m_toonProjection;
+	GLUniform* m_toonModelview;
+	GLUniform* m_toonNormalMatrix;
+
+	GLUniform* m_toonLightPosition;
+	GLUniform* m_toonAmbientMaterial;
+	GLUniform* m_toonSpecularMaterial;
+	GLUniform* m_toonShininess;
 };
 #endif

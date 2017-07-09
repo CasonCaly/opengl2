@@ -8,6 +8,7 @@
 #include "glsurface/GLTorus.h"
 #include "glsurface/GLKleinBottle.h"
 #include "glsurface/GLTrefoilKnot.h"
+#include "ObjSurface.h"
 
 #define SurfaceCount (6)
 #define ButtonCount (5)
@@ -31,17 +32,26 @@ void Lighting::init()
 	m_screenSize.y = 480 - m_buttonSize.y;
 	m_centerPoint = m_screenSize / 2;
 
+	//new GLSphere(1.4f, ivec2(20, 20)
+	//GLTrefoilKnot(1.8f, ivec2(60, 15))
 	m_surfaces.push_back(new GLCone(3, 1, ivec2(20, 20)));
 	m_surfaces.push_back(new GLTorus(1.4f, 0.3f, ivec2(20, 20)));
-	m_surfaces.push_back(new GLTrefoilKnot(1.8f, ivec2(60, 15)));
+	m_surfaces.push_back(new GLSphere(1.4f, ivec2(20, 20)));
 	m_surfaces.push_back(new GLKleinBottle(0.2f, ivec2(20, 20)));
-	m_surfaces.push_back(new GLMobiusStrip(1, ivec2(40, 40)));
 	
+
+	GLSurface* toon = new ObjSurface("Models/micronapalmv2.obj");//new GLMobiusStrip(1, ivec2(40, 40));
+	//toon->setName("toon");
+	m_surfaces.push_back(toon);
     
-    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
-    m_showedSurface->setName("sphere");
-    m_surfaces.push_back(m_showedSurface);
-    
+    //m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
+    //m_showedSurface->setName("sphere");
+    //m_surfaces.push_back(m_showedSurface);
+
+	ObjSurface* objSurface = new ObjSurface("Models/micronapalmv2.obj");
+	objSurface->setName("pixel");
+	m_surfaces.push_back(objSurface);
+
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
 		GLSurface* surface = m_surfaces[i];
@@ -64,6 +74,7 @@ void Lighting::init()
 
 	this->initVertexAttributeAndUniform();
 	this->initPixelAttributeAndUniform();
+	this->initToonAttributeAndUnifrom();
 	glEnable(GL_DEPTH_TEST);
 
 	m_translation = mat4::Translate(0, 0, -7);
@@ -121,8 +132,30 @@ void Lighting::initPixelAttributeAndUniform()
 	m_pixelAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
 	m_pixelSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
 	m_pixelShininess->value1f(50.0f);
-    
+}
 
+void Lighting::initToonAttributeAndUnifrom()
+{
+	m_toonLightProgram.use();
+	m_toonPosition = m_toonLightProgram.getAttribute("Position");
+	m_toonNormal = m_toonLightProgram.getAttribute("Normal");
+	m_toonDiffuseMaterial = m_toonLightProgram.getAttribute("DiffuseMaterial");
+
+	m_toonProjection = m_toonLightProgram.getUniform("Projection");
+	m_toonModelview = m_toonLightProgram.getUniform("Modelview");
+	m_toonNormalMatrix = m_toonLightProgram.getUniform("NormalMatrix");
+
+	m_toonLightPosition = m_toonLightProgram.getUniform("LightPosition");
+	m_toonAmbientMaterial = m_toonLightProgram.getUniform("AmbientMaterial");
+	m_toonSpecularMaterial = m_toonLightProgram.getUniform("SpecularMaterial");
+	m_toonShininess = m_toonLightProgram.getUniform("Shininess");
+
+	m_toonPosition->enableVertexAttribArray();
+	m_toonNormal->enableVertexAttribArray();
+
+	m_toonAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
+	m_toonSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
+	m_toonShininess->value1f(50.0f);
 }
 
 void Lighting::renderSurface()
@@ -133,8 +166,11 @@ void Lighting::renderSurface()
 	for (auto begin = m_surfaces.begin(); begin != m_surfaces.end(); begin++){
 		GLSurface* surface = *begin;
 		std::string& name = surface->getName();
-		if (name == "sphere"){
+		if (name == "pixel"){
 			this->renderUsePixel(surface);
+		}
+		else if(name == "toon"){
+			this->renderUseToon(surface);
 		}
 		else{
 			this->renderUseVertex(surface);
@@ -235,6 +271,52 @@ void Lighting::renderUsePixel(GLSurface* surface)
 	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
 }
 
+void Lighting::renderUseToon(GLSurface* surface)
+{
+	m_toonLightProgram.use();
+	vec2 size = surface->getViewportSize();
+	vec2 lowerLeft = surface->getLowerLeft();
+	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
+
+	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
+	m_toonLightPosition->vector3fv(1, lightPosition.Pointer());
+
+	Quaternion& orientation = surface->getOrientation();
+	mat4 rotation = orientation.ToMatrix();
+	mat4 modelview = rotation * m_translation;
+
+	m_toonModelview->matrix4fv(1, 0, modelview.Pointer());
+
+	//设置法线矩阵
+	mat3 normalMatrix = modelview.ToMat3();
+	m_toonNormalMatrix->matrix3fv(1, 0, normalMatrix.Pointer());
+
+	// 设置投影矩阵
+	float h = 4.0f * size.y / size.x;
+	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
+	m_toonProjection->matrix4fv(1, 0, projectionMatrix.Pointer());
+
+	vec3 color = surface->getColor();
+	color = color * 0.75f;
+	m_toonDiffuseMaterial->vertexAttrib4f(color.x, color.y, color.z, 1);
+
+	// Draw the wireframe.
+	int stride = 2 * sizeof(vec3);
+	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
+
+	GLBuffer& vertexBuffer = surface->getVertexBuffer();
+
+	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
+	int triangelIndexCount = surface->getTriangleIndexCount();
+
+	vertexBuffer.bind(GL_ARRAY_BUFFER);
+	m_toonPosition->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
+	m_toonNormal->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
+
+	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
+}
+
 void Lighting::render()
 {
 	this->updateSurface();
@@ -299,6 +381,7 @@ void Lighting::initProgram()
 {
 	GLApp::initProgram();
 	this->createPrograme("Shaders/PixelLighting.es2.vert", "Shaders/PixelLighting.es2.frag", m_pixelLightProgram);
+	this->createPrograme("Shaders/ToonLighting.es2.vert", "Shaders/ToonLighting.es2.frag", m_toonLightProgram);
 }
 
 //该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，

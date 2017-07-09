@@ -215,7 +215,7 @@ void GLApp::render()
 void GLApp::initProgram()
 {
 	this->createPrograme("Shaders/Simple.vert", "Shaders/Simple.frag", m_glProgram);
-	//m_glProgram.use();
+	m_glProgram.use();
 }
 
 

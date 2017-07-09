@@ -5,6 +5,7 @@
     <ClCompile Include="Classes\Lighting.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Classes\ObjSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes">
@@ -15,5 +16,6 @@
     <ClInclude Include="Classes\Lighting.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Classes\ObjSurface.h" />
   </ItemGroup>
 </Project>

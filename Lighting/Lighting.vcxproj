@@ -12,10 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Classes\Lighting.cpp" />
+    <ClCompile Include="Classes\ObjSurface.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\Lighting.h" />
+    <ClInclude Include="Classes\ObjSurface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C57E083B-BAFA-4366-98F7-A44F76AC5BCA}</ProjectGuid>
