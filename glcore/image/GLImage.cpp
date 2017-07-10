@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdio.h>
 #include "GLImage.h"
+#include "os/Path.h"
+#include "png.h"
 
 #define CC_BREAK_IF(cond)           if(cond) break
 
@@ -11,7 +13,6 @@ typedef struct
 	size_t size;
 	int offset;
 }tImageSource;
-
 
 static void pngReadCallback(png_structp png_ptr, png_bytep data, png_size_t length)
 {
@@ -26,6 +27,23 @@ static void pngReadCallback(png_structp png_ptr, png_bytep data, png_size_t leng
 	{
 		png_error(png_ptr, "pngReaderCallback failed");
 	}
+}
+
+bool GLImage::initWithImage(const std::string& path)
+{
+	std::string fullPath = Path::joinResource(path);
+	FILE* file = fopen(fullPath.c_str(), "rb");
+	if (!file){
+		printf("file not exist", path.c_str());
+		return false;
+	}
+	fseek(file, 0, SEEK_END);
+	long size = ftell(file);
+	unsigned char* ctn = (unsigned char*)malloc(size* sizeof(char));
+	fseek(file, -size, SEEK_CUR);
+	fread(ctn, 1, size, file);
+	fclose(file);
+	return this->initWithPngData(ctn, size);
 }
 
 bool GLImage::initWithPngData(const unsigned char * data, size_t dataLen)

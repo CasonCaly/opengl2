@@ -9,6 +9,7 @@
 #include "glsurface/GLKleinBottle.h"
 #include "glsurface/GLTrefoilKnot.h"
 #include "ObjSurface.h"
+#include "image/GLImage.h"
 
 #define SurfaceCount (6)
 #define ButtonCount (5)
@@ -25,6 +26,8 @@ Texture::Texture()
 
 void Texture::init()
 {
+	GLImage image;
+	image.initWithImage("Image/Grid16.png");
 	m_trackballRadius = 320 / 3;
 	m_buttonSize.y = 480 / 10;
 	m_buttonSize.x = 4 * m_buttonSize.y / 3;
