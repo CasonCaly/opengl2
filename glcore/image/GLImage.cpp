@@ -34,7 +34,7 @@ bool GLImage::initWithImage(const std::string& path)
 	std::string fullPath = Path::joinResource(path);
 	FILE* file = fopen(fullPath.c_str(), "rb");
 	if (!file){
-		printf("file not exist", path.c_str());
+		printf("file not exist %s", path.c_str());
 		return false;
 	}
 	fseek(file, 0, SEEK_END);

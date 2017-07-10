@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-               BuildableName = "Lighting.app"
-               BlueprintName = "Lighting"
-               ReferencedContainer = "container:Lighting.xcodeproj">
+               BuildableName = "Texture.app"
+               BlueprintName = "Texture"
+               ReferencedContainer = "container:Texture.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "Lighting.app"
-            BlueprintName = "Lighting"
-            ReferencedContainer = "container:Lighting.xcodeproj">
+            BuildableName = "Texture.app"
+            BlueprintName = "Texture"
+            ReferencedContainer = "container:Texture.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "Lighting.app"
-            BlueprintName = "Lighting"
-            ReferencedContainer = "container:Lighting.xcodeproj">
+            BuildableName = "Texture.app"
+            BlueprintName = "Texture"
+            ReferencedContainer = "container:Texture.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5599EFDC1E6B03C200B26057"
-            BuildableName = "Lighting.app"
-            BlueprintName = "Lighting"
-            ReferencedContainer = "container:Lighting.xcodeproj">
+            BuildableName = "Texture.app"
+            BlueprintName = "Texture"
+            ReferencedContainer = "container:Texture.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

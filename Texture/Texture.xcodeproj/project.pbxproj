@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5595C5811F088B7A00D40D8C /* Lighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5595C57F1F088B7A00D40D8C /* Lighting.cpp */; };
+		555402E71F13BB4500570A2E /* ObjSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402E31F13BB4500570A2E /* ObjSurface.cpp */; };
+		555402E81F13BB4500570A2E /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402E51F13BB4500570A2E /* Texture.cpp */; };
+		555402ED1F13BBBD00570A2E /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 555402EC1F13BBBD00570A2E /* Models */; };
+		555402F11F13BC6200570A2E /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 555402F01F13BC6200570A2E /* Image */; };
 		5599EFF61E6B049E00B26057 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5599EFF51E6B049E00B26057 /* main.cpp */; };
 		5599EFF91E6B052C00B26057 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFF81E6B052C00B26057 /* OpenGL.framework */; };
 		5599EFFB1E6B053700B26057 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599EFFA1E6B053700B26057 /* IOKit.framework */; };
@@ -20,9 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5595C57F1F088B7A00D40D8C /* Lighting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lighting.cpp; sourceTree = "<group>"; };
-		5595C5801F088B7A00D40D8C /* Lighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lighting.h; sourceTree = "<group>"; };
-		5599EFDD1E6B03C200B26057 /* Lighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		555402E31F13BB4500570A2E /* ObjSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjSurface.cpp; sourceTree = "<group>"; };
+		555402E41F13BB4500570A2E /* ObjSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjSurface.h; sourceTree = "<group>"; };
+		555402E51F13BB4500570A2E /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		555402E61F13BB4500570A2E /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		555402EC1F13BBBD00570A2E /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
+		555402F01F13BC6200570A2E /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Image; sourceTree = "<group>"; };
+		5599EFDD1E6B03C200B26057 /* Texture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Texture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5599EFF51E6B049E00B26057 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5599EFF81E6B052C00B26057 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5599EFFA1E6B053700B26057 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -54,6 +61,8 @@
 		5599EFD41E6B03C200B26057 = {
 			isa = PBXGroup;
 			children = (
+				555402F01F13BC6200570A2E /* Image */,
+				555402EC1F13BBBD00570A2E /* Models */,
 				55EDBEAC1EEBF5C000850B69 /* Icon.icns */,
 				5599F0041E6B05E300B26057 /* Shaders */,
 				5599EFF11E6B047200B26057 /* Classes */,
@@ -66,7 +75,7 @@
 		5599EFDE1E6B03C200B26057 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5599EFDD1E6B03C200B26057 /* Lighting.app */,
+				5599EFDD1E6B03C200B26057 /* Texture.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,8 +83,10 @@
 		5599EFF11E6B047200B26057 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5595C57F1F088B7A00D40D8C /* Lighting.cpp */,
-				5595C5801F088B7A00D40D8C /* Lighting.h */,
+				555402E31F13BB4500570A2E /* ObjSurface.cpp */,
+				555402E41F13BB4500570A2E /* ObjSurface.h */,
+				555402E51F13BB4500570A2E /* Texture.cpp */,
+				555402E61F13BB4500570A2E /* Texture.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -96,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5599EFDC1E6B03C200B26057 /* Lighting */ = {
+		5599EFDC1E6B03C200B26057 /* Texture */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "Lighting" */;
+			buildConfigurationList = 5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "Texture" */;
 			buildPhases = (
 				5599EFD91E6B03C200B26057 /* Sources */,
 				5599EFDA1E6B03C200B26057 /* Frameworks */,
@@ -109,9 +120,9 @@
 			);
 			dependencies = (
 			);
-			name = Lighting;
+			name = Texture;
 			productName = HelloArrow;
-			productReference = 5599EFDD1E6B03C200B26057 /* Lighting.app */;
+			productReference = 5599EFDD1E6B03C200B26057 /* Texture.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "Lighting" */;
+			buildConfigurationList = 5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "Texture" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -142,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5599EFDC1E6B03C200B26057 /* Lighting */,
+				5599EFDC1E6B03C200B26057 /* Texture */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +163,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555402F11F13BC6200570A2E /* Image in Resources */,
+				555402ED1F13BBBD00570A2E /* Models in Resources */,
 				55EDBEAD1EEBF5C000850B69 /* Icon.icns in Resources */,
 				5599F0051E6B05E300B26057 /* Shaders in Resources */,
 			);
@@ -180,8 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555402E81F13BB4500570A2E /* Texture.cpp in Sources */,
 				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
-				5595C5811F088B7A00D40D8C /* Lighting.cpp in Sources */,
+				555402E71F13BB4500570A2E /* ObjSurface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "Lighting" */ = {
+		5599EFD81E6B03C200B26057 /* Build configuration list for PBXProject "Texture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5599EFEC1E6B03C200B26057 /* Debug */,
@@ -321,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "Lighting" */ = {
+		5599EFEE1E6B03C200B26057 /* Build configuration list for PBXNativeTarget "Texture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5599EFEF1E6B03C200B26057 /* Debug */,

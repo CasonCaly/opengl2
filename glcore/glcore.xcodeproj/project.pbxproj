@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55354AFD1EEEDF82002EF79E /* GLSurface.cpp */; };
+		555402C01F13B9EE00570A2E /* GLImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402871F13B9EE00570A2E /* GLImage.cpp */; };
+		555402C11F13B9EE00570A2E /* GLImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402881F13B9EE00570A2E /* GLImage.h */; };
+		555402C81F13B9EE00570A2E /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402941F13B9EE00570A2E /* png.h */; };
+		555402C91F13B9EE00570A2E /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402951F13B9EE00570A2E /* pngconf.h */; };
+		555402CA1F13B9EE00570A2E /* pnglibconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402961F13B9EE00570A2E /* pnglibconf.h */; };
+		555402DB1F13B9EF00570A2E /* zconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402B81F13B9EE00570A2E /* zconf.h */; };
+		555402DC1F13B9EF00570A2E /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402B91F13B9EE00570A2E /* zlib.h */; };
+		555402E01F13BAF400570A2E /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555402DF1F13BAF400570A2E /* libpng.a */; };
+		555402E21F13BB0200570A2E /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555402E11F13BB0200570A2E /* libz.a */; };
 		5589968D1EF556F200D39E9C /* GLInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968C1EF556F200D39E9C /* GLInterval.h */; };
 		558996901EF559CA00D39E9C /* GLSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5589968E1EF559CA00D39E9C /* GLSphere.cpp */; };
 		558996911EF559CA00D39E9C /* GLSphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968F1EF559CA00D39E9C /* GLSphere.h */; };
@@ -53,6 +62,15 @@
 
 /* Begin PBXFileReference section */
 		55354AFD1EEEDF82002EF79E /* GLSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSurface.cpp; sourceTree = "<group>"; };
+		555402871F13B9EE00570A2E /* GLImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLImage.cpp; sourceTree = "<group>"; };
+		555402881F13B9EE00570A2E /* GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImage.h; sourceTree = "<group>"; };
+		555402941F13B9EE00570A2E /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
+		555402951F13B9EE00570A2E /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
+		555402961F13B9EE00570A2E /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
+		555402B81F13B9EE00570A2E /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
+		555402B91F13B9EE00570A2E /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		555402DF1F13BAF400570A2E /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = png/prebuilt/mac/libpng.a; sourceTree = "<group>"; };
+		555402E11F13BB0200570A2E /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = zlib/prebuilt/mac/libz.a; sourceTree = "<group>"; };
 		5589968C1EF556F200D39E9C /* GLInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLInterval.h; sourceTree = SOURCE_ROOT; };
 		5589968E1EF559CA00D39E9C /* GLSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSphere.cpp; sourceTree = "<group>"; };
 		5589968F1EF559CA00D39E9C /* GLSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSphere.h; sourceTree = "<group>"; };
@@ -103,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555402E21F13BB0200570A2E /* libz.a in Frameworks */,
+				555402E01F13BAF400570A2E /* libpng.a in Frameworks */,
 				55EDBE9E1EEBD76400850B69 /* IOKit.framework in Frameworks */,
 				55EDBE9C1EEBD75500850B69 /* AppKit.framework in Frameworks */,
 				55EDBE9A1EEBD74D00850B69 /* QuartzCore.framework in Frameworks */,
@@ -115,6 +135,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		555402861F13B9EE00570A2E /* image */ = {
+			isa = PBXGroup;
+			children = (
+				555402871F13B9EE00570A2E /* GLImage.cpp */,
+				555402881F13B9EE00570A2E /* GLImage.h */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		555402891F13B9EE00570A2E /* png */ = {
+			isa = PBXGroup;
+			children = (
+				5554028A1F13B9EE00570A2E /* include */,
+			);
+			path = png;
+			sourceTree = "<group>";
+		};
+		5554028A1F13B9EE00570A2E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				555402931F13B9EE00570A2E /* mac */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		555402931F13B9EE00570A2E /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				555402941F13B9EE00570A2E /* png.h */,
+				555402951F13B9EE00570A2E /* pngconf.h */,
+				555402961F13B9EE00570A2E /* pnglibconf.h */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+		555402B61F13B9EE00570A2E /* zlib */ = {
+			isa = PBXGroup;
+			children = (
+				555402B71F13B9EE00570A2E /* include */,
+			);
+			path = zlib;
+			sourceTree = "<group>";
+		};
+		555402B71F13B9EE00570A2E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				555402B81F13B9EE00570A2E /* zconf.h */,
+				555402B91F13B9EE00570A2E /* zlib.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		559C249D1EED83D9005B7599 /* glsurface */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +212,9 @@
 		55EDBE311EEBD59600850B69 = {
 			isa = PBXGroup;
 			children = (
+				555402861F13B9EE00570A2E /* image */,
+				555402891F13B9EE00570A2E /* png */,
+				555402B61F13B9EE00570A2E /* zlib */,
 				559C249D1EED83D9005B7599 /* glsurface */,
 				55EDBE8E1EEBD61B00850B69 /* GLCore.h */,
 				55EDBE461EEBD5D100850B69 /* glclass */,
@@ -226,6 +301,8 @@
 		55EDBE901EEBD6E000850B69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				555402E11F13BB0200570A2E /* libz.a */,
+				555402DF1F13BAF400570A2E /* libpng.a */,
 				55EDBE9D1EEBD76400850B69 /* IOKit.framework */,
 				55EDBE9B1EEBD75500850B69 /* AppKit.framework */,
 				55EDBE991EEBD74D00850B69 /* QuartzCore.framework */,
@@ -244,14 +321,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555402C81F13B9EE00570A2E /* png.h in Headers */,
 				55EDBE8B1EEBD5D100850B69 /* Vector.hpp in Headers */,
 				55EDBE7D1EEBD5D100850B69 /* GLUniform.h in Headers */,
+				555402DC1F13B9EF00570A2E /* zlib.h in Headers */,
+				555402CA1F13B9EE00570A2E /* pnglibconf.h in Headers */,
 				55EDBE8F1EEBD61B00850B69 /* GLCore.h in Headers */,
+				555402C11F13B9EE00570A2E /* GLImage.h in Headers */,
 				55EDBE831EEBD5D100850B69 /* glfw3native.h in Headers */,
 				558996911EF559CA00D39E9C /* GLSphere.h in Headers */,
 				55CDC90C1EFF97800009C6F4 /* GLTrefoilKnot.h in Headers */,
 				55EDBE761EEBD5D100850B69 /* GLBuffer.h in Headers */,
 				55CDC90A1EFF97800009C6F4 /* GLTorus.h in Headers */,
+				555402C91F13B9EE00570A2E /* pngconf.h in Headers */,
 				55CDC9061EFF97800009C6F4 /* GLKleinBottle.h in Headers */,
 				55EDBE891EEBD5D100850B69 /* Matrix.hpp in Headers */,
 				55EDBE741EEBD5D100850B69 /* GLAttribute.h in Headers */,
@@ -264,6 +346,7 @@
 				55EDBE791EEBD5D100850B69 /* GLProgram.h in Headers */,
 				559C249F1EED83D9005B7599 /* GLSurface.h in Headers */,
 				55EDBE821EEBD5D100850B69 /* glfw3.h in Headers */,
+				555402DB1F13B9EF00570A2E /* zconf.h in Headers */,
 				55EDBE771EEBD5D100850B69 /* GLGL.h in Headers */,
 				55EDBE721EEBD5D100850B69 /* GLApp.h in Headers */,
 			);
@@ -330,6 +413,7 @@
 				55EDBE711EEBD5D100850B69 /* GLApp.cpp in Sources */,
 				55CDC90B1EFF97800009C6F4 /* GLTrefoilKnot.cpp in Sources */,
 				55CDC9071EFF97800009C6F4 /* GLMobiusStrip.cpp in Sources */,
+				555402C01F13B9EE00570A2E /* GLImage.cpp in Sources */,
 				55CDC9091EFF97800009C6F4 /* GLTorus.cpp in Sources */,
 				55EDBE781EEBD5D100850B69 /* GLProgram.cpp in Sources */,
 				55EDBE7A1EEBD5D100850B69 /* GLShader.cpp in Sources */,
@@ -449,6 +533,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/glfw3/prebuilt/mac",
+					"$(PROJECT_DIR)/png/prebuilt/mac",
+					"$(PROJECT_DIR)/zlib/prebuilt/mac",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -470,6 +556,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/glfw3/prebuilt/mac",
+					"$(PROJECT_DIR)/png/prebuilt/mac",
+					"$(PROJECT_DIR)/zlib/prebuilt/mac",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
