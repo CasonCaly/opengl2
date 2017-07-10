@@ -8,7 +8,7 @@ uniform  float Shininess;
 
 void main(void)
 {
-    vec3 N = normalize(EyespaceNormal);
+    vec3 N = normalize(EyespaceNormal);//法线向量插值
     vec3 L = normalize(LightPosition);
     vec3 E = vec3(0, 0, 1);
     vec3 H = normalize(L + E);

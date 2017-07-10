@@ -86,7 +86,7 @@ void ObjSurface::generateVertices()
 		vec3 a = vertex[face.x].Position;
 		vec3 b = vertex[face.y].Position;
 		vec3 c = vertex[face.z].Position;
-		vec3 facetNormal = (b - a).Cross(c - a);
+		vec3 facetNormal = (b - a).Cross(c - a);//三角形的方向觉得了法线的方向，从这边的方向来看，属于逆时针方向
 
 		// Add the facet normal to the lighting normal of each adjoining vertex.
 		vertex[face.x].Normal += facetNormal;
