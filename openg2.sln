@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lighting", "Lighting\Lighti
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VBO", "VBO\VBO.vcxproj", "{9CD5BDEF-E5FA-49BC-944B-64F5216382A6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Texture", "Texture\Texture.vcxproj", "{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,10 @@ Global
 		{9CD5BDEF-E5FA-49BC-944B-64F5216382A6}.Debug|Win32.Build.0 = Debug|Win32
 		{9CD5BDEF-E5FA-49BC-944B-64F5216382A6}.Release|Win32.ActiveCfg = Release|Win32
 		{9CD5BDEF-E5FA-49BC-944B-64F5216382A6}.Release|Win32.Build.0 = Release|Win32
+		{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}.Debug|Win32.Build.0 = Debug|Win32
+		{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}.Release|Win32.ActiveCfg = Release|Win32
+		{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
