@@ -24,6 +24,7 @@
     <ClCompile Include="glsurface\GLSurface.cpp" />
     <ClCompile Include="glsurface\GLTorus.cpp" />
     <ClCompile Include="glsurface\GLTrefoilKnot.cpp" />
+    <ClCompile Include="image\GLImage.cpp" />
     <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -48,10 +49,16 @@
     <ClInclude Include="glsurface\GLSurface.h" />
     <ClInclude Include="glsurface\GLTorus.h" />
     <ClInclude Include="glsurface\GLTrefoilKnot.h" />
+    <ClInclude Include="image\GLImage.h" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
     <ClInclude Include="math\Vector.hpp" />
     <ClInclude Include="os\Path.h" />
+    <ClInclude Include="png\include\win32\png.h" />
+    <ClInclude Include="png\include\win32\pngconf.h" />
+    <ClInclude Include="png\include\win32\pnglibconf.h" />
+    <ClInclude Include="zlib\include\zconf.h" />
+    <ClInclude Include="zlib\include\zlib.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BC28E7F6-E6FD-4CE8-B3E6-752DB9F93916}</ProjectGuid>
@@ -95,14 +102,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLCORE_EXPORTS;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./;./glew/include;./glfw3/include/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./glew/include;./glfw3/include/win32;./png/include/win32;./zlib/include/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819;4996;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>./glew/prebuilt;./glfw3/prebuilt/win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>./glew/prebuilt;./glfw3/prebuilt/win32;./zlib/prebuilt/win32;./png/prebuilt/win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;libpng.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

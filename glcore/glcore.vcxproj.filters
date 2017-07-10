@@ -32,6 +32,24 @@
     <Filter Include="glsurface">
       <UniqueIdentifier>{7efc4c6a-1197-4093-8858-d523f3a52554}</UniqueIdentifier>
     </Filter>
+    <Filter Include="png">
+      <UniqueIdentifier>{09617c7a-ebb7-4f75-bb85-266f6dcab5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="png\include">
+      <UniqueIdentifier>{a68d5cfc-e9df-458f-9556-c7e894796573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="png\include\win32">
+      <UniqueIdentifier>{48a6d174-e7de-4457-9464-32ff33498378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zlib">
+      <UniqueIdentifier>{563ad94b-18d0-4c75-a8c9-52d995e590b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zlib\inlcude">
+      <UniqueIdentifier>{7bc05966-aad3-45af-877e-f8ac48bf7684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="image">
+      <UniqueIdentifier>{596fa035-190e-4781-9386-6b5eabd5f604}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glclass\GLApp.cpp">
@@ -75,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="glsurface\GLTrefoilKnot.cpp">
       <Filter>glsurface</Filter>
+    </ClCompile>
+    <ClCompile Include="image\GLImage.cpp">
+      <Filter>image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +171,24 @@
     </ClInclude>
     <ClInclude Include="glsurface\GLTrefoilKnot.h">
       <Filter>glsurface</Filter>
+    </ClInclude>
+    <ClInclude Include="png\include\win32\png.h">
+      <Filter>png\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="png\include\win32\pngconf.h">
+      <Filter>png\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="png\include\win32\pnglibconf.h">
+      <Filter>png\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\include\zconf.h">
+      <Filter>zlib\inlcude</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\include\zlib.h">
+      <Filter>zlib\inlcude</Filter>
+    </ClInclude>
+    <ClInclude Include="image\GLImage.h">
+      <Filter>image</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
