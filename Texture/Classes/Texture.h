@@ -8,6 +8,7 @@ using namespace std;
 #include "SimpleProgram.h"
 #include "PixelLightProgram.h"
 #include "ToonProgram.h"
+#include "TextureProgram.h"
 
 class GLSurface;
 class GLUniform;
@@ -62,7 +63,8 @@ protected:
 	SimpleProgram m_simpleProgram;
 	PixelLightProgram m_pixelLightProgram;
 	ToonProgram m_toonProgram;
-
+    TextureProgram m_texProgram;
+    
 protected:
 
     mat4 m_translation;

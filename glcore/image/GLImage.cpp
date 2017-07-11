@@ -62,6 +62,21 @@ myErrorExit(j_common_ptr cinfo)
 	longjmp(myerr->setjmp_buffer, 1);
 }
 
+unsigned char* GLImage::getData()
+{
+    return m_data;
+}
+
+size_t GLImage::getWidth()
+{
+    return m_width;
+}
+
+size_t GLImage::getHeight()
+{
+    return m_height;
+}
+
 bool GLImage::initWithImage(const std::string& path)
 {
 	std::string fullPath = Path::joinResource(path);
@@ -87,6 +102,8 @@ bool GLImage::initWithImage(const std::string& path)
 	case Format::JPG:
 		ret = initWithJpgData(unpackedData, unpackedLen);
 		break;
+    default:
+        break;
 	}
 	return ret;
 }

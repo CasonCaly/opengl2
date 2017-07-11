@@ -40,3 +40,8 @@ void GLUniform::vector3fv(GLsizei count, const GLfloat *value)
 {
 	glUniform3fv(m_unifrom, count, value);
 }
+
+void GLUniform::value1i(int v0)
+{
+    glUniform1i(m_unifrom, v0);
+}

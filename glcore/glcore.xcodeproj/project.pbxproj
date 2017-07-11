@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55238B3D1F1510140063F89B /* jconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 55238B0D1F1510130063F89B /* jconfig.h */; };
+		55238B3E1F1510140063F89B /* jmorecfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 55238B0E1F1510130063F89B /* jmorecfg.h */; };
+		55238B3F1F1510140063F89B /* jpeglib.h in Headers */ = {isa = PBXBuildFile; fileRef = 55238B0F1F1510130063F89B /* jpeglib.h */; };
+		55238B521F1511500063F89B /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55238B511F1511500063F89B /* libjpeg.a */; };
+		55238B611F151DDF0063F89B /* GLTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55238B5F1F151DDF0063F89B /* GLTexture.cpp */; };
+		55238B621F151DDF0063F89B /* GLTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 55238B601F151DDF0063F89B /* GLTexture.h */; };
 		55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55354AFD1EEEDF82002EF79E /* GLSurface.cpp */; };
 		555402C01F13B9EE00570A2E /* GLImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402871F13B9EE00570A2E /* GLImage.cpp */; };
 		555402C11F13B9EE00570A2E /* GLImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402881F13B9EE00570A2E /* GLImage.h */; };
@@ -61,6 +67,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55238B0D1F1510130063F89B /* jconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconfig.h; sourceTree = "<group>"; };
+		55238B0E1F1510130063F89B /* jmorecfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmorecfg.h; sourceTree = "<group>"; };
+		55238B0F1F1510130063F89B /* jpeglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
+		55238B511F1511500063F89B /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = jpeg/prebuilt/mac/libjpeg.a; sourceTree = "<group>"; };
+		55238B5F1F151DDF0063F89B /* GLTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLTexture.cpp; sourceTree = "<group>"; };
+		55238B601F151DDF0063F89B /* GLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
 		55354AFD1EEEDF82002EF79E /* GLSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSurface.cpp; sourceTree = "<group>"; };
 		555402871F13B9EE00570A2E /* GLImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLImage.cpp; sourceTree = "<group>"; };
 		555402881F13B9EE00570A2E /* GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImage.h; sourceTree = "<group>"; };
@@ -121,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55238B521F1511500063F89B /* libjpeg.a in Frameworks */,
 				555402E21F13BB0200570A2E /* libz.a in Frameworks */,
 				555402E01F13BAF400570A2E /* libpng.a in Frameworks */,
 				55EDBE9E1EEBD76400850B69 /* IOKit.framework in Frameworks */,
@@ -135,6 +148,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55238AFB1F1510130063F89B /* jpeg */ = {
+			isa = PBXGroup;
+			children = (
+				55238AFD1F1510130063F89B /* include */,
+			);
+			path = jpeg;
+			sourceTree = "<group>";
+		};
+		55238AFD1F1510130063F89B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				55238B0C1F1510130063F89B /* mac */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		55238B0C1F1510130063F89B /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				55238B0D1F1510130063F89B /* jconfig.h */,
+				55238B0E1F1510130063F89B /* jmorecfg.h */,
+				55238B0F1F1510130063F89B /* jpeglib.h */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
 		555402861F13B9EE00570A2E /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +251,7 @@
 		55EDBE311EEBD59600850B69 = {
 			isa = PBXGroup;
 			children = (
+				55238AFB1F1510130063F89B /* jpeg */,
 				555402861F13B9EE00570A2E /* image */,
 				555402891F13B9EE00570A2E /* png */,
 				555402B61F13B9EE00570A2E /* zlib */,
@@ -237,6 +277,8 @@
 		55EDBE461EEBD5D100850B69 /* glclass */ = {
 			isa = PBXGroup;
 			children = (
+				55238B5F1F151DDF0063F89B /* GLTexture.cpp */,
+				55238B601F151DDF0063F89B /* GLTexture.h */,
 				55EDBE471EEBD5D100850B69 /* GLApp.cpp */,
 				55EDBE481EEBD5D100850B69 /* GLApp.h */,
 				55EDBE491EEBD5D100850B69 /* GLAttribute.cpp */,
@@ -301,6 +343,7 @@
 		55EDBE901EEBD6E000850B69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55238B511F1511500063F89B /* libjpeg.a */,
 				555402E11F13BB0200570A2E /* libz.a */,
 				555402DF1F13BAF400570A2E /* libpng.a */,
 				55EDBE9D1EEBD76400850B69 /* IOKit.framework */,
@@ -326,10 +369,12 @@
 				55EDBE7D1EEBD5D100850B69 /* GLUniform.h in Headers */,
 				555402DC1F13B9EF00570A2E /* zlib.h in Headers */,
 				555402CA1F13B9EE00570A2E /* pnglibconf.h in Headers */,
+				55238B621F151DDF0063F89B /* GLTexture.h in Headers */,
 				55EDBE8F1EEBD61B00850B69 /* GLCore.h in Headers */,
 				555402C11F13B9EE00570A2E /* GLImage.h in Headers */,
 				55EDBE831EEBD5D100850B69 /* glfw3native.h in Headers */,
 				558996911EF559CA00D39E9C /* GLSphere.h in Headers */,
+				55238B3F1F1510140063F89B /* jpeglib.h in Headers */,
 				55CDC90C1EFF97800009C6F4 /* GLTrefoilKnot.h in Headers */,
 				55EDBE761EEBD5D100850B69 /* GLBuffer.h in Headers */,
 				55CDC90A1EFF97800009C6F4 /* GLTorus.h in Headers */,
@@ -344,8 +389,10 @@
 				55EDBE8A1EEBD5D100850B69 /* Quaternion.hpp in Headers */,
 				5589968D1EF556F200D39E9C /* GLInterval.h in Headers */,
 				55EDBE791EEBD5D100850B69 /* GLProgram.h in Headers */,
+				55238B3D1F1510140063F89B /* jconfig.h in Headers */,
 				559C249F1EED83D9005B7599 /* GLSurface.h in Headers */,
 				55EDBE821EEBD5D100850B69 /* glfw3.h in Headers */,
+				55238B3E1F1510140063F89B /* jmorecfg.h in Headers */,
 				555402DB1F13B9EF00570A2E /* zconf.h in Headers */,
 				55EDBE771EEBD5D100850B69 /* GLGL.h in Headers */,
 				55EDBE721EEBD5D100850B69 /* GLApp.h in Headers */,
@@ -411,6 +458,7 @@
 			files = (
 				55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */,
 				55EDBE711EEBD5D100850B69 /* GLApp.cpp in Sources */,
+				55238B611F151DDF0063F89B /* GLTexture.cpp in Sources */,
 				55CDC90B1EFF97800009C6F4 /* GLTrefoilKnot.cpp in Sources */,
 				55CDC9071EFF97800009C6F4 /* GLMobiusStrip.cpp in Sources */,
 				555402C01F13B9EE00570A2E /* GLImage.cpp in Sources */,
@@ -535,6 +583,7 @@
 					"$(PROJECT_DIR)/glfw3/prebuilt/mac",
 					"$(PROJECT_DIR)/png/prebuilt/mac",
 					"$(PROJECT_DIR)/zlib/prebuilt/mac",
+					"$(PROJECT_DIR)/jpeg/prebuilt/mac",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -558,6 +607,7 @@
 					"$(PROJECT_DIR)/glfw3/prebuilt/mac",
 					"$(PROJECT_DIR)/png/prebuilt/mac",
 					"$(PROJECT_DIR)/zlib/prebuilt/mac",
+					"$(PROJECT_DIR)/jpeg/prebuilt/mac",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

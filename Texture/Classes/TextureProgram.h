@@ -1,10 +1,11 @@
-#ifndef Normal_program_h
-#define Normal_program_h
+#ifndef Texture_program_h
+#define Texture_program_h
 #include "glclass/GLProgram.h"
 #include "math/Matrix.hpp"
+#include "glclass/GLTexture.h"
 
 class GLSurface;
-class SimpleProgram : public GLProgram
+class TextureProgram : public GLProgram
 {
 public:
 
@@ -21,11 +22,15 @@ protected:
 	GLUniform* m_ambientMaterialUniform;//环境光颜色值
 	GLUniform* m_specularMaterialUniform;//镜面光材质
 	GLUniform* m_shininessUniform;//发光?
-
+    GLUniform* m_sampler;
+    
 	GLAttribute* m_positionSlot;//顶点属性
 	GLAttribute* m_colorSlot;
 	GLAttribute* m_normalSlot;//法线属性
 	GLAttribute* m_diffuseMaterialSlot;//漫反射属性
+    GLAttribute* m_textureCoordSlot;
+    
+    GLTexture* m_texture;
 };
 
 #endif

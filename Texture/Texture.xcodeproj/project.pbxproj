@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55238B591F1511E10063F89B /* PixelLightProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55238B531F1511E10063F89B /* PixelLightProgram.cpp */; };
+		55238B5A1F1511E10063F89B /* SimpleProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55238B551F1511E10063F89B /* SimpleProgram.cpp */; };
+		55238B5B1F1511E10063F89B /* ToonProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55238B571F1511E10063F89B /* ToonProgram.cpp */; };
+		55238B5E1F1517DC0063F89B /* TextureProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55238B5C1F1517DC0063F89B /* TextureProgram.cpp */; };
 		555402E71F13BB4500570A2E /* ObjSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402E31F13BB4500570A2E /* ObjSurface.cpp */; };
 		555402E81F13BB4500570A2E /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555402E51F13BB4500570A2E /* Texture.cpp */; };
 		555402ED1F13BBBD00570A2E /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 555402EC1F13BBBD00570A2E /* Models */; };
@@ -23,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55238B531F1511E10063F89B /* PixelLightProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelLightProgram.cpp; sourceTree = "<group>"; };
+		55238B541F1511E10063F89B /* PixelLightProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLightProgram.h; sourceTree = "<group>"; };
+		55238B551F1511E10063F89B /* SimpleProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleProgram.cpp; sourceTree = "<group>"; };
+		55238B561F1511E10063F89B /* SimpleProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleProgram.h; sourceTree = "<group>"; };
+		55238B571F1511E10063F89B /* ToonProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToonProgram.cpp; sourceTree = "<group>"; };
+		55238B581F1511E10063F89B /* ToonProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToonProgram.h; sourceTree = "<group>"; };
+		55238B5C1F1517DC0063F89B /* TextureProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureProgram.cpp; sourceTree = "<group>"; };
+		55238B5D1F1517DC0063F89B /* TextureProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureProgram.h; sourceTree = "<group>"; };
 		555402E31F13BB4500570A2E /* ObjSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjSurface.cpp; sourceTree = "<group>"; };
 		555402E41F13BB4500570A2E /* ObjSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjSurface.h; sourceTree = "<group>"; };
 		555402E51F13BB4500570A2E /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
@@ -83,6 +95,14 @@
 		5599EFF11E6B047200B26057 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55238B5C1F1517DC0063F89B /* TextureProgram.cpp */,
+				55238B5D1F1517DC0063F89B /* TextureProgram.h */,
+				55238B531F1511E10063F89B /* PixelLightProgram.cpp */,
+				55238B541F1511E10063F89B /* PixelLightProgram.h */,
+				55238B551F1511E10063F89B /* SimpleProgram.cpp */,
+				55238B561F1511E10063F89B /* SimpleProgram.h */,
+				55238B571F1511E10063F89B /* ToonProgram.cpp */,
+				55238B581F1511E10063F89B /* ToonProgram.h */,
 				555402E31F13BB4500570A2E /* ObjSurface.cpp */,
 				555402E41F13BB4500570A2E /* ObjSurface.h */,
 				555402E51F13BB4500570A2E /* Texture.cpp */,
@@ -193,8 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55238B5A1F1511E10063F89B /* SimpleProgram.cpp in Sources */,
+				55238B591F1511E10063F89B /* PixelLightProgram.cpp in Sources */,
 				555402E81F13BB4500570A2E /* Texture.cpp in Sources */,
 				5599EFF61E6B049E00B26057 /* main.cpp in Sources */,
+				55238B5E1F1517DC0063F89B /* TextureProgram.cpp in Sources */,
+				55238B5B1F1511E10063F89B /* ToonProgram.cpp in Sources */,
 				555402E71F13BB4500570A2E /* ObjSurface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

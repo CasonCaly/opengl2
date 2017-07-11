@@ -37,6 +37,7 @@ void Texture::init()
 
 	//new GLSphere(1.4f, ivec2(20, 20)
 	//GLTrefoilKnot(1.8f, ivec2(60, 15))
+    //new GLMobiusStrip(1, ivec2(40, 40));
 	m_surfaces.push_back(new GLCone(3, 1, ivec2(20, 20)));
 	m_surfaces.push_back(new GLTorus(1.4f, 0.3f, ivec2(20, 20)));
 	m_surfaces.push_back(new GLSphere(1.4f, ivec2(20, 20)));
@@ -47,13 +48,15 @@ void Texture::init()
 	//toon->setName("toon");
 	m_surfaces.push_back(toon);
     
-    //m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
-    //m_showedSurface->setName("sphere");
-    //m_surfaces.push_back(m_showedSurface);
+    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
+    m_showedSurface->setTextureCount(vec2(100, 8) );
+    m_showedSurface->setEnableTexture(true);
+    m_showedSurface->setName("texture");
+    m_surfaces.push_back(m_showedSurface);
 
-	ObjSurface* objSurface = new ObjSurface("Models/micronapalmv2.obj");
-	objSurface->setName("pixel");
-	m_surfaces.push_back(objSurface);
+//	ObjSurface* objSurface = new ObjSurface("Models/micronapalmv2.obj");
+//	objSurface->setName("pixel");
+//	m_surfaces.push_back(objSurface);
 
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
@@ -78,6 +81,7 @@ void Texture::init()
 	m_simpleProgram.init();
 	m_pixelLightProgram.init();
 	m_toonProgram.init();
+    m_texProgram.init();
 	glEnable(GL_DEPTH_TEST);
 
 	m_translation = mat4::Translate(0, 0, -7);
@@ -101,6 +105,9 @@ void Texture::renderSurface()
 		else if(name == "toon"){
 			m_toonProgram.useWith(surface, m_translation);
 		}
+        else if(name == "texture"){
+            m_texProgram.useWith(surface, m_translation);
+        }
 		else{
 			m_simpleProgram.useWith(surface, m_translation);
 		}
@@ -172,6 +179,7 @@ void Texture::initProgram()
 	this->createPrograme("Shaders/Simple.vert", "Shaders/Simple.frag", m_simpleProgram);
 	this->createPrograme("Shaders/PixelLighting.es2.vert", "Shaders/PixelLighting.es2.frag", m_pixelLightProgram);
 	this->createPrograme("Shaders/ToonLighting.es2.vert", "Shaders/ToonLighting.es2.frag", m_toonProgram);
+	this->createPrograme("Shaders/TexturedLighting.vert", "Shaders/TexturedLighting.frag", m_texProgram);
 }
 
 //该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，

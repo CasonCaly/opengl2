@@ -62,10 +62,16 @@ public:
 
 	void setEnableVertexNormal(bool enableVertexNormal);
 
+    void setEnableTexture(bool enableTexture);
+    
+    bool isEnableTexture();
+    
 	void setName(const std::string& name);
 
 	std::string& getName();
 
+    void setTextureCount(vec2 v);
+    
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -95,6 +101,7 @@ protected:
 protected:
 	std::string m_name;
 	bool m_enableVertexNormal;
+    bool m_enableTexture;
 };
 
 #endif /* GLSurface_hpp */

@@ -1,13 +1,15 @@
-#include "SimpleProgram.h"
+#include "TextureProgram.h"
 #include "glsurface/GLSurface.h"
+#include "image/GLImage.h"
 
-void SimpleProgram::init()
+void TextureProgram::init()
 {
 	this->use();
 	m_positionSlot = this->getAttribute("Position");
 	m_colorSlot = this->getAttribute("SourceColor");
 	m_normalSlot = this->getAttribute("Normal");
 	m_diffuseMaterialSlot = this->getAttribute("DiffuseMaterial");
+    m_textureCoordSlot = this->getAttribute("TextureCoord");
 
 	//投影有关的uniform变量
 	m_projectionUniform = this->getUniform("Projection");
@@ -18,16 +20,32 @@ void SimpleProgram::init()
 	m_ambientMaterialUniform = this->getUniform("AmbientMaterial");
 	m_specularMaterialUniform = this->getUniform("SpecularMaterial");
 	m_shininessUniform = this->getUniform("Shininess");
-
+    m_sampler = this->getUniform("Sampler");
+    
 	m_ambientMaterialUniform->value3f(0.04f, 0.04f, 0.04f);
 	m_specularMaterialUniform->value3f(0.5f, 0.5f, 0.5f);
 	m_shininessUniform->value1f(50.0f);
-
-	m_positionSlot->enableVertexAttribArray();
-	m_normalSlot->enableVertexAttribArray();
+    
+    glActiveTexture(GL_TEXTURE0);
+    m_sampler->value1i(0);
+    
+    m_texture = new GLTexture();
+    m_texture->genTextures();
+    m_texture->bindTexture(GL_TEXTURE_2D);
+    m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    GLImage image;
+    image.initWithImage("Image/Grid16.png");
+    
+    m_texture->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)image.getWidth(), (GLsizei)image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getData());
+     glGenerateMipmap(GL_TEXTURE_2D);
+    m_positionSlot->enableVertexAttribArray();
+    m_normalSlot->enableVertexAttribArray();
+    m_textureCoordSlot->enableVertexAttribArray();
 }
 
-void SimpleProgram::useWith(GLSurface* surface, mat4& translation)
+void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 {
 	this->use();
 	vec2 size = surface->getViewportSize();
@@ -57,19 +75,29 @@ void SimpleProgram::useWith(GLSurface* surface, mat4& translation)
 	m_diffuseMaterialSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
 
 	// Draw the wireframe.
-	int stride = 2 * sizeof(vec3);
-	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
-
+    int stride = 0;
+    const GLvoid* normalOffset = (const GLvoid*)sizeof(vec3);
+    const GLvoid* texCoordOffset = nullptr;
+    if(!surface->isEnableTexture())
+    {
+        stride = 2 * sizeof(vec3);
+    }
+    else{
+        stride = sizeof(vec3) + sizeof(vec3) + sizeof(vec2);
+        texCoordOffset = (const GLvoid*) (2 * sizeof(vec3));
+    }
+        
 	GLBuffer& vertexBuffer = surface->getVertexBuffer();
-
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
 
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-	m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
-
+	m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, normalOffset);
+    if(texCoordOffset)
+        m_textureCoordSlot->vertexAttribPointer(2, GL_FLOAT, GL_FALSE, stride, texCoordOffset);
+    
 	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
 	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
 }

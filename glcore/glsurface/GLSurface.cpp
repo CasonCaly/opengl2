@@ -11,6 +11,7 @@
 GLSurface::GLSurface()
 {
 	m_enableVertexNormal = false;
+    m_enableTexture = false;
 }
 
 GLSurface::~GLSurface()
@@ -36,8 +37,13 @@ void GLSurface::generateVertices()
 {
 	vector<float> vertices;
 	int floatsPerVertex = 3;
-	if (m_enableVertexNormal)
+	
+    if (m_enableVertexNormal)
 		floatsPerVertex += 3;
+    
+    if(m_enableTexture)
+        floatsPerVertex += 2;
+    
 	vertices.resize(this->getVertexCount() * floatsPerVertex);
 	float* attribute = &vertices[0];
 
@@ -67,6 +73,12 @@ void GLSurface::generateVertices()
 					normal = -normal;
 				attribute = normal.Write(attribute);
 			}
+            
+            if (m_enableTexture) {
+                float s = m_textureCount.x * i / m_slices.x;
+                float t = m_textureCount.y * j / m_slices.y;
+                attribute = vec2(s, t).Write(attribute);
+            }
 		}
 	}
 
@@ -215,6 +227,17 @@ void GLSurface::setEnableVertexNormal(bool enableVertexNormal)
 	m_enableVertexNormal = enableVertexNormal;
 }
 
+void GLSurface::setEnableTexture(bool enableTexture)
+{
+    m_enableTexture = enableTexture;
+}
+
+bool GLSurface::isEnableTexture()
+{
+    return m_enableTexture;
+}
+
+
 void GLSurface::setName(const std::string& name)
 {
 	m_name = name;
@@ -223,4 +246,9 @@ void GLSurface::setName(const std::string& name)
 std::string& GLSurface::getName()
 {
 	return m_name;
+}
+
+void GLSurface::setTextureCount(vec2 v)
+{
+    m_textureCount = v;
 }

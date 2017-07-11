@@ -35,6 +35,8 @@ public:
 
 	void vector3fv(GLsizei count, const GLfloat *value);
 
+    void value1i(int v0);
+    
 protected:
     
     GLuint m_unifrom;

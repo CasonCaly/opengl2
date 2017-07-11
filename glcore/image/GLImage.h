@@ -35,6 +35,12 @@ public:
 
 	bool initWithImage(const std::string& path);
 
+    unsigned char* getData();
+    
+    size_t getWidth();
+    
+    size_t getHeight();
+    
 protected:
 
 	bool initWithPngData(const unsigned char * data, size_t dataLen);
