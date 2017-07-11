@@ -1,6 +1,8 @@
 #include <cmath>
 #include "Texture.h"
+#include "ObjSurface.h"
 #include "os/Path.h"
+#include "image/GLImage.h"
 #include "glclass/GLBuffer.h"
 #include "glsurface/GLCone.h"
 #include "glsurface/GLSphere.h"
@@ -8,8 +10,8 @@
 #include "glsurface/GLTorus.h"
 #include "glsurface/GLKleinBottle.h"
 #include "glsurface/GLTrefoilKnot.h"
-#include "ObjSurface.h"
-#include "image/GLImage.h"
+
+
 
 #define SurfaceCount (6)
 #define ButtonCount (5)
@@ -26,8 +28,6 @@ Texture::Texture()
 
 void Texture::init()
 {
-	GLImage image;
-	image.initWithImage("Image/background1.jpg");
 	m_trackballRadius = 320 / 3;
 	m_buttonSize.y = 480 / 10;
 	m_buttonSize.x = 4 * m_buttonSize.y / 3;
@@ -75,9 +75,9 @@ void Texture::init()
 		}
 	}
 
-	this->initVertexAttributeAndUniform();
-	this->initPixelAttributeAndUniform();
-	this->initToonAttributeAndUnifrom();
+	m_simpleProgram.init();
+	m_pixelLightProgram.init();
+	m_toonProgram.init();
 	glEnable(GL_DEPTH_TEST);
 
 	m_translation = mat4::Translate(0, 0, -7);
@@ -85,80 +85,6 @@ void Texture::init()
 
 void Texture::updateSurface()
 {
-}
-
-void Texture::initVertexAttributeAndUniform()
-{
-	m_glProgram.use();
-	m_positionSlot = m_glProgram.getAttribute("Position");
-	m_colorSlot = m_glProgram.getAttribute("SourceColor");
-	m_normalSlot = m_glProgram.getAttribute("Normal");
-	m_diffuseMaterialSlot = m_glProgram.getAttribute("DiffuseMaterial");
-
-	//投影有关的uniform变量
-	m_projectionUniform = m_glProgram.getUniform("Projection");
-	m_modelviewUniform = m_glProgram.getUniform("Modelview");
-	//光照有关的uniform变量
-	m_normalMatrixUniform = m_glProgram.getUniform("NormalMatrix");
-	m_lightPositionUniform = m_glProgram.getUniform("LightPosition");
-	m_ambientMaterialUniform = m_glProgram.getUniform("AmbientMaterial");
-	m_specularMaterialUniform = m_glProgram.getUniform("SpecularMaterial");
-	m_shininessUniform = m_glProgram.getUniform("Shininess");
-
-	m_ambientMaterialUniform->value3f(0.04f, 0.04f, 0.04f);
-	m_specularMaterialUniform->value3f(0.5f, 0.5f, 0.5f);
-	m_shininessUniform->value1f(50.0f);
-
-	m_positionSlot->enableVertexAttribArray();
-	m_normalSlot->enableVertexAttribArray();
-}
-
-void Texture::initPixelAttributeAndUniform()
-{
-	m_pixelLightProgram.use();
-	m_pixelPosition = m_pixelLightProgram.getAttribute("Position");
-	m_pixelNormal = m_pixelLightProgram.getAttribute("Normal");
-	m_pixelDiffuseMaterial = m_pixelLightProgram.getAttribute("DiffuseMaterial");
-
-	m_pixelProjection = m_pixelLightProgram.getUniform("Projection");
-	m_pixelModelview = m_pixelLightProgram.getUniform("Modelview");
-	m_pixelNormalMatrix = m_pixelLightProgram.getUniform("NormalMatrix");
-
-	m_pixelLightPosition = m_pixelLightProgram.getUniform("LightPosition");
-	m_pixelAmbientMaterial = m_pixelLightProgram.getUniform("AmbientMaterial");
-	m_pixelSpecularMaterial = m_pixelLightProgram.getUniform("SpecularMaterial");
-	m_pixelShininess = m_pixelLightProgram.getUniform("Shininess");
-
-    m_pixelPosition->enableVertexAttribArray();
-    m_pixelNormal->enableVertexAttribArray();
-    
-	m_pixelAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
-	m_pixelSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
-	m_pixelShininess->value1f(50.0f);
-}
-
-void Texture::initToonAttributeAndUnifrom()
-{
-	m_toonLightProgram.use();
-	m_toonPosition = m_toonLightProgram.getAttribute("Position");
-	m_toonNormal = m_toonLightProgram.getAttribute("Normal");
-	m_toonDiffuseMaterial = m_toonLightProgram.getAttribute("DiffuseMaterial");
-
-	m_toonProjection = m_toonLightProgram.getUniform("Projection");
-	m_toonModelview = m_toonLightProgram.getUniform("Modelview");
-	m_toonNormalMatrix = m_toonLightProgram.getUniform("NormalMatrix");
-
-	m_toonLightPosition = m_toonLightProgram.getUniform("LightPosition");
-	m_toonAmbientMaterial = m_toonLightProgram.getUniform("AmbientMaterial");
-	m_toonSpecularMaterial = m_toonLightProgram.getUniform("SpecularMaterial");
-	m_toonShininess = m_toonLightProgram.getUniform("Shininess");
-
-	m_toonPosition->enableVertexAttribArray();
-	m_toonNormal->enableVertexAttribArray();
-
-	m_toonAmbientMaterial->value3f(0.04f, 0.04f, 0.04f);
-	m_toonSpecularMaterial->value3f(0.5f, 0.5f, 0.5f);
-	m_toonShininess->value1f(50.0f);
 }
 
 void Texture::renderSurface()
@@ -170,154 +96,15 @@ void Texture::renderSurface()
 		GLSurface* surface = *begin;
 		std::string& name = surface->getName();
 		if (name == "pixel"){
-			this->renderUsePixel(surface);
+			m_pixelLightProgram.useWith(surface, m_translation);
 		}
 		else if(name == "toon"){
-			this->renderUseToon(surface);
+			m_toonProgram.useWith(surface, m_translation);
 		}
 		else{
-			this->renderUseVertex(surface);
+			m_simpleProgram.useWith(surface, m_translation);
 		}
 	}
-}
-
-void Texture::renderUseVertex(GLSurface* surface)
-{
-	m_glProgram.use();
-	vec2 size = surface->getViewportSize();
-	vec2 lowerLeft = surface->getLowerLeft();
-	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
-
-	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
-	m_lightPositionUniform->vector3fv(1, lightPosition.Pointer());
-
-	Quaternion& orientation = surface->getOrientation();
-	mat4 rotation = orientation.ToMatrix();
-	mat4 modelview = rotation * m_translation;
-
-	m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
-
-	//设置法线矩阵
-	mat3 normalMatrix = modelview.ToMat3();
-	m_normalMatrixUniform->matrix3fv(1, 0, normalMatrix.Pointer());
-
-	// 设置投影矩阵
-	float h = 4.0f * size.y / size.x;
-	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
-	m_projectionUniform->matrix4fv(1, 0, projectionMatrix.Pointer());
-
-	vec3 color = surface->getColor();
-	color = color * 0.75f;
-	m_diffuseMaterialSlot->vertexAttrib4f(color.x, color.y, color.z, 1);
-
-	// Draw the wireframe.
-	int stride = 2 * sizeof(vec3);
-	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
-
-	GLBuffer& vertexBuffer = surface->getVertexBuffer();
-
-	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
-	int triangelIndexCount = surface->getTriangleIndexCount();
-
-
-	vertexBuffer.bind(GL_ARRAY_BUFFER);
-	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-	m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
-
-	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-}
-
-void Texture::renderUsePixel(GLSurface* surface)
-{
-	m_pixelLightProgram.use();
-	vec2 size = surface->getViewportSize();
-	vec2 lowerLeft = surface->getLowerLeft();
-	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
-
-	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
-	m_pixelLightPosition->vector3fv(1, lightPosition.Pointer());
-
-	Quaternion& orientation = surface->getOrientation();
-	mat4 rotation = orientation.ToMatrix();
-	mat4 modelview = rotation * m_translation;
-
-	m_pixelModelview->matrix4fv(1, 0, modelview.Pointer());
-
-	//设置法线矩阵
-	mat3 normalMatrix = modelview.ToMat3();
-	m_pixelNormalMatrix->matrix3fv(1, 0, normalMatrix.Pointer());
-
-	// 设置投影矩阵
-	float h = 4.0f * size.y / size.x;
-	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
-	m_pixelProjection->matrix4fv(1, 0, projectionMatrix.Pointer());
-
-	vec3 color = surface->getColor();
-	color = color * 0.75f;
-	m_pixelDiffuseMaterial->vertexAttrib4f(color.x, color.y, color.z, 1);
-
-	// Draw the wireframe.
-	int stride = 2 * sizeof(vec3);
-	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
-
-	GLBuffer& vertexBuffer = surface->getVertexBuffer();
-
-	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
-	int triangelIndexCount = surface->getTriangleIndexCount();
-
-	vertexBuffer.bind(GL_ARRAY_BUFFER);
-	m_pixelPosition->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-	m_pixelNormal->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
-
-	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-}
-
-void Texture::renderUseToon(GLSurface* surface)
-{
-	m_toonLightProgram.use();
-	vec2 size = surface->getViewportSize();
-	vec2 lowerLeft = surface->getLowerLeft();
-	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
-
-	vec4 lightPosition(0.25f, 0.25f, 1.0f, 0.0f);
-	m_toonLightPosition->vector3fv(1, lightPosition.Pointer());
-
-	Quaternion& orientation = surface->getOrientation();
-	mat4 rotation = orientation.ToMatrix();
-	mat4 modelview = rotation * m_translation;
-
-	m_toonModelview->matrix4fv(1, 0, modelview.Pointer());
-
-	//设置法线矩阵
-	mat3 normalMatrix = modelview.ToMat3();
-	m_toonNormalMatrix->matrix3fv(1, 0, normalMatrix.Pointer());
-
-	// 设置投影矩阵
-	float h = 4.0f * size.y / size.x;
-	mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
-	m_toonProjection->matrix4fv(1, 0, projectionMatrix.Pointer());
-
-	vec3 color = surface->getColor();
-	color = color * 0.75f;
-	m_toonDiffuseMaterial->vertexAttrib4f(color.x, color.y, color.z, 1);
-
-	// Draw the wireframe.
-	int stride = 2 * sizeof(vec3);
-	const GLvoid* offset = (const GLvoid*)sizeof(vec3);
-
-	GLBuffer& vertexBuffer = surface->getVertexBuffer();
-
-	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
-	int triangelIndexCount = surface->getTriangleIndexCount();
-
-	vertexBuffer.bind(GL_ARRAY_BUFFER);
-	m_toonPosition->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
-	m_toonNormal->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, offset);
-
-	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
 }
 
 void Texture::render()
@@ -382,9 +169,9 @@ void Texture::onTouchEnd(float x, float y)
 
 void Texture::initProgram()
 {
-	GLApp::initProgram();
+	this->createPrograme("Shaders/Simple.vert", "Shaders/Simple.frag", m_simpleProgram);
 	this->createPrograme("Shaders/PixelLighting.es2.vert", "Shaders/PixelLighting.es2.frag", m_pixelLightProgram);
-	this->createPrograme("Shaders/ToonLighting.es2.vert", "Shaders/ToonLighting.es2.frag", m_toonLightProgram);
+	this->createPrograme("Shaders/ToonLighting.es2.vert", "Shaders/ToonLighting.es2.frag", m_toonProgram);
 }
 
 //该函数的含义在于把一个屏幕的一个点，映射成一个球体表面的点，

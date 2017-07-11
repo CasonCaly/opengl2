@@ -8,6 +8,11 @@
     <ClCompile Include="Classes\ObjSurface.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Classes\SimpleProgram.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\PixelLightProgram.cpp" />
+    <ClCompile Include="Classes\ToonProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes">
@@ -21,5 +26,10 @@
     <ClInclude Include="Classes\ObjSurface.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Classes\SimpleProgram.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\PixelLightProgram.h" />
+    <ClInclude Include="Classes\ToonProgram.h" />
   </ItemGroup>
 </Project>

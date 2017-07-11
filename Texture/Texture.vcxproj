@@ -11,13 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Classes\PixelLightProgram.cpp" />
+    <ClCompile Include="Classes\SimpleProgram.cpp" />
     <ClCompile Include="Classes\Texture.cpp" />
     <ClCompile Include="Classes\ObjSurface.cpp" />
+    <ClCompile Include="Classes\ToonProgram.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\PixelLightProgram.h" />
+    <ClInclude Include="Classes\SimpleProgram.h" />
     <ClInclude Include="Classes\Texture.h" />
     <ClInclude Include="Classes\ObjSurface.h" />
+    <ClInclude Include="Classes\ToonProgram.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0CEDAAA8-700E-454B-BFA0-0ED012328CB0}</ProjectGuid>

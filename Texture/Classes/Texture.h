@@ -5,6 +5,9 @@ using namespace std;
 
 #include "math/Quaternion.hpp"
 #include "glclass/GLApp.h"
+#include "SimpleProgram.h"
+#include "PixelLightProgram.h"
+#include "ToonProgram.h"
 
 class GLSurface;
 class GLUniform;
@@ -46,19 +49,7 @@ private:
 
 	void updateSurface();
 
-	void initVertexAttributeAndUniform();
-
-	void initPixelAttributeAndUniform();
-
-	void initToonAttributeAndUnifrom();
-
 	void renderSurface();
-
-	void renderUseVertex(GLSurface* surface);
-
-	void renderUsePixel(GLSurface* surface);
-
-	void renderUseToon(GLSurface* sufrface);
 
 private:
     
@@ -68,18 +59,9 @@ private:
     
 protected:
 
-    GLUniform* m_projectionUniform;//投影矩阵
-    GLUniform* m_modelviewUniform;//模型视图矩阵
-	GLUniform* m_normalMatrixUniform;//法线矩阵
-	GLUniform* m_lightPositionUniform;//光源位置
-	GLUniform* m_ambientMaterialUniform;//环境光颜色值
-	GLUniform* m_specularMaterialUniform;//镜面光材质
-	GLUniform* m_shininessUniform;//发光?
-
-    GLAttribute* m_positionSlot;//顶点属性
-    GLAttribute* m_colorSlot;
-	GLAttribute* m_normalSlot;//法线属性
-	GLAttribute* m_diffuseMaterialSlot;//漫反射属性
+	SimpleProgram m_simpleProgram;
+	PixelLightProgram m_pixelLightProgram;
+	ToonProgram m_toonProgram;
 
 protected:
 
@@ -96,38 +78,6 @@ protected:
 	int m_pressedButton;
 	Animation m_animation;
 
-protected:
 
-	GLProgram m_pixelLightProgram;
-
-	GLAttribute* m_pixelPosition;
-	GLAttribute* m_pixelNormal;
-	GLAttribute* m_pixelDiffuseMaterial;
-
-	GLUniform* m_pixelProjection;
-	GLUniform* m_pixelModelview;
-	GLUniform* m_pixelNormalMatrix;
-
-	GLUniform* m_pixelLightPosition;
-	GLUniform* m_pixelAmbientMaterial;
-	GLUniform* m_pixelSpecularMaterial;
-	GLUniform* m_pixelShininess;
-
-protected:
-
-	GLProgram m_toonLightProgram;
-
-	GLAttribute* m_toonPosition;
-	GLAttribute* m_toonNormal;
-	GLAttribute* m_toonDiffuseMaterial;
-
-	GLUniform* m_toonProjection;
-	GLUniform* m_toonModelview;
-	GLUniform* m_toonNormalMatrix;
-
-	GLUniform* m_toonLightPosition;
-	GLUniform* m_toonAmbientMaterial;
-	GLUniform* m_toonSpecularMaterial;
-	GLUniform* m_toonShininess;
 };
 #endif
