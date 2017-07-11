@@ -50,6 +50,15 @@
     <Filter Include="image">
       <UniqueIdentifier>{596fa035-190e-4781-9386-6b5eabd5f604}</UniqueIdentifier>
     </Filter>
+    <Filter Include="jpeg">
+      <UniqueIdentifier>{f98587d8-97db-4331-aae7-2272103fc708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jpeg\include">
+      <UniqueIdentifier>{4ae829cb-d13b-4cb6-965a-53cf0852c7e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jpeg\include\win32">
+      <UniqueIdentifier>{64e603f2-ae55-4b2e-9120-cff3ea443af2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glclass\GLApp.cpp">
@@ -189,6 +198,15 @@
     </ClInclude>
     <ClInclude Include="image\GLImage.h">
       <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="jpeg\include\win32\jconfig.h">
+      <Filter>jpeg\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="jpeg\include\win32\jmorecfg.h">
+      <Filter>jpeg\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="jpeg\include\win32\jpeglib.h">
+      <Filter>jpeg\include\win32</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

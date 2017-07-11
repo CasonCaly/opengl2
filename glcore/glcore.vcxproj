@@ -50,6 +50,9 @@
     <ClInclude Include="glsurface\GLTorus.h" />
     <ClInclude Include="glsurface\GLTrefoilKnot.h" />
     <ClInclude Include="image\GLImage.h" />
+    <ClInclude Include="jpeg\include\win32\jconfig.h" />
+    <ClInclude Include="jpeg\include\win32\jmorecfg.h" />
+    <ClInclude Include="jpeg\include\win32\jpeglib.h" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
     <ClInclude Include="math\Vector.hpp" />
@@ -102,14 +105,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLCORE_EXPORTS;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./;./glew/include;./glfw3/include/win32;./png/include/win32;./zlib/include/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./glew/include;./glfw3/include/win32;./png/include/win32;./zlib/include/win32;./jpeg/include/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819;4996;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>./glew/prebuilt;./glfw3/prebuilt/win32;./zlib/prebuilt/win32;./png/prebuilt/win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;libpng.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>./glew/prebuilt;./glfw3/prebuilt/win32;./zlib/prebuilt/win32;./png/prebuilt/win32;./jpeg/prebuilt/win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;libpng.lib;libzlib.lib;libjpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

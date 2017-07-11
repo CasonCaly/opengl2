@@ -27,7 +27,7 @@ Texture::Texture()
 void Texture::init()
 {
 	GLImage image;
-	image.initWithImage("Image/Grid16.png");
+	image.initWithImage("Image/background1.jpg");
 	m_trackballRadius = 320 / 3;
 	m_buttonSize.y = 480 / 10;
 	m_buttonSize.x = 4 * m_buttonSize.y / 3;

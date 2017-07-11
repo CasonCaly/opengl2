@@ -4,6 +4,7 @@
 #include "GLImage.h"
 #include "os/Path.h"
 #include "png.h"
+#include "jpeglib.h"
 
 #define CC_BREAK_IF(cond)           if(cond) break
 
@@ -29,6 +30,38 @@ static void pngReadCallback(png_structp png_ptr, png_bytep data, png_size_t leng
 	}
 }
 
+struct MyErrorMgr
+{
+	struct jpeg_error_mgr pub;  /* "public" fields */
+	jmp_buf setjmp_buffer;  /* for return to caller */
+};
+
+typedef struct MyErrorMgr * MyErrorPtr;
+
+/*
+* Here's the routine that will replace the standard error_exit method:
+*/
+
+METHODDEF(void)
+myErrorExit(j_common_ptr cinfo)
+{
+	/* cinfo->err really points to a MyErrorMgr struct, so coerce pointer */
+	MyErrorPtr myerr = (MyErrorPtr)cinfo->err;
+
+	/* Always display the message. */
+	/* We could postpone this until after returning, if we chose. */
+	/* internal message function can't show error message in some platforms, so we rewrite it here.
+	* edit it if has version conflict.
+	*/
+	//(*cinfo->err->output_message) (cinfo);
+	char buffer[JMSG_LENGTH_MAX];
+	(*cinfo->err->format_message) (cinfo, buffer);
+	printf("jpeg error: %s", buffer);
+
+	/* Return control to the setjmp point */
+	longjmp(myerr->setjmp_buffer, 1);
+}
+
 bool GLImage::initWithImage(const std::string& path)
 {
 	std::string fullPath = Path::joinResource(path);
@@ -38,12 +71,24 @@ bool GLImage::initWithImage(const std::string& path)
 		return false;
 	}
 	fseek(file, 0, SEEK_END);
-	long size = ftell(file);
-	unsigned char* ctn = (unsigned char*)malloc(size* sizeof(char));
-	fseek(file, -size, SEEK_CUR);
-	fread(ctn, 1, size, file);
+	long unpackedLen = ftell(file);
+	unsigned char* unpackedData = (unsigned char*)malloc(unpackedLen* sizeof(char));
+	fseek(file, -unpackedLen, SEEK_CUR);
+	fread(unpackedData, 1, unpackedLen, file);
 	fclose(file);
-	return this->initWithPngData(ctn, size);
+
+	m_fileType = detectFormat(unpackedData, unpackedLen);
+	bool ret = false;
+	switch (m_fileType)
+	{
+	case Format::PNG:
+		ret = this->initWithPngData(unpackedData, unpackedLen);
+		break;
+	case Format::JPG:
+		ret = initWithJpgData(unpackedData, unpackedLen);
+		break;
+	}
+	return ret;
 }
 
 bool GLImage::initWithPngData(const unsigned char * data, size_t dataLen)
@@ -185,4 +230,133 @@ bool GLImage::initWithPngData(const unsigned char * data, size_t dataLen)
 		png_destroy_read_struct(&png_ptr, (info_ptr) ? &info_ptr : 0, 0);
 	}
 	return ret;
+}
+
+bool GLImage::initWithJpgData(const unsigned char * data, size_t dataLen)
+{
+	/* these are standard libjpeg structures for reading(decompression) */
+	struct jpeg_decompress_struct cinfo;
+	/* We use our private extension JPEG error handler.
+	* Note that this struct must live as long as the main JPEG parameter
+	* struct, to avoid dangling-pointer problems.
+	*/
+	struct MyErrorMgr jerr;
+	/* libjpeg data structure for storing one row, that is, scanline of an image */
+	JSAMPROW row_pointer[1] = { 0 };
+	unsigned long location = 0;
+
+	bool ret = false;
+	do
+	{
+		/* We set up the normal JPEG error routines, then override error_exit. */
+		cinfo.err = jpeg_std_error(&jerr.pub);
+		jerr.pub.error_exit = myErrorExit;
+		/* Establish the setjmp return context for MyErrorExit to use. */
+		if (setjmp(jerr.setjmp_buffer))
+		{
+			/* If we get here, the JPEG code has signaled an error.
+			* We need to clean up the JPEG object, close the input file, and return.
+			*/
+			jpeg_destroy_decompress(&cinfo);
+			break;
+		}
+
+		/* setup decompression process and source, then read JPEG header */
+		jpeg_create_decompress(&cinfo);
+
+#ifndef CC_TARGET_QT5
+		jpeg_mem_src(&cinfo, const_cast<unsigned char*>(data), dataLen);
+#endif /* CC_TARGET_QT5 */
+
+		/* reading the image header which contains image information */
+#if (JPEG_LIB_VERSION >= 90)
+		// libjpeg 0.9 adds stricter types.
+		jpeg_read_header(&cinfo, TRUE);
+#else
+		jpeg_read_header(&cinfo, TRUE);
+#endif
+
+		// we only support RGB or grayscale
+		//if (cinfo.jpeg_color_space == JCS_GRAYSCALE)
+		//{
+		//	_renderFormat = Texture2D::PixelFormat::I8;
+		//}
+		//else
+		//{
+		//	cinfo.out_color_space = JCS_RGB;
+		//	_renderFormat = Texture2D::PixelFormat::RGB888;
+		//}
+
+		/* Start decompression jpeg here */
+		jpeg_start_decompress(&cinfo);
+
+		/* init image info */
+		m_width = cinfo.output_width;
+		m_height = cinfo.output_height;
+
+		m_dataLen = cinfo.output_width*cinfo.output_height*cinfo.output_components;
+		m_data = static_cast<unsigned char*>(malloc(m_dataLen * sizeof(unsigned char)));
+		CC_BREAK_IF(!m_data);
+
+		/* now actually read the jpeg into the raw buffer */
+		/* read one scan line at a time */
+		while (cinfo.output_scanline < cinfo.output_height)
+		{
+			row_pointer[0] = m_data + location;
+			location += cinfo.output_width*cinfo.output_components;
+			jpeg_read_scanlines(&cinfo, row_pointer, 1);
+		}
+
+		/* When read image file with broken data, jpeg_finish_decompress() may cause error.
+		* Besides, jpeg_destroy_decompress() shall deallocate and release all memory associated
+		* with the decompression object.
+		* So it doesn't need to call jpeg_finish_decompress().
+		*/
+		//jpeg_finish_decompress( &cinfo );
+		jpeg_destroy_decompress(&cinfo);
+		/* wrap up decompression, destroy objects, free pointers and close open files */
+		ret = true;
+	} while (0);
+
+	return ret;
+}
+
+GLImage::Format GLImage::detectFormat(const unsigned char * data, size_t dataLen)
+{
+	if (isPng(data, dataLen))
+	{
+		return Format::PNG;
+	}
+	else if (isJpg(data, dataLen))
+	{
+		return Format::JPG;
+	}
+	else
+	{
+		return Format::UNKNOWN;
+	}
+}
+
+bool GLImage::isPng(const unsigned char * data, size_t dataLen)
+{
+	if (dataLen <= 8)
+	{
+		return false;
+	}
+
+	static const unsigned char PNG_SIGNATURE[] = { 0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a };
+
+	return memcmp(PNG_SIGNATURE, data, sizeof(PNG_SIGNATURE)) == 0;
+}
+
+bool GLImage::isJpg(const unsigned char * data, size_t dataLen)
+{
+	if (dataLen <= 4)
+	{
+		return false;
+	}
+
+	static const unsigned char JPG_SOI[] = { 0xFF, 0xD8 };
+
+	return memcmp(data, JPG_SOI, 2) == 0;
 }
