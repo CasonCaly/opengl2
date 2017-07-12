@@ -1,5 +1,15 @@
 #include "GLTexture.h"
 
+void GLTexture::activeTexture(GLenum texture)
+{
+	glActiveTexture(texture);
+}
+
+void GLTexture::generateMipmap(GLenum target)
+{
+	glGenerateMipmap(target);
+}
+
 void GLTexture::genTextures(){
 	glGenTextures(1, &m_textures);
 }

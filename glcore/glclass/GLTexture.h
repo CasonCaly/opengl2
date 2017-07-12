@@ -13,6 +13,10 @@ class GLCORE GLTexture{
 
 public:
 
+	void activeTexture(GLenum texture);
+
+	void generateMipmap(GLenum target);
+
 	void genTextures();
 
 	void bindTexture(GLenum target);

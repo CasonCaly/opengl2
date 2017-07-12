@@ -62,6 +62,21 @@ myErrorExit(j_common_ptr cinfo)
 	longjmp(myerr->setjmp_buffer, 1);
 }
 
+GLImage::GLImage()
+{
+	m_fileType = Format::UNKNOWN;
+	m_width = 0;
+	m_height = 0;
+	m_dataLen = 0;
+	m_data = nullptr;
+}
+
+GLImage::~GLImage()
+{
+	if (m_data)
+		free(m_data);
+}
+
 unsigned char* GLImage::getData()
 {
     return m_data;
@@ -105,6 +120,8 @@ bool GLImage::initWithImage(const std::string& path)
     default:
         break;
 	}
+	if (unpackedData)
+		free(unpackedData);
 	return ret;
 }
 

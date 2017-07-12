@@ -48,7 +48,7 @@ void Texture::init()
 	//toon->setName("toon");
 	m_surfaces.push_back(toon);
     
-    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(60, 15));
+    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(200, 60));
     m_showedSurface->setTextureCount(vec2(100, 8) );
     m_showedSurface->setEnableTexture(true);
     m_showedSurface->setName("texture");

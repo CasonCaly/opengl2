@@ -25,21 +25,20 @@ void TextureProgram::init()
 	m_ambientMaterialUniform->value3f(0.04f, 0.04f, 0.04f);
 	m_specularMaterialUniform->value3f(0.5f, 0.5f, 0.5f);
 	m_shininessUniform->value1f(50.0f);
-    
-    glActiveTexture(GL_TEXTURE0);
     m_sampler->value1i(0);
     
+	GLImage image;
+	image.initWithImage("Image/Grid16.png");
+
     m_texture = new GLTexture();
+	m_texture->activeTexture(GL_TEXTURE0);
     m_texture->genTextures();
     m_texture->bindTexture(GL_TEXTURE_2D);
     m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    GLImage image;
-    image.initWithImage("Image/Grid16.png");
-    
     m_texture->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)image.getWidth(), (GLsizei)image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getData());
-     glGenerateMipmap(GL_TEXTURE_2D);
+	m_texture->generateMipmap(GL_TEXTURE_2D);
+
     m_positionSlot->enableVertexAttribArray();
     m_normalSlot->enableVertexAttribArray();
     m_textureCoordSlot->enableVertexAttribArray();

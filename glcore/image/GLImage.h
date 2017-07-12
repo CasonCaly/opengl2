@@ -33,6 +33,10 @@ class GLCORE GLImage{
 
 public:
 
+	GLImage();
+
+	~GLImage();
+
 	bool initWithImage(const std::string& path);
 
     unsigned char* getData();
