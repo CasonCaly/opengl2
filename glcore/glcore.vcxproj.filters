@@ -106,7 +106,7 @@
     <ClCompile Include="image\GLImage.cpp">
       <Filter>image</Filter>
     </ClCompile>
-    <ClCompile Include="GLTexture.cpp">
+    <ClCompile Include="glclass\GLTexture.cpp">
       <Filter>glclass</Filter>
     </ClCompile>
   </ItemGroup>
@@ -211,7 +211,7 @@
     <ClInclude Include="jpeg\include\win32\jpeglib.h">
       <Filter>jpeg\include\win32</Filter>
     </ClInclude>
-    <ClInclude Include="GLTexture.h">
+    <ClInclude Include="glclass\GLTexture.h">
       <Filter>glclass</Filter>
     </ClInclude>
   </ItemGroup>

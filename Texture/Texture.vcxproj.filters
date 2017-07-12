@@ -11,8 +11,15 @@
     <ClCompile Include="Classes\SimpleProgram.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\PixelLightProgram.cpp" />
-    <ClCompile Include="Classes\ToonProgram.cpp" />
+    <ClCompile Include="Classes\TextureProgram.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\PixelLightProgram.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ToonProgram.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes">
@@ -29,7 +36,14 @@
     <ClInclude Include="Classes\SimpleProgram.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\PixelLightProgram.h" />
-    <ClInclude Include="Classes\ToonProgram.h" />
+    <ClInclude Include="Classes\TextureProgram.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\PixelLightProgram.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ToonProgram.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

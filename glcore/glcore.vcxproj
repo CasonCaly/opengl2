@@ -16,6 +16,7 @@
     <ClCompile Include="glclass\GLBuffer.cpp" />
     <ClCompile Include="glclass\GLProgram.cpp" />
     <ClCompile Include="glclass\GLShader.cpp" />
+    <ClCompile Include="glclass\GLTexture.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
     <ClCompile Include="glsurface\GLCone.cpp" />
     <ClCompile Include="glsurface\GLKleinBottle.cpp" />
@@ -24,7 +25,6 @@
     <ClCompile Include="glsurface\GLSurface.cpp" />
     <ClCompile Include="glsurface\GLTorus.cpp" />
     <ClCompile Include="glsurface\GLTrefoilKnot.cpp" />
-    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="image\GLImage.cpp" />
     <ClCompile Include="os\Path.cpp" />
   </ItemGroup>
@@ -35,6 +35,7 @@
     <ClInclude Include="glclass\GLGL.h" />
     <ClInclude Include="glclass\GLProgram.h" />
     <ClInclude Include="glclass\GLShader.h" />
+    <ClInclude Include="glclass\GLTexture.h" />
     <ClInclude Include="glclass\GLUniform.h" />
     <ClInclude Include="GLCore.h" />
     <ClInclude Include="glew\include\glew.h" />
@@ -50,7 +51,6 @@
     <ClInclude Include="glsurface\GLSurface.h" />
     <ClInclude Include="glsurface\GLTorus.h" />
     <ClInclude Include="glsurface\GLTrefoilKnot.h" />
-    <ClInclude Include="GLTexture.h" />
     <ClInclude Include="image\GLImage.h" />
     <ClInclude Include="jpeg\include\win32\jconfig.h" />
     <ClInclude Include="jpeg\include\win32\jmorecfg.h" />

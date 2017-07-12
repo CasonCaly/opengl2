@@ -15,6 +15,7 @@
     <ClCompile Include="Classes\SimpleProgram.cpp" />
     <ClCompile Include="Classes\Texture.cpp" />
     <ClCompile Include="Classes\ObjSurface.cpp" />
+    <ClCompile Include="Classes\TextureProgram.cpp" />
     <ClCompile Include="Classes\ToonProgram.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -23,6 +24,7 @@
     <ClInclude Include="Classes\SimpleProgram.h" />
     <ClInclude Include="Classes\Texture.h" />
     <ClInclude Include="Classes\ObjSurface.h" />
+    <ClInclude Include="Classes\TextureProgram.h" />
     <ClInclude Include="Classes\ToonProgram.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
