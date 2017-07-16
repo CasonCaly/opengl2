@@ -28,7 +28,7 @@ void TextureProgram::init()
     m_sampler->value1i(0);
     
 	GLImage image;
-	image.initWithImage("Image/Grid16.png");
+	image.initWithImage("Image/grid2.png");
 
     m_texture = new GLTexture();
 	m_texture->activeTexture(GL_TEXTURE0);

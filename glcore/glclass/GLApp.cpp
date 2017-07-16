@@ -154,36 +154,44 @@ GLApp::GLApp()
 	g_app = this;
 }
 
+void GLApp::initGLApp(const std::string& appName, int width, int height)
+{
+    m_width = width;
+    m_height = height;
+    /* Initialize the library */
+    if (!glfwInit())
+        return ;
+    
+    /* Create a windowed mode window and its OpenGL context */
+    g_window = glfwCreateWindow(width, height, appName.c_str(), NULL, NULL);
+    
+    if (!g_window){
+        glfwTerminate();
+    }
+    //8, 8, 8, 8, 24, 8
+    glfwWindowHint(GLFW_RED_BITS, 8);
+    glfwWindowHint(GLFW_GREEN_BITS, 8);
+    glfwWindowHint(GLFW_BLUE_BITS, 8);
+    glfwWindowHint(GLFW_ALPHA_BITS, 8);
+    glfwWindowHint(GLFW_DEPTH_BITS, 24);
+    glfwWindowHint(GLFW_STENCIL_BITS, 8);
+    
+    glfwSetCursorPosCallback(g_window, GLAppMouseMoveCallBack);
+    glfwSetMouseButtonCallback(g_window, GLAppMouseCallBack);
+    glfwSetScrollCallback(g_window, GLAppMouseScrollCallBack);
+    glfwMakeContextCurrent(g_window);
+    
+#if defined(WIN32)
+    ::initGlew();
+#endif
+    
+    this->initProgram();
+
+}
+
 void GLApp::initGLApp(const std::string& appName)
 {
-	/* Initialize the library */
-	if (!glfwInit())
-		return ;
-
-	/* Create a windowed mode window and its OpenGL context */
-	g_window = glfwCreateWindow(320, 480, appName.c_str(), NULL, NULL);
-
-	if (!g_window){
-		glfwTerminate();
-	}
-	//8, 8, 8, 8, 24, 8
-	glfwWindowHint(GLFW_RED_BITS, 8);
-	glfwWindowHint(GLFW_GREEN_BITS, 8);
-	glfwWindowHint(GLFW_BLUE_BITS, 8);
-	glfwWindowHint(GLFW_ALPHA_BITS, 8);
-	glfwWindowHint(GLFW_DEPTH_BITS, 24);
-	glfwWindowHint(GLFW_STENCIL_BITS, 8);
-
-	glfwSetCursorPosCallback(g_window, GLAppMouseMoveCallBack);
-	glfwSetMouseButtonCallback(g_window, GLAppMouseCallBack);
-	glfwSetScrollCallback(g_window, GLAppMouseScrollCallBack);
-	glfwMakeContextCurrent(g_window);
-
-#if defined(WIN32)
-	::initGlew();
-#endif
-
-	this->initProgram();
+    this->initGLApp(appName, 640, 960);
 }
 
 void GLApp::run()

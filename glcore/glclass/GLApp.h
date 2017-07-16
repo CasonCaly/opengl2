@@ -23,6 +23,8 @@ public:
 
 	GLApp();
 
+    void initGLApp(const std::string& appName, int width, int height);
+    
 	void initGLApp(const std::string& appName);
 
 	void run();
@@ -50,7 +52,8 @@ protected:
 	void createPrograme(const string& frag, const string& vert, GLProgram& program);
 
 protected:
-    
+    int m_width;
+    int m_height;
     GLProgram m_glProgram;
 };
 

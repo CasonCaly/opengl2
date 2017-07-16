@@ -76,8 +76,10 @@ void GLSurface::generateVertices()
 			}
             
             if (m_enableTexture) {
-                float s = m_textureCount.x * i / m_slices.x;
-                float t = m_textureCount.y * j / m_slices.y;
+                float s = (i%2) == 0 ? 0.0f : 1.0f;
+                float t = (j%2) == 0 ? 0.0f : 1.0f;
+//                float s = m_textureCount.x * (i*1.0 / m_slices.x);
+//                float t = m_textureCount.y * (j*1.0 / m_slices.y);
                 attribute = vec2(s, t).Write(attribute);
             }
 		}
