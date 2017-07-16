@@ -118,7 +118,7 @@ GLApp* g_app;
 bool g_captured = false;
 GLFWwindow* g_window;
 
-void  GLAppMouseMoveCallBack(GLFWwindow* window, double x, double y){
+static void  GLAppMouseMoveCallBack(GLFWwindow* window, double x, double y){
 	if (g_captured)
 		g_app->onTouchMove((float)x, (float)y);
 }
@@ -141,6 +141,12 @@ static void GLAppMouseCallBack(GLFWwindow* window, int button, int action, int m
 			}
 		}
 	}
+}
+
+static void GLAppMouseScrollCallBack(GLFWwindow* window, double x, double y)
+{
+	if (g_app)
+		g_app->onMouseScroll(x, y);
 }
 
 GLApp::GLApp()
@@ -170,6 +176,7 @@ void GLApp::initGLApp(const std::string& appName)
 
 	glfwSetCursorPosCallback(g_window, GLAppMouseMoveCallBack);
 	glfwSetMouseButtonCallback(g_window, GLAppMouseCallBack);
+	glfwSetScrollCallback(g_window, GLAppMouseScrollCallBack);
 	glfwMakeContextCurrent(g_window);
 
 #if defined(WIN32)
@@ -205,6 +212,11 @@ void GLApp::onTouchMove(float x, float y){
 }
 
 void GLApp::onTouchEnd(float x, float y){
+}
+
+void GLApp::onMouseScroll(double x, double y)
+{
+
 }
 
 void GLApp::render()

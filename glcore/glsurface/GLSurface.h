@@ -72,6 +72,10 @@ public:
 
     void setTextureCount(vec2 v);
     
+	void setScale(float scale);
+
+	float getScale();
+
 protected:
     
 	vec2 computeDomain(float x, float y);
@@ -98,6 +102,7 @@ protected:
 	GLBuffer m_triangleIndexBuffer;
 	int m_indexCount;
 	
+	float m_scale;
 protected:
 	std::string m_name;
 	bool m_enableVertexNormal;

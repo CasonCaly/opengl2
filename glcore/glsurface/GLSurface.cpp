@@ -10,6 +10,7 @@
 
 GLSurface::GLSurface()
 {
+	m_scale = 1.0f;
 	m_enableVertexNormal = false;
     m_enableTexture = false;
 }
@@ -251,4 +252,13 @@ std::string& GLSurface::getName()
 void GLSurface::setTextureCount(vec2 v)
 {
     m_textureCount = v;
+}
+
+void GLSurface::setScale(float scale){
+	m_scale = scale;
+}
+
+float GLSurface::getScale()
+{
+	return m_scale;
 }

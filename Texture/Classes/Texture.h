@@ -36,6 +36,8 @@ public:
 
 	void onTouchEnd(float x, float y) override;
 
+	void onMouseScroll(double x, double y) override;
+
 	void initProgram() override;
 
 private:

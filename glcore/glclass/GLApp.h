@@ -39,6 +39,8 @@ public:
     
     virtual void onTouchEnd(float x, float y);
     
+	virtual void onMouseScroll(double x, double y);
+
     virtual void initProgram();
     
 protected:

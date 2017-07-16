@@ -174,6 +174,17 @@ void Texture::onTouchEnd(float x, float y)
 	m_spinning = false;
 }
 
+void Texture::onMouseScroll(double x, double y)
+{
+	float scalePerScroll = 1.0/16.0f;
+	float scaleDiff = y * scalePerScroll;
+
+	GLSurface* showedSurface = m_surfaces[m_surfaces.size() - 1];
+	float scale = showedSurface->getScale();
+	scale += scaleDiff;
+	showedSurface->setScale(scale);
+}
+
 void Texture::initProgram()
 {
 	this->createPrograme("Shaders/Simple.vert", "Shaders/Simple.frag", m_simpleProgram);

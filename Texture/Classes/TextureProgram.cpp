@@ -56,7 +56,8 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 
 	Quaternion& orientation = surface->getOrientation();
 	mat4 rotation = orientation.ToMatrix();
-	mat4 modelview = rotation * translation;
+	mat4 scale = mat4::Scale(surface->getScale());
+	mat4 modelview = scale * rotation * translation;
 
 	m_modelviewUniform->matrix4fv(1, 0, modelview.Pointer());
 
