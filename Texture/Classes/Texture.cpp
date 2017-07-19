@@ -51,9 +51,9 @@ void Texture::init()
     m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(14, 3));
     m_surfaces.push_back(m_showedSurface);
 
-    m_showedSurface = new GLCone(3, 1, ivec2(4, 2));
+    m_showedSurface = new GLCone(3, 1, ivec2(5, 2));
     m_showedSurface->setName("texture");
-    m_showedSurface->setTextureCount(vec2(100, 8) );
+    m_showedSurface->setTextureCount(vec2(1, 1) );
     m_showedSurface->setEnableTexture(true);
     m_surfaces.push_back(m_showedSurface);
    

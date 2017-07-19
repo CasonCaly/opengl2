@@ -34,14 +34,16 @@ void TextureProgram::init()
 	m_texture->activeTexture(GL_TEXTURE0);
     m_texture->genTextures();
     m_texture->bindTexture(GL_TEXTURE_2D);
-    m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    m_texture->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)image.getWidth(), (GLsizei)image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getData());
-	m_texture->generateMipmap(GL_TEXTURE_2D);
+	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	m_texture->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)image.getWidth(), (GLsizei)image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getData());
+	//m_texture->generateMipmap(GL_TEXTURE_2D);
 
     m_positionSlot->enableVertexAttribArray();
     m_normalSlot->enableVertexAttribArray();
     m_textureCoordSlot->enableVertexAttribArray();
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void TextureProgram::useWith(GLSurface* surface, mat4& translation)
@@ -91,6 +93,8 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
+	GLBuffer& indexBuffer = surface->getIndexBuffer();
+	int indexCount = surface->getLineIndexCount();
 
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
@@ -100,4 +104,6 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
     
 	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
 	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
+	indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 }
