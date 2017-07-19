@@ -109,6 +109,9 @@
     <ClCompile Include="glclass\GLTexture.cpp">
       <Filter>glclass</Filter>
     </ClCompile>
+    <ClCompile Include="glsurface\GLCube.cpp">
+      <Filter>glsurface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glclass\GLApp.h">
@@ -213,6 +216,9 @@
     </ClInclude>
     <ClInclude Include="glclass\GLTexture.h">
       <Filter>glclass</Filter>
+    </ClInclude>
+    <ClInclude Include="glsurface\GLCube.h">
+      <Filter>glsurface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,6 +19,7 @@
     <ClCompile Include="glclass\GLTexture.cpp" />
     <ClCompile Include="glclass\GLUniform.cpp" />
     <ClCompile Include="glsurface\GLCone.cpp" />
+    <ClCompile Include="glsurface\GLCube.cpp" />
     <ClCompile Include="glsurface\GLKleinBottle.cpp" />
     <ClCompile Include="glsurface\GLMobiusStrip.cpp" />
     <ClCompile Include="glsurface\GLSphere.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="glfw3\include\win32\glfw3native.h" />
     <ClInclude Include="GLInterval.h" />
     <ClInclude Include="glsurface\GLCone.h" />
+    <ClInclude Include="glsurface\GLCube.h" />
     <ClInclude Include="glsurface\GLKleinBottle.h" />
     <ClInclude Include="glsurface\GLMobiusStrip.h" />
     <ClInclude Include="glsurface\GLSphere.h" />

@@ -29,7 +29,7 @@ void GLCube::generateVertices(){
 
 	int vertexCount = this->getVertexCount();
 	GLfloat vertex[] = {
-		0.5f, 
+		0.5f
 	};
 	//vertices.resize(vertexCount * floatsPerVertex);
 	//for (int i = 0; i < vertexCount; i++){
