@@ -12,7 +12,7 @@
 int main(void)
 {
 	Texture app;
-	app.initGLApp("Texture");
+	app.initGLApp("Texture", 800, 600);
 	app.init();
 	app.run();
 	return 0;

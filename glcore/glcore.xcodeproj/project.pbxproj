@@ -23,6 +23,8 @@
 		555402DC1F13B9EF00570A2E /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 555402B91F13B9EE00570A2E /* zlib.h */; };
 		555402E01F13BAF400570A2E /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555402DF1F13BAF400570A2E /* libpng.a */; };
 		555402E21F13BB0200570A2E /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555402E11F13BB0200570A2E /* libz.a */; };
+		556903661F2328D80004B8BE /* GLCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556903641F2328D80004B8BE /* GLCube.cpp */; };
+		556903671F2328D80004B8BE /* GLCube.h in Headers */ = {isa = PBXBuildFile; fileRef = 556903651F2328D80004B8BE /* GLCube.h */; };
 		5589968D1EF556F200D39E9C /* GLInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968C1EF556F200D39E9C /* GLInterval.h */; };
 		558996901EF559CA00D39E9C /* GLSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5589968E1EF559CA00D39E9C /* GLSphere.cpp */; };
 		558996911EF559CA00D39E9C /* GLSphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 5589968F1EF559CA00D39E9C /* GLSphere.h */; };
@@ -83,6 +85,8 @@
 		555402B91F13B9EE00570A2E /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		555402DF1F13BAF400570A2E /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = png/prebuilt/mac/libpng.a; sourceTree = "<group>"; };
 		555402E11F13BB0200570A2E /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = zlib/prebuilt/mac/libz.a; sourceTree = "<group>"; };
+		556903641F2328D80004B8BE /* GLCube.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = GLCube.cpp; sourceTree = "<group>"; };
+		556903651F2328D80004B8BE /* GLCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCube.h; sourceTree = "<group>"; };
 		5589968C1EF556F200D39E9C /* GLInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLInterval.h; sourceTree = SOURCE_ROOT; };
 		5589968E1EF559CA00D39E9C /* GLSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLSphere.cpp; sourceTree = "<group>"; };
 		5589968F1EF559CA00D39E9C /* GLSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSphere.h; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 		559C249D1EED83D9005B7599 /* glsurface */ = {
 			isa = PBXGroup;
 			children = (
+				556903641F2328D80004B8BE /* GLCube.cpp */,
+				556903651F2328D80004B8BE /* GLCube.h */,
 				55CDC8FD1EFF97800009C6F4 /* GLKleinBottle.cpp */,
 				55CDC8FE1EFF97800009C6F4 /* GLKleinBottle.h */,
 				55CDC8FF1EFF97800009C6F4 /* GLMobiusStrip.cpp */,
@@ -386,6 +392,7 @@
 				55EDBE7B1EEBD5D100850B69 /* GLShader.h in Headers */,
 				559C24A31EED840D005B7599 /* GLCone.h in Headers */,
 				55EDBE8D1EEBD5D100850B69 /* Path.h in Headers */,
+				556903671F2328D80004B8BE /* GLCube.h in Headers */,
 				55EDBE8A1EEBD5D100850B69 /* Quaternion.hpp in Headers */,
 				5589968D1EF556F200D39E9C /* GLInterval.h in Headers */,
 				55EDBE791EEBD5D100850B69 /* GLProgram.h in Headers */,
@@ -459,6 +466,7 @@
 				55354AFE1EEEDF82002EF79E /* GLSurface.cpp in Sources */,
 				55EDBE711EEBD5D100850B69 /* GLApp.cpp in Sources */,
 				55238B611F151DDF0063F89B /* GLTexture.cpp in Sources */,
+				556903661F2328D80004B8BE /* GLCube.cpp in Sources */,
 				55CDC90B1EFF97800009C6F4 /* GLTrefoilKnot.cpp in Sources */,
 				55CDC9071EFF97800009C6F4 /* GLMobiusStrip.cpp in Sources */,
 				555402C01F13B9EE00570A2E /* GLImage.cpp in Sources */,

@@ -93,8 +93,8 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
-	GLBuffer& indexBuffer = surface->getIndexBuffer();
-	int indexCount = surface->getLineIndexCount();
+	//GLBuffer& indexBuffer = surface->getIndexBuffer();
+	//int indexCount = surface->getLineIndexCount();
 
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
@@ -104,6 +104,6 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
     
 	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
 	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-	indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
+	//indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
+	//glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 }
