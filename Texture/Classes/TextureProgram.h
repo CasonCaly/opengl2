@@ -23,6 +23,7 @@ protected:
 	GLUniform* m_specularMaterialUniform;//镜面光材质
 	GLUniform* m_shininessUniform;//发光?
     GLUniform* m_sampler;
+    GLUniform* m_sampler2;
     
 	GLAttribute* m_positionSlot;//顶点属性
 	GLAttribute* m_colorSlot;
@@ -32,6 +33,7 @@ protected:
     
     GLTexture* m_texture;
     GLTexture* m_texture2;
+    GLTexture* m_mixTexture;
 };
 
 #endif

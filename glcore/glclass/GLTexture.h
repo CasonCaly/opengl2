@@ -8,12 +8,17 @@
 #include <OpenGL/glu.h>
 #include <OpenGL/glext.h>
 #endif
+#include <string>
 
 class GLCORE GLTexture{
 
 public:
+    
+    void initWithImage(const std::string& path);
+    
+public:
 
-	void activeTexture(GLenum texture);
+	static void activeTexture(GLenum texture);
 
 	void generateMipmap(GLenum target);
 

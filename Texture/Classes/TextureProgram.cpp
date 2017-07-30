@@ -21,47 +21,22 @@ void TextureProgram::init()
 	m_specularMaterialUniform = this->getUniform("SpecularMaterial");
 	m_shininessUniform = this->getUniform("Shininess");
     m_sampler = this->getUniform("Sampler");
+    m_sampler2 = this->getUniform("Sampler2");
     
 	m_ambientMaterialUniform->value3f(0.04f, 0.04f, 0.04f);
 	m_specularMaterialUniform->value3f(0.5f, 0.5f, 0.5f);
 	m_shininessUniform->value1f(50.0f);
     m_sampler->value1i(0);
+    m_sampler2->value1i(1);
     
-	GLImage image;
-	image.initWithImage("Image/grid2.png");
-
     m_texture = new GLTexture();
-    m_texture->genTextures();
-    m_texture->bindTexture(GL_TEXTURE_2D);
-	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	m_texture->texImage2D(GL_TEXTURE_2D,
-                          0,
-                          image.getInternalFormat(),
-                          (GLsizei)image.getWidth(),
-                          (GLsizei)image.getHeight(),
-                          0,
-                          image.getInternalFormat(),
-                          GL_UNSIGNED_BYTE,
-                          image.getData());
-	//m_texture->generateMipmap(GL_TEXTURE_2D);
+    m_texture->initWithImage("Image/grid2.png");
 
-    GLImage image2;
-    image2.initWithImage("Image/Grasshopper.png");
     m_texture2 = new GLTexture();
-    m_texture2->genTextures();
-    m_texture2->bindTexture(GL_TEXTURE_2D);
-    m_texture2->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    m_texture2->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    m_texture2->texImage2D(GL_TEXTURE_2D,
-                          0,
-                          image2.getInternalFormat(),
-                          (GLsizei)image2.getWidth(),
-                          (GLsizei)image2.getHeight(),
-                          0,
-                          image2.getInternalFormat(),
-                          GL_UNSIGNED_BYTE,
-                          image2.getData());
+    m_texture2->initWithImage("Image/Grasshopper2.png");
+    
+    m_mixTexture = new GLTexture();
+    m_mixTexture->initWithImage("Image/background2.jpg");
     
     m_positionSlot->enableVertexAttribArray();
     m_normalSlot->enableVertexAttribArray();
@@ -76,10 +51,19 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
     
     std::string& name = surface->getName();
     if(name == "texture0"){
+        GLTexture::activeTexture(GL_TEXTURE0);
         m_texture2->bindTexture(GL_TEXTURE_2D);
+        
+        GLTexture::activeTexture(GL_TEXTURE1);
+        m_mixTexture->bindTexture(GL_TEXTURE_2D);
     }
     else{
+        GLTexture::activeTexture(GL_TEXTURE0);
         m_texture->bindTexture(GL_TEXTURE_2D);
+        
+        GLTexture::activeTexture(GL_TEXTURE1);
+        m_mixTexture->bindTexture(GL_TEXTURE_2D);
+       
     }
     
 	vec2 size = surface->getViewportSize();
