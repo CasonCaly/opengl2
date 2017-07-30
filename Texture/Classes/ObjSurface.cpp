@@ -4,6 +4,8 @@
 
 ObjSurface::ObjSurface(const std::string& name)
 {
+    m_faceCount = 0;
+    m_vertexCount = 0;
 	m_name = name;
 	m_faces.resize(this->getTriangleIndexCount() / 3);
 	std::string fullPath = Path::joinResource(name);

@@ -2,6 +2,7 @@
 #define GL_Image_h
 #include <string>
 #include "GLCore.h"
+//#include "GLGL.h"
 
 class GLCORE GLImage{
 
@@ -45,6 +46,8 @@ public:
     
     size_t getHeight();
     
+    int getInternalFormat();
+    
 protected:
 
 	bool initWithPngData(const unsigned char * data, size_t dataLen);
@@ -58,6 +61,7 @@ protected:
 	bool isJpg(const unsigned char * data, size_t dataLen);
 
 protected:
+    int m_internalFormat;
 	Format m_fileType;
 	size_t m_width;
 	size_t m_height;

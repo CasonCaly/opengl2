@@ -31,6 +31,7 @@ protected:
     GLAttribute* m_textureCoordSlot;
     
     GLTexture* m_texture;
+    GLTexture* m_texture2;
 };
 
 #endif

@@ -31,14 +31,38 @@ void TextureProgram::init()
 	image.initWithImage("Image/grid2.png");
 
     m_texture = new GLTexture();
-	m_texture->activeTexture(GL_TEXTURE0);
     m_texture->genTextures();
     m_texture->bindTexture(GL_TEXTURE_2D);
 	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	m_texture->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	m_texture->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)image.getWidth(), (GLsizei)image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getData());
+	m_texture->texImage2D(GL_TEXTURE_2D,
+                          0,
+                          image.getInternalFormat(),
+                          (GLsizei)image.getWidth(),
+                          (GLsizei)image.getHeight(),
+                          0,
+                          image.getInternalFormat(),
+                          GL_UNSIGNED_BYTE,
+                          image.getData());
 	//m_texture->generateMipmap(GL_TEXTURE_2D);
 
+    GLImage image2;
+    image2.initWithImage("Image/Grasshopper.png");
+    m_texture2 = new GLTexture();
+    m_texture2->genTextures();
+    m_texture2->bindTexture(GL_TEXTURE_2D);
+    m_texture2->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    m_texture2->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    m_texture2->texImage2D(GL_TEXTURE_2D,
+                          0,
+                          image2.getInternalFormat(),
+                          (GLsizei)image2.getWidth(),
+                          (GLsizei)image2.getHeight(),
+                          0,
+                          image2.getInternalFormat(),
+                          GL_UNSIGNED_BYTE,
+                          image2.getData());
+    
     m_positionSlot->enableVertexAttribArray();
     m_normalSlot->enableVertexAttribArray();
     m_textureCoordSlot->enableVertexAttribArray();
@@ -49,6 +73,15 @@ void TextureProgram::init()
 void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 {
 	this->use();
+    
+    std::string& name = surface->getName();
+    if(name == "texture0"){
+        m_texture2->bindTexture(GL_TEXTURE_2D);
+    }
+    else{
+        m_texture->bindTexture(GL_TEXTURE_2D);
+    }
+    
 	vec2 size = surface->getViewportSize();
 	vec2 lowerLeft = surface->getLowerLeft();
 	glViewport((int)lowerLeft.x, (int)lowerLeft.y, (int)size.x, (int)size.y);
@@ -93,9 +126,6 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
 	GLBuffer& trianlgeIndexBuffer = surface->getTriangleIndexBuffer();
 	int triangelIndexCount = surface->getTriangleIndexCount();
 
-	//GLBuffer& indexBuffer = surface->getIndexBuffer();
-	//int indexCount = surface->getLineIndexCount();
-
 	vertexBuffer.bind(GL_ARRAY_BUFFER);
 	m_positionSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, 0);
 	m_normalSlot->vertexAttribPointer(3, GL_FLOAT, GL_FALSE, stride, normalOffset);
@@ -104,6 +134,4 @@ void TextureProgram::useWith(GLSurface* surface, mat4& translation)
     
 	trianlgeIndexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
 	glDrawElements(GL_TRIANGLES, triangelIndexCount, GL_UNSIGNED_SHORT, 0);
-	//indexBuffer.bind(GL_ELEMENT_ARRAY_BUFFER);
-	//glDrawElements(GL_LINES, indexCount, GL_UNSIGNED_SHORT, 0);
 }

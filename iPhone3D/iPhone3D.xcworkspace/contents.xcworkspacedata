@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:TextureFormats/TextureFormats.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TextureFilters/TextureFilters.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TextureAlpha/TextureAlpha.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.SimpleWireframe/SimpleWireframe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.VertexLighting/VertexLighting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.ToonLighting/ToonLighting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.Textured/Textured.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.PixelLighting/PixelLighting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.ObjViewer/ObjViewer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelViewer.FancyWireframe/FancyWireframe.xcodeproj">
+   </FileRef>
+</Workspace>

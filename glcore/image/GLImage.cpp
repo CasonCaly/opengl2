@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "GLGL.h"
 #include "GLImage.h"
 #include "os/Path.h"
 #include "png.h"
@@ -65,6 +66,7 @@ myErrorExit(j_common_ptr cinfo)
 GLImage::GLImage()
 {
 	m_fileType = Format::UNKNOWN;
+    m_internalFormat = GL_RGBA;
 	m_width = 0;
 	m_height = 0;
 	m_dataLen = 0;
@@ -90,6 +92,11 @@ size_t GLImage::getWidth()
 size_t GLImage::getHeight()
 {
     return m_height;
+}
+
+GLint GLImage::getInternalFormat()
+{
+    return m_internalFormat;
 }
 
 bool GLImage::initWithImage(const std::string& path)
@@ -211,10 +218,10 @@ bool GLImage::initWithPngData(const unsigned char * data, size_t dataLen)
 			//_renderFormat = Texture2D::PixelFormat::AI88;
 			break;
 		case PNG_COLOR_TYPE_RGB:
-			//_renderFormat = Texture2D::PixelFormat::RGB888;
+            m_internalFormat = GL_RGB;
 			break;
 		case PNG_COLOR_TYPE_RGB_ALPHA:
-			//_renderFormat = Texture2D::PixelFormat::RGBA8888;
+            m_internalFormat = GL_RGBA;
 			break;
 		default:
 			break;
@@ -311,15 +318,16 @@ bool GLImage::initWithJpgData(const unsigned char * data, size_t dataLen)
 #endif
 
 		// we only support RGB or grayscale
-		//if (cinfo.jpeg_color_space == JCS_GRAYSCALE)
-		//{
-		//	_renderFormat = Texture2D::PixelFormat::I8;
-		//}
-		//else
-		//{
-		//	cinfo.out_color_space = JCS_RGB;
-		//	_renderFormat = Texture2D::PixelFormat::RGB888;
-		//}
+		if (cinfo.jpeg_color_space == JCS_GRAYSCALE)
+		{
+			//_renderFormat = Texture2D::PixelFormat::I8;
+		}
+		else
+		{
+			cinfo.out_color_space = JCS_RGB;
+            m_internalFormat = GL_RGB;
+			//_renderFormat = Texture2D::PixelFormat::RGB888;
+		}
 
 		/* Start decompression jpeg here */
 		jpeg_start_decompress(&cinfo);

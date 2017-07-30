@@ -48,18 +48,15 @@ void Texture::init()
 	//toon->setName("toon");
 	m_surfaces.push_back(toon);
     
-    m_showedSurface = new GLTrefoilKnot(1.8f, ivec2(14, 3));
+    m_showedSurface = new GLCube(2.0f);
+    m_showedSurface->setName("texture0");
+    m_showedSurface->setEnableTexture(true);
     m_surfaces.push_back(m_showedSurface);
 
     m_showedSurface = new GLCube(2.0f);
     m_showedSurface->setName("texture");
-    m_showedSurface->setTextureCount(vec2(1, 1) );
     m_showedSurface->setEnableTexture(true);
     m_surfaces.push_back(m_showedSurface);
-   
-//	ObjSurface* objSurface = new ObjSurface("Models/micronapalmv2.obj");
-//	objSurface->setName("pixel");
-//	m_surfaces.push_back(objSurface);
 
 	size_t buttonIndex = 0;
 	for (size_t i = 0; i < m_surfaces.size(); i++){
@@ -108,7 +105,7 @@ void Texture::renderSurface()
 		else if(name == "toon"){
 			m_toonProgram.useWith(surface, m_translation);
 		}
-        else if(name == "texture"){
+        else if(name.find("texture") != std::string::npos){
             m_texProgram.useWith(surface, m_translation);
         }
 		else{
