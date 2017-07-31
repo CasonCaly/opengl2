@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "GLGL.h"
+#include "glclass/GLGL.h"
 #include "GLImage.h"
 #include "os/Path.h"
 #include "png.h"
